@@ -253,6 +253,13 @@
   }
   blockquote.callout footer { margin-top: 8px; font-size: 12px; color: var(--color-digital-dust); }
 
+  .divider { border: none; border-top: 1px solid var(--color-deep-void); margin: 0; }
+
+  .bullet-list { margin: 0; padding-left: 20px; color: var(--color-deep-void); }
+  .bullet-list li { font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--color-deep-void); margin-bottom: 8px; }
+  .bullet-list li::marker { color: var(--color-deep-void); }
+  .bullet-list li:last-child { margin-bottom: 0; }
+
   .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
   .step-box { display: flex; align-items: center; gap: 24px; background: #fff; border-radius: var(--radius-lg); padding: 32px; }
   .step-box svg { width: 48px; height: 48px; flex-shrink: 0; }
@@ -399,8 +406,8 @@
       <div class="swatch"><div class="fill" style="background:#C9CBC9"></div><div class="meta"><div class="name">Light Gray</div><div class="hex">#C9CBC9</div><div class="role">rámečky, text na tmavém</div></div></div>
       <div class="swatch"><div class="fill" style="background:#F8FAF8;border-bottom:1px solid #eee"></div><div class="meta"><div class="name">Cloud Whisper</div><div class="hex">#F8FAF8</div><div class="role">světlé pozadí</div></div></div>
       <div class="swatch"><div class="fill" style="background:#FFFFFF;border-bottom:1px solid #eee"></div><div class="meta"><div class="name">White</div><div class="hex">#FFFFFF</div><div class="role">karty, plochy</div></div></div>
-      <div class="swatch"><div class="fill" style="background:#4CE500"></div><div class="meta"><div class="name">Cyber Green</div><div class="hex">#4CE500</div><div class="role">primární akcent / CTA</div></div></div>
-      <div class="swatch"><div class="fill" style="background:#BDE500"></div><div class="meta"><div class="name">Electric Lime</div><div class="hex">#BDE500</div><div class="role">sekundární akcent</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#4CE500"></div><div class="meta"><div class="name">Cyber Green</div><div class="hex">#4CE500</div><div class="role">minimalistický akcent — jen CTA, logo, badge</div></div></div>
+      <div class="swatch"><div class="fill" style="background:#BDE500"></div><div class="meta"><div class="name">Electric Lime</div><div class="hex">#BDE500</div><div class="role">minimalistický akcent — jen v gradientu</div></div></div>
     </div>
 
     <div class="gradient-block">
@@ -413,6 +420,12 @@
     var(--color-electric-lime, #BDE500) -0.12%,
     var(--color-cyber-green, #4CE500) 99.88%));</pre>
       </div>
+    </div>
+
+    <div class="note" style="margin-top:24px; margin-bottom:0;">
+      <strong>Zelená je minimalistický prvek, ne strukturální barva.</strong> Cyber Green / Electric Lime patří jen na místa, kde má upoutat pozornost — CTA tlačítko, logo, ikonový badge, jeden zvýrazněný výraz v nadpisu. Používat maximálně jako jeden akcent na obrazovku/stránku.
+      <br><br>
+      Ve zbytku layoutu — <strong>oddělovací čáry (dělítka, linky mezi sekcemi) i odrážky v odrážkových seznamech jsou vždy Deep Void (černá)</strong>, nikdy svítivě zelené. Zelená v dělítku nebo v bullet listu působí jako chyba/šum, ne jako brandový prvek.
     </div>
   </section>
   <section id="typografie">
@@ -1071,6 +1084,19 @@
       „Citace nebo zvýrazněný výrok — zelený pruh vlevo, bílé pozadí.“
       <footer>Použití: max. 1× na stránku/slide</footer>
     </blockquote>
+
+    <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin: 32px 0 12px;">Oddělovací čára</h3>
+    <p class="desc" style="margin-top:-4px;">Vždy Deep Void (černá), nikdy zelená — zelená je vyhrazená jen pro akcenty (CTA, logo, badge).</p>
+    <hr class="divider">
+
+    <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin: 32px 0 12px;">Odrážkový seznam</h3>
+    <p class="desc" style="margin-top:-4px;">Odrážky jsou Deep Void (černá), stejně jako text — ne zelené.</p>
+    <ul class="bullet-list">
+      <li>Zápis do oborových katalogů</li>
+      <li>PR články v odborných médiích</li>
+      <li>Partnerské spolupráce — zákazníci, dodavatelé, projektanti</li>
+      <li>Případové studie a reference na vlastním webu</li>
+    </ul>
 
     <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin: 32px 0 12px;">Číslovaný proces / kroky</h3>
     <div class="step-grid">
