@@ -27,6 +27,16 @@
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
+    /* --- Doporučené odsazení nadpisů (Figma nemá spacing tokeny — odvozeno
+         z 8px rytmu použitého napříč komponentami). Pravidlo: odstup nad
+         nadpisem > odstup pod nadpisem, aby nadpis vizuálně patřil k textu
+         pod sebou, ne nad sebou. --- */
+    --h1-mt: 48px; --h1-mb: 24px;
+    --h2-mt: 40px; --h2-mb: 20px;
+    --h3-mt: 32px; --h3-mb: 16px;
+    --h4-mt: 24px; --h4-mb: 12px;
+    --p-mb: 16px;
+
     /* --- Odvozeno z webu (tlačítka, karty) --- */
     --radius-sm: 6px;
     --radius-lg: 12px;
@@ -148,15 +158,25 @@
   /* Typography samples */
   .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px dashed #E4E6E4; }
   .type-row:last-child { border-bottom: none; }
-  .type-row .label { width: 130px; flex-shrink: 0; font-size: 12px; color: var(--color-digital-dust); font-family: monospace; }
+  .type-row .label { width: 130px; flex-shrink: 0; font-size: 12px; line-height: 1.6; color: var(--color-digital-dust); font-family: monospace; }
   .type-row .sample { font-family: var(--font-heading); }
-  h1.tp { font-size: 42px; font-weight: 700; margin: 0; }
-  h2.tp { font-size: 28px; font-weight: 600; margin: 0; }
-  h3.tp { font-size: 22px; font-weight: 600; margin: 0; }
-  h4.tp { font-size: 17px; font-weight: 600; margin: 0; }
+  h1.tp { font-size: 42px; font-weight: 700; line-height: 1.2; margin: 0; }
+  h2.tp { font-size: 28px; font-weight: 600; line-height: 1.2; margin: 0; }
+  h3.tp { font-size: 22px; font-weight: 600; line-height: 1.4; margin: 0; }
+  h4.tp { font-size: 17px; font-weight: 600; line-height: 1.4; margin: 0; }
+
+  /* Plynulý text (Word/dokumenty) — nadpisy s doporučeným odsazením */
+  .doc-flow { background: #fff; border: 1px solid #E4E6E4; border-radius: var(--radius-lg); padding: 40px; }
+  .doc-flow > *:first-child { margin-top: 0 !important; }
+  .doc-flow h1 { font-family: var(--font-heading); font-size: 42px; font-weight: 700; line-height: 1.2; color: var(--color-deep-void); margin: var(--h1-mt) 0 var(--h1-mb); }
+  .doc-flow h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 600; line-height: 1.2; color: var(--color-deep-void); margin: var(--h2-mt) 0 var(--h2-mb); }
+  .doc-flow h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 600; line-height: 1.4; color: var(--color-deep-void); margin: var(--h3-mt) 0 var(--h3-mb); }
+  .doc-flow h4 { font-family: var(--font-heading); font-size: 17px; font-weight: 600; line-height: 1.4; color: var(--color-deep-void); margin: var(--h4-mt) 0 var(--h4-mb); }
+  .doc-flow p { font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--color-deep-void); margin: 0 0 var(--p-mb); }
+  .doc-flow p:last-child { margin-bottom: 0; }
   p.tp-lead { font-family: var(--font-body); font-size: 20px; font-weight: 400; line-height: 1.6; color: var(--color-digital-dust); margin: 0; }
-  p.tp-body { font-family: var(--font-body); font-size: 16px; font-weight: 400; margin: 0; }
-  p.tp-caption { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--color-digital-dust); margin: 0; }
+  p.tp-body { font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.6; margin: 0; }
+  p.tp-caption { font-family: var(--font-body); font-size: 13px; font-weight: 500; line-height: 1.4; color: var(--color-digital-dust); margin: 0; }
 
   .highlight-heading { text-align: center; padding: 32px 0; }
   .hl-line { font-family: var(--font-heading); font-weight: 600; font-size: 40px; line-height: 1.2; }
@@ -397,14 +417,37 @@
   </section>
   <section id="typografie">
     <h2>Typografie</h2>
-    <p class="desc">Náhrada za „widescreen“ — Space Grotesk pro nadpisy (geometrický, technický charakter blízký originálu), Inter pro text.</p>
-    <div class="type-row"><div class="label">H1 / 42·700</div><h1 class="tp sample">Digital driven business</h1></div>
-    <div class="type-row"><div class="label">H2 / 28·600</div><h2 class="tp sample">Zanalyzujeme váš byznys</h2></div>
-    <div class="type-row"><div class="label">H3 / 22·600</div><h3 class="tp sample">Naše práce</h3></div>
-    <div class="type-row"><div class="label">H4 / 17·600</div><h4 class="tp sample">Marketingová strategie</h4></div>
-    <div class="type-row"><div class="label">Perex / 20·400</div><p class="tp-lead">Postaráme se o vše: zanalyzujeme si současný stav a potenciál, webové stránky vytvoříme a náš marketingový tým se postará o propagaci.</p></div>
-    <div class="type-row"><div class="label">Body / 16·400</div><p class="tp-body">Text odstavce — používá se pro běžný obsah dokumentů, popisky a delší texty.</p></div>
-    <div class="type-row"><div class="label">Caption / 13·500</div><p class="tp-caption">Doplňkový text, popisky, metadata</p></div>
+    <p class="desc">Náhrada za „widescreen“ — Space Grotesk pro nadpisy (geometrický, technický charakter blízký originálu), Inter pro text. Instalační soubory fontů (.ttf, licence SIL OFL) jsou v <code>/Assets/Fonts</code>.</p>
+    <div class="type-row"><div class="label">H1 / 42·700<br>řádkování 120 %</div><h1 class="tp sample">Digital driven business</h1></div>
+    <div class="type-row"><div class="label">H2 / 28·600<br>řádkování 120 %</div><h2 class="tp sample">Zanalyzujeme váš byznys</h2></div>
+    <div class="type-row"><div class="label">H3 / 22·600<br>řádkování 140 %</div><h3 class="tp sample">Naše práce</h3></div>
+    <div class="type-row"><div class="label">H4 / 17·600<br>řádkování 140 %</div><h4 class="tp sample">Marketingová strategie</h4></div>
+    <div class="type-row"><div class="label">Perex / 20·400<br>řádkování 160 %</div><p class="tp-lead">Postaráme se o vše: zanalyzujeme si současný stav a potenciál, webové stránky vytvoříme a náš marketingový tým se postará o propagaci.</p></div>
+    <div class="type-row"><div class="label">Body / 16·400<br>řádkování 160 %</div><p class="tp-body">Text odstavce — používá se pro běžný obsah dokumentů, popisky a delší texty. Řádkování 160 % zajišťuje dobrou čitelnost delších bloků textu, například v analytických dokumentech nebo na blogu.</p></div>
+    <div class="type-row"><div class="label">Caption / 13·500<br>řádkování 140 %</div><p class="tp-caption">Doplňkový text, popisky, metadata</p></div>
+
+    <div class="note" style="margin-top:24px; margin-bottom:0;">
+      <strong>Řádkování (line-height) — pravidlo z Figma textových stylů:</strong> běžný odstavcový text (Body, Perex/Lead text, text v kartách) používá <strong>160 %</strong> velikosti písma. Menší popisky a subheadliny (14–20px, medium/semibold) používají <strong>140 %</strong>. Velké nadpisy (H1/H2, 28px+) používají těsnější <strong>120 %</strong>. Kompaktní jednořádkové nadpisy v kartách (např. Ikonový box) používají <strong>100 %</strong> (bez extra prostoru). Zdroj: textové styly „Body text", „Lead text", „Headlines/H1", „Headlines/H2" ve Figma souboru „Aitom web 2024".
+    </div>
+
+    <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin: 32px 0 12px;">Odsazení nadpisů (spacing)</h3>
+    <p class="desc" style="margin-top:-4px;">
+      Figma nemá pro odsazení nadpisů definovaný token — doporučení níže vychází z 8px rytmu použitého napříč komponentami tohoto styleguide.
+      Pravidlo: <strong>odstup nad nadpisem je vždy větší než odstup pod ním</strong> — nadpis tak vizuálně patří k textu, který následuje, ne k textu nad sebou.
+    </p>
+    <div class="type-row"><div class="label">H1</div><p class="tp-caption">nad 48px · pod 24px</p></div>
+    <div class="type-row"><div class="label">H2</div><p class="tp-caption">nad 40px · pod 20px</p></div>
+    <div class="type-row"><div class="label">H3</div><p class="tp-caption">nad 32px · pod 16px</p></div>
+    <div class="type-row"><div class="label">H4</div><p class="tp-caption">nad 24px · pod 12px</p></div>
+    <div class="type-row"><div class="label">Odstavce</div><p class="tp-caption">mezera pod odstavcem 16px</p></div>
+
+    <div class="doc-flow" style="margin-top:20px;">
+      <h2>Ukázka plynulého textu</h2>
+      <p>Takhle vypadá odsazení v praxi — nadpis má nad sebou víc prostoru než pod sebou, takže je jasně čitelné, ke kterému odstavci patří. První nadpis v bloku nemá horní odsazení vůbec (je hned na začátku).</p>
+      <h3>Podnadpis o úroveň níž</h3>
+      <p>Stejné pravidlo platí i mezi nadpisem a odstavcem, který následuje po něm — a mezi jednotlivými odstavci navzájem (16px mezera dole).</p>
+      <p>Ve Wordu tomu odpovídá nastavení „Mezera před" (Space before) a „Mezera za" (Space after) v definici stylu odstavce/nadpisu — hodnoty výše lze použít přímo.</p>
+    </div>
 
     <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin: 32px 0 12px;">Zvýrazněný nadpis var 1 (gradient)</h3>
     <p class="desc" style="margin-top:-4px;">Kombinace tmavého a gradientového řádku ve stejném řezu — pro claim/hero zvýraznění. Gradient: „CODE HORIZON" (Electric Lime → Cyber Green).</p>
