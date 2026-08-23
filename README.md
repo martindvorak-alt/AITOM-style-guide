@@ -15,7 +15,7 @@ vytvořit, jsou zbytečně velké a pomalé na zpracování. K samotné tvorbě 
 |---|---|---|
 | **Cokoliv** — barvy, typografie, logo, ikony (obecná brand pravidla) | [`styleguide.json`](styleguide.json) | [`nahledy/styleguide.html`](nahledy/styleguide.html) |
 | **Webovou stránku** (import do WordPress/Gutenberg na aitom.cz) | [`web/gutenberg/components.json`](web/gutenberg/components.json) | [`nahledy/web-components.html`](nahledy/web-components.html) |
-| **Tiskový/PDF/Word dokument** (nabídka, objednávka, případová studie...) | [`docs/templates/<typ>/`](docs/) | — |
+| **Tiskový/PDF/Word dokument** (nabídka, objednávka, případová studie...) | [`styleguide.json`](styleguide.json) + [`docs/styleguide-docs.json`](docs/styleguide-docs.json) + [`docs/templates/<typ>/`](docs/) | — |
 
 ## Postup pro AI nástroj
 
@@ -30,8 +30,11 @@ vytvořit, jsou zbytečně velké a pomalé na zpracování. K samotné tvorbě 
    [`web/gutenberg/README.md`](web/gutenberg/README.md) (sekce "Postup skládání stránky"): musí to
    pořád být validní Gutenberg markup, jen barvy/rádius/spacing z `styleguide.json`, a musí to být
    jasně označené jako improvizace, ne tichý výmysl.
-4. `docs/templates/<typ>/` bude obsahovat reálné vzory dokumentů (zatím se doplňují) — drž se
-   stejného principu: vycházej z reálného vzoru, ne z domněnky, jak dokument vypadá.
+4. Pro dokumenty načti CELÝ řetězec style guidů, ne jen jeden soubor: `styleguide.json` →
+   `docs/styleguide-docs.json` → (pokud existuje) `docs/templates/<typ>/styleguide-<typ>.json`.
+   Pozdější soubor v řetězci rozšiřuje/přebíjí ten předchozí (typicky typografie — dokumenty mají jiná
+   pravidla odsazení než web). `docs/templates/<typ>/` bude obsahovat reálné vzory dokumentů (zatím se
+   doplňují) — drž se stejného principu: vycházej z reálného vzoru, ne z domněnky, jak dokument vypadá.
 5. Soubory v `nahledy/` NEČTI kvůli obsahu pro tvorbu — otvírej je jen když se přímo chceš/má se
    podívat, jak něco vypadá vizuálně.
 

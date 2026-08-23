@@ -1,0 +1,135 @@
+{
+  "extends": "../styleguide.json",
+  "notes": [
+    "Tento soubor ROZŠIŘUJE ../styleguide.json — nepřepisuj/neduplikuj odsud barvy, loga, ikony ani základní typografickou rodinu, ty jsou společné a zůstávají tam. Tady je jen to, co je pro tiskové/dokumentové výstupy (Word/PDF/prezentace) JINÉ nebo NAVÍC oproti webu.",
+    "Pokud konkrétní typ dokumentu (docs/templates/<typ>/) bude potřebovat další odlišnost od tohoto souboru, dostane vlastní rozšiřující JSON se stejným principem 'extends' — řetězec: styleguide.json → styleguide-docs.json → docs/templates/<typ>/styleguide-<typ>.json.",
+    "Zdroj: sekce 'Komponenty' a 'Ukázka plynulého textu' v nahledy/styleguide.html (popsané tam výslovně jako 'základní stavební bloky pro dokumenty a prezentace')."
+  ],
+
+  "typography_overrides": {
+    "why_different_from_web": "Web skládá layout z jednotlivých Gutenberg komponent, každá s vlastním spacingem. Dokument (Word/PDF) má plynulý tok textu, kde nadpisy a odstavce jdou za sebou — proto potřebuje vlastní pravidlo pro odsazení mezi nimi, které web nepoužívá.",
+    "heading_spacing_rule": "Odstup NAD nadpisem je vždy VĚTŠÍ než odstup POD ním — nadpis tak vizuálně patří k textu, který následuje, ne k textu nad sebou.",
+    "flow_spacing": {
+      "h1": { "margin_top_px": 48, "margin_bottom_px": 24 },
+      "h2": { "margin_top_px": 40, "margin_bottom_px": 20 },
+      "h3": { "margin_top_px": 32, "margin_bottom_px": 16 },
+      "h4": { "margin_top_px": 24, "margin_bottom_px": 12 },
+      "paragraph": { "margin_bottom_px": 16 }
+    },
+    "note": "Velikosti písma/váhy/line-height jsou stejné jako v ../styleguide.json → typography.scale — tady jsou navíc jen tahle margin pravidla pro plynulý tok textu.",
+    "numbered_headings_rule": "DŮLEŽITÉ, LIŠÍ SE OD WEBU: číslo v číslovaném nadpisu dokumentu/reportu (kapitoly/podkapitoly, např. '1. Executive summary', '2.1 Organický výkon') má VŽDY stejnou barvu, řez i velikost jako zbytek nadpisu — žádné barevné odlišení. Na webu naopak 'numbered-process-steps' komponenta barevný akcent u čísla používá záměrně — to pravidlo pro dokumenty NEPLATÍ."
+  },
+
+  "color_usage": [
+    "Oddělovací čáry (dělítka) jsou VŽDY Deep Void (černá), nikdy zelené — zelená je vyhrazená jen pro akcenty (CTA, logo, badge).",
+    "Odrážky v odrážkových seznamech jsou VŽDY Deep Void (černá), stejně jako text — ne zelené."
+  ],
+
+  "components": [
+    {
+      "id": "card-light",
+      "name": "Světlá karta",
+      "description": "Obsahový blok ve světlém layoutu.",
+      "spec": { "background": "white", "border": "1px solid #E4E6E4", "radius_px": 12, "padding_px": 28,
+        "title": "18px/600 Space Grotesk", "body": "14px Inter, digital-dust" }
+    },
+    {
+      "id": "card-dark",
+      "name": "Tmavá karta / hero",
+      "description": "Deep Void pozadí s tečkovaným rastrem (Assets/bg.png) — hero sekce / úvodní strany dokumentu.",
+      "spec": { "background": "deep-void + Assets/bg.png (cover)", "radius_px": 12, "padding_px": 32,
+        "title": "20px/600 Space Grotesk, cloud-whisper", "body": "14px Inter, light-gray",
+        "cta": "btn-primary uvnitř karty" }
+    },
+    {
+      "id": "tag-badge",
+      "name": "Štítek / tag",
+      "description": "Malý zvýrazněný label (např. stav, kategorie).",
+      "spec": { "background": "rgba(76,229,0,0.12)", "text_color": "#2E8F00", "font": "12px/600 Inter",
+        "radius_px": 999, "padding": "6px 12px" }
+    },
+    {
+      "id": "blockquote-callout",
+      "name": "Citace / zvýrazněný výrok",
+      "description": "Max. 1× na stránku/slide.",
+      "spec": { "border_left": "4px solid cyber-green", "background": "white", "padding": "20px 24px",
+        "text": "15px Inter, deep-void", "footer": "12px Inter, digital-dust" }
+    },
+    {
+      "id": "divider",
+      "name": "Oddělovací čára",
+      "description": "Vždy Deep Void (černá), nikdy zelená.",
+      "spec": { "border_top": "1px solid deep-void" }
+    },
+    {
+      "id": "bullet-list",
+      "name": "Odrážkový seznam",
+      "description": "Odrážky Deep Void (černá), stejně jako text — ne zelené.",
+      "spec": { "text": "16px/400 Inter, line-height 1.6, deep-void", "marker_color": "deep-void",
+        "item_gap_px": 8 }
+    },
+    {
+      "id": "numbered-process-steps-doc",
+      "name": "Číslovaný proces / kroky",
+      "description": "Řádek/grid kroků s ikonou, číslem a popiskem — dokumentová verze (bez barevného akcentu u čísla, na rozdíl od webové komponenty numbered-process-steps).",
+      "spec": { "layout": "grid, minmax(280px,1fr)", "card_padding_px": 32, "icon_size_px": 48,
+        "heading": "24px/600 Space Grotesk", "step_number_color": "digital-dust (ne akcentová barva)" }
+    },
+    {
+      "id": "icon-box-doc-1",
+      "name": "Ikonový box var 1 (stacked, bez popisu)",
+      "description": "Karta s ikonou nahoře (gradient badge) a centrovaným textem pod ní — seznamy výhod/vlastností.",
+      "spec": { "layout": "column, center", "card_padding_px": 32, "gap_px": 32, "icon_size_px": 48,
+        "text": "18px/500 Inter, deep-void" }
+    },
+    {
+      "id": "icon-box-doc-2",
+      "name": "Ikonový box var 2 (stacked, s podnadpisem)",
+      "description": "Stejná karta jako var 1, navíc s podnadpisem.",
+      "spec": { "heading": "18px/500 Inter, deep-void", "body": "15px/400 Inter, deep-void",
+        "gap_px": 12 }
+    },
+    {
+      "id": "icon-list-doc",
+      "name": "Ikonový seznam var 1 (borderless)",
+      "description": "Bez karty/rámečku — ikona 64px + text volně na pozadí sekce. Pro checklisty typu 'je tohle vaše situace?'.",
+      "spec": { "icon_size_px": 64, "text": "18px/500 Inter, deep-void @ 70% opacity" }
+    },
+    {
+      "id": "checklist-pills-doc",
+      "name": "Ikonový seznam var 2 (checked pilulky)",
+      "description": "Bílé pilulky se zatržítkem, volně zalamované (flex-wrap) — výčet konkrétních vlastností/funkcí.",
+      "spec": { "background": "white", "radius_px": 8, "padding": "16px 24px", "icon_size_px": 20,
+        "icon_color": "digital-dust", "text": "16px/500 Inter, deep-void" }
+    },
+    {
+      "id": "icon-box-doc-3",
+      "name": "Ikonový box var 3 (s proklikem)",
+      "description": "Zarovnáno vlevo, bílé pozadí s jemným rámečkem (digital-dust @ 10%).",
+      "spec": { "border": "1px solid digital-dust @ 10%", "padding_px": 40, "gap_px": 56, "icon_size_px": 48,
+        "heading": "24px/600 Space Grotesk", "body": "16px/500 Inter, digital-dust",
+        "link": "14px/500 Inter, deep-void, se šipkou" }
+    },
+    {
+      "id": "icon-box-doc-4",
+      "name": "Ikonový box var 4 (číslovaný)",
+      "description": "Bílá karta, radius 12px — ikona nahoře, pak číslo + oddělovací linka + nadpis, pod tím popisný text.",
+      "spec": { "background": "white", "radius_px": 12, "padding_px": 32, "gap_px": 40, "icon_size_px": 48,
+        "number": "24px/600 Space Grotesk, digital-dust", "divider_line": "40px × 1px, light-gray",
+        "heading": "24px/600 Space Grotesk, deep-void", "body": "16px/500 Inter, digital-dust" }
+    },
+    {
+      "id": "hero-cover-doc",
+      "name": "Hero / úvodní sekce (cover strana)",
+      "description": "Tečkovaná textura (Assets/bg.png) + velký nadpis + perex + dvě CTA — pro titulní/cover stránku dokumentu nebo prezentace.",
+      "spec": { "background": "deep-void + Assets/bg.png (cover)", "padding": "96px 40px",
+        "heading": "44px/700 Space Grotesk, cloud-whisper", "perex": "18px/400 Inter, light-gray" }
+    },
+    {
+      "id": "highlight-heading-gradient",
+      "name": "Zvýrazněný nadpis (gradient)",
+      "description": "Var 1: tmavý + gradientový řádek ve stejném řezu, pro claim/hero zvýraznění. Var 2: jeden řádek, první slovo gradientem (CODE HORIZON), zbytek Deep Void — pro nadpisy typu '[Slovo] zbytek věty'.",
+      "spec": { "font": "40px/600 Space Grotesk", "gradient": "CODE HORIZON (viz ../styleguide.json → gradient)" }
+    }
+  ]
+}
