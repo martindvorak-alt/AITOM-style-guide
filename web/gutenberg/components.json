@@ -1,0 +1,456 @@
+{
+  "meta": {
+    "notes": [
+      "Web běží na WordPress + UAGB/Spectra (page builder plugin) + vlastních Blockstudio blocích (blockstudio/hero, blockstudio/pipes, blockstudio/case-study, blockstudio/targets, blockstudio/quote, blockstudio/testimonials, blockstudio/video-player, blockstudio/anchor-menu, blockstudio/benefit-table, blockstudio/cta, blockstudio/solution-graph).",
+      "blockstudio/pipes je wrapper konkrétně pro grid servisních 'Ikonovy Box 2' karet (celá karta jako odkaz) — NENÍ to Double Diamond diagram. Ten používá blockstudio/solution-graph (atribut items: pole 4 fází s title/subtitle/perex) — bespoke vizuál, nízká priorita pro generický registr.",
+      "Ikonových boxů je v globálních stylech 6 variant (Ikonovy Box 1-5, Ikonový box 6) — každá má jiné umístění ikony a chování CTA. Boxy 5 a 6 navíc bývají obalené v samostatné bordered kartě (Spojene Boxy / Shrnutí Projektu Radek) — border a radius patří obalu, ne boxu.",
+      "Hodnota 0.001020304 v UAGB atributech je interní „nenastaveno“ placeholder, ne skutečná hodnota — v těchto šablonách už je vyčištěná.",
+      "{{placeholder}} v template řetězci označuje místo, které se má při generování nahradit skutečným obsahem. U opakujících se prvků (statistiky, pilulky, kroky procesu) šablona obsahuje jednu položku — celý blok se pro další položky duplikuje."
+    ],
+    "colorPalette": {
+      "contrast": "#0b0d0b (Deep Void)",
+      "base": "#f8faf8 (Cloud Whisper)",
+      "primary": "#4ce500 (Cyber Green)",
+      "secondary": "#bde500 (Electric Lime)",
+      "light-gray": "#c9cbc9",
+      "digital-dust": "#828482",
+      "white": "#ffffff",
+      "black": "#000000"
+    },
+    "syncedPatterns": [
+      {
+        "ref": 361,
+        "content": "Řádek log klientů",
+        "usage": "Vkládat přes editor Inserter → Synced patterns, ne kopírovat kód."
+      },
+      {
+        "ref": 823,
+        "content": "Počítadla (projekty/roky/studie/specialisté) + 'Vyznáme se v technologiích'",
+        "usage": "Vkládat přes editor Inserter → Synced patterns, ne kopírovat kód."
+      },
+      {
+        "ref": 432,
+        "content": "Reference/testimonials klientů",
+        "usage": "Vkládat přes editor Inserter → Synced patterns, ne kopírovat kód."
+      },
+      {
+        "ref": 586,
+        "content": "Neznámý obsah — na konci /b2b/ a /tvorba-webu-a-online-aplikaci/ za testimonials, potřeba ověřit v editoru",
+        "usage": "Vkládat přes editor Inserter → Synced patterns, ne kopírovat kód."
+      },
+      {
+        "ref": 587,
+        "content": "Neznámý obsah — na konci /b2b/ a /tvorba-webu-a-online-aplikaci/ za testimonials, potřeba ověřit v editoru",
+        "usage": "Vkládat přes editor Inserter → Synced patterns, ne kopírovat kód."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "hero-primary",
+      "name": "Hero — hlavní nadpis",
+      "category": "Hero",
+      "description": "Úvodní sekce stránky (blockstudio/hero) — H1 v Base barvě, perex, tlačítko. Volitelně následuje řádek log klientů (Synced Pattern ref 361).",
+      "sourcePages": [
+        "/"
+      ],
+      "fields": [
+        {
+          "key": "heading",
+          "label": "Nadpis H1",
+          "type": "text"
+        },
+        {
+          "key": "perex",
+          "label": "Perex (1-2 věty)",
+          "type": "text"
+        },
+        {
+          "key": "cta_label",
+          "label": "Text tlačítka",
+          "type": "text"
+        },
+        {
+          "key": "cta_link",
+          "label": "Odkaz tlačítka (URL nebo page ID)",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:blockstudio/hero -->\n<!-- wp:heading {\"textAlign\":\"center\",\"level\":1,\"className\":\"mw-1200\",\"style\":{\"elements\":{\"link\":{\"color\":{\"text\":\"var:preset|color|base\"}}}},\"textColor\":\"base\"} -->\n<h1 class=\"wp-block-heading has-text-align-center mw-1200 has-base-color has-text-color has-link-color\">{{heading}}</h1>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"align\":\"center\"} -->\n<p class=\"has-text-align-center\">{{perex}}</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:spacer {\"height\":\"8px\"} -->\n<div style=\"height:8px\" aria-hidden=\"true\" class=\"wp-block-spacer\"></div>\n<!-- /wp:spacer -->\n\n<!-- wp:uagb/buttons {\"classMigrate\":true,\"childMigrate\":true,\"inheritGap\":true,\"topMargin\":0,\"rightMargin\":0,\"bottomMargin\":0,\"leftMargin\":0} -->\n<div class=\"wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn\"><div class=\"uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex\"><!-- wp:uagb/buttons-child {\"label\":\"{{cta_label}}\",\"link\":\"{{cta_link}}\",\"btnBorderTopWidth\":1,\"btnBorderLeftWidth\":1,\"btnBorderRightWidth\":1,\"btnBorderBottomWidth\":1,\"btnBorderStyle\":\"solid\",\"btnBorderColor\":\"#333\",\"btnBorderHColor\":\"#333\"} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" href=\"{{cta_link}}\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><div class=\"uagb-button__link\">{{cta_label}}</div></a></div></div>\n<!-- /wp:uagb/buttons-child --></div></div>\n<!-- /wp:uagb/buttons -->\n<!-- /wp:blockstudio/hero -->\n\n<!-- Volitelne: radek log klientu jako Synced Pattern (ref 361), vkladat pres editor -->\n<!-- wp:uagb/container {\"htmlTag\":\"section\",\"topPaddingDesktop\":32,\"isBlockRootParent\":true,\"overflow\":\"hidden\",\"metadata\":{\"name\":\"Řádek log\"}} -->\n<section class=\"wp-block-uagb-container alignfull uagb-is-root-container\"><div class=\"uagb-container-inner-blocks-wrap\"><!-- wp:block {\"ref\":361} /--></div></section>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "section-header",
+      "name": "Záhlaví sekce",
+      "category": "Layout",
+      "description": "Centrovaný H2 nadpis sekce, volitelně perex pod ním. Globální styl 'Zahlavi sekce'.",
+      "sourcePages": [
+        "/",
+        "case-study",
+        "revenue-operations"
+      ],
+      "fields": [
+        {
+          "key": "heading",
+          "label": "Nadpis H2",
+          "type": "text"
+        },
+        {
+          "key": "subheading",
+          "label": "Popisný text (volitelný)",
+          "type": "text",
+          "optional": true
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"metadata\":{\"name\":\"Záhlaví sekce\"},\"globalBlockStyleName\":\"Zahlavi sekce\",\"globalBlockStyleId\":\"zahlavi-sekce1715680243220\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:heading {\"textAlign\":\"center\"} -->\n<h2 class=\"wp-block-heading has-text-align-center\">{{heading}}</h2>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"align\":\"center\"} -->\n<p class=\"has-text-align-center\">{{subheading}}</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "icon-box-checkmark-list",
+      "name": "Ikonový box — jen titulek",
+      "category": "Icon box",
+      "description": "'Ikonovy Box 5' — čtvercová ikona nahoře + krátký titulek, bez popisku. Použití: řádek výhod/výsledků (3 sloupce vedle sebe).",
+      "sourcePages": [
+        "case-study"
+      ],
+      "fields": [
+        {
+          "key": "title",
+          "label": "Krátký titulek / výsledek",
+          "type": "text"
+        },
+        {
+          "key": "icon_svg_path",
+          "label": "SVG path ikony (volitelné, jinak výchozí)",
+          "type": "text",
+          "optional": true
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"widthDesktop\":33,\"widthSetByUser\":true,\"metadata\":{\"name\":\"Sloupec ikon. boxu\"}} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/info-box {\"headingTag\":\"p\",\"icon\":\"message-chat\",\"showDesc\":false,\"iconView\":\"Stacked\",\"iconShape\":\"Square\",\"globalBlockStyleName\":\"Ikonovy Box 5\",\"globalBlockStyleId\":\"ikonovy-box-51716795532744\"} -->\n<div class=\"wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin\"><div class=\"uagb-infobox-margin-wrapper\"><div class=\"uagb-ifb-content\"><div class=\"uagb-ifb-icon-wrap\"><div class=\"uagb-iconbox-icon-wrap uagb-infobox-shape-squre\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"{{icon_svg_path}}\"></path></svg></div></div><div class=\"uagb-ifb-title-wrap\"><p class=\"uagb-ifb-title\">{{title}}</p></div></div></div></div>\n<!-- /wp:uagb/info-box --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "stats-counters",
+      "name": "Statistika (čísla)",
+      "category": "Data",
+      "description": "Jeden sloupec číselné statistiky (uagb/counter) v tenkém orámování. Duplikuj pro více čísel v řádku (typicky 3-4), obal do containeru 'Statistika' (row, wrap).",
+      "sourcePages": [
+        "case-study"
+      ],
+      "fields": [
+        {
+          "key": "number",
+          "label": "Číslo",
+          "type": "number"
+        },
+        {
+          "key": "suffix",
+          "label": "Jednotka/přípona (např. ' mil.', ' trhů')",
+          "type": "text"
+        },
+        {
+          "key": "label",
+          "label": "Popisek pod číslem",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"widthDesktop\":25,\"widthTablet\":50,\"alignItemsDesktop\":\"stretch\",\"topPaddingDesktop\":24,\"bottomPaddingDesktop\":24,\"leftPaddingDesktop\":24,\"rightPaddingDesktop\":24,\"rowGapDesktop\":16,\"columnGapDesktop\":16,\"widthSetByUser\":true,\"equalHeight\":true,\"containerBorderTopWidth\":0,\"containerBorderLeftWidth\":1,\"containerBorderRightWidth\":1,\"containerBorderBottomWidth\":0,\"containerBorderStyle\":\"solid\",\"containerBorderColor\":\"rgba(130, 132, 130, 0.1)\",\"metadata\":{\"name\":\"Sloupec statistiky\"}} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/counter {\"animationDuration\":300,\"heading\":\"{{label}}\",\"headingColor\":\"#0b0d0b\",\"endNumber\":{{number}},\"numberSuffix\":\"{{suffix}}\",\"showIcon\":false,\"icon\":\"\"} -->\n<div class=\"wp-block-uagb-counter wp-block-uagb-counter--number\"><div class=\"wp-block-uagb-counter__number\"><span class=\"uagb-counter-block-number\" data-duration=\"0.3\" data-to-value=\"{{number}}\" data-from-value=\"0\" data-delimiter=\",\"></span><span class=\"uagb-counter-block-suffix\">{{suffix}}</span></div><div class=\"wp-block-uagb-counter__title\">{{label}}</div></div>\n<!-- /wp:uagb/counter --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "numbered-process-steps",
+      "name": "Krok procesu (číslovaný)",
+      "category": "Process",
+      "description": "'Ikonovy Box 4' — gradientová ikona nahoře, h4 nadpis s číslem jako Digital Dust prefixem, popisek pod tím. Kroky procesu vedle sebe v řádku.",
+      "sourcePages": [
+        "revenue-operations"
+      ],
+      "fields": [
+        {
+          "key": "icon_url",
+          "label": "URL ikony (48x48 SVG, gradient na barevném podkladu)",
+          "type": "text"
+        },
+        {
+          "key": "step_number",
+          "label": "Číslo kroku (např. '01')",
+          "type": "text"
+        },
+        {
+          "key": "step_title",
+          "label": "Název kroku",
+          "type": "text"
+        },
+        {
+          "key": "step_description",
+          "label": "Popis kroku (1-3 věty)",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"metadata\":{\"name\":\"Sloupec procesu\"},\"globalBlockStyleName\":\"Procesy Sloupec\",\"globalBlockStyleId\":\"procesy-sloupec1716471051823\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/info-box {\"headingTag\":\"h4\",\"source_type\":\"image\",\"iconImage\":{\"url\":\"{{icon_url}}\",\"alt\":\"\"},\"imageWidth\":48,\"imgTagWidth\":48,\"imgTagHeight\":48,\"globalBlockStyleName\":\"Ikonovy Box 4\",\"globalBlockStyleId\":\"ikonovy-box-41716469760361\"} -->\n<div class=\"wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin\"><div class=\"uagb-infobox-margin-wrapper\"><div class=\"uagb-ifb-content\"><div class=\"uagb-ifb-image-content\"><img src=\"{{icon_url}}\" alt=\"\" width=\"48\" height=\"48\" loading=\"lazy\"/></div><div class=\"uagb-ifb-title-wrap\"><h4 class=\"uagb-ifb-title\"><mark style=\"background-color:rgba(0, 0, 0, 0)\" class=\"has-inline-color has-digital-dust-color\">{{step_number}}</mark> {{step_title}}</h4></div><p class=\"uagb-ifb-desc\">{{step_description}}</p></div></div></div>\n<!-- /wp:uagb/info-box --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "checkmark-pill-row",
+      "name": "Pilulka s fajfkou",
+      "category": "Buttons",
+      "description": "Bílé, zaoblené, orámované tlačítko s check ikonou a textem (bez odkazu, jen výpis faktů). Duplikuj a obal do uagb/buttons pro řádek pilulek.",
+      "sourcePages": [
+        "case-study"
+      ],
+      "fields": [
+        {
+          "key": "label",
+          "label": "Text pilulky",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/buttons-child {\"fontWeight\":\"500\",\"label\":\"{{label}}\",\"topPadding\":16,\"rightPadding\":24,\"bottomPadding\":16,\"leftPadding\":24,\"background\":\"#fff\",\"icon\":\"check-circle-broken\",\"iconPosition\":\"before\",\"iconSpace\":16,\"iconSize\":24,\"btnBorderTopWidth\":1,\"btnBorderLeftWidth\":1,\"btnBorderRightWidth\":1,\"btnBorderBottomWidth\":1,\"btnBorderTopLeftRadius\":8,\"btnBorderTopRightRadius\":8,\"btnBorderBottomLeftRadius\":8,\"btnBorderBottomRightRadius\":8,\"btnBorderStyle\":\"solid\",\"btnBorderColor\":\"rgba(130, 132, 130, 0.1)\",\"btnBorderHColor\":\"#333\",\"showIcon\":true,\"globalBlockStyleName\":\"Check Tlacitko\",\"globalBlockStyleId\":\"check-tlacitko1717610395894\"} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" href=\"#\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><span class=\"uagb-button__icon uagb-button__icon-position-before\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12.835 3.541a8.5 8.5 0 1 0 7.664 8.463v-.736a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v.736a7.498 7.498 0 1 1-14.982-.498A7.497 7.497 0 0 1 15.052 5.15a.5.5 0 0 0 .66-.254.5.5 0 0 0-.252-.66 8.504 8.504 0 0 0-2.625-.694ZM20 5.1a.5.5 0 0 0-.353.147L11.999 12.9l-2.044-2.047a.5.5 0 0 0-.707 0 .5.5 0 0 0 0 .707l2.398 2.4a.5.5 0 0 0 .707 0l8-8.007a.5.5 0 0 0 0-.707.5.5 0 0 0-.354-.147z\"></path></svg></span><div class=\"uagb-button__link\">{{label}}</div></a></div></div>\n<!-- /wp:uagb/buttons-child -->"
+    },
+    {
+      "id": "dark-rounded-box",
+      "name": "Tmavý zaoblený box",
+      "category": "Layout",
+      "description": "Deep Void pozadí, 12px radius — obal pro sekci, která má vyniknout na jinak světlé stránce. Text uvnitř bílý (has-white-color). className 'bg-glow' přidává jemnou zelenou záři, volitelné.",
+      "sourcePages": [
+        "case-study",
+        "revenue-operations"
+      ],
+      "fields": [
+        {
+          "key": "heading",
+          "label": "Nadpis v boxu",
+          "type": "text"
+        },
+        {
+          "key": "subheading",
+          "label": "Podnadpis / perex (volitelný)",
+          "type": "text",
+          "optional": true
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"htmlTag\":\"section\",\"backgroundType\":\"color\",\"backgroundColor\":\"#0b0d0b\",\"topPaddingDesktop\":64,\"bottomPaddingDesktop\":40,\"leftPaddingDesktop\":32,\"rightPaddingDesktop\":32,\"topMarginDesktop\":80,\"bottomMarginDesktop\":80,\"rowGapDesktop\":48,\"isBlockRootParent\":true,\"containerBorderTopLeftRadius\":12,\"containerBorderTopRightRadius\":12,\"containerBorderBottomLeftRadius\":12,\"containerBorderBottomRightRadius\":12,\"className\":\"bg-glow\",\"metadata\":{\"name\":\"Tmavý box\"}} -->\n<section class=\"wp-block-uagb-container bg-glow alignwide uagb-is-root-container\"><!-- wp:heading {\"textAlign\":\"center\",\"style\":{\"elements\":{\"link\":{\"color\":{\"text\":\"var:preset|color|white\"}}}},\"textColor\":\"white\"} -->\n<h2 class=\"wp-block-heading has-text-align-center has-white-color has-text-color has-link-color\">{{heading}}</h2>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"align\":\"center\",\"style\":{\"elements\":{\"link\":{\"color\":{\"text\":\"var:preset|color|white\"}}}},\"textColor\":\"white\",\"fontSize\":\"large\"} -->\n<p class=\"has-text-align-center has-white-color has-text-color has-link-color has-large-font-size\">{{subheading}}</p>\n<!-- /wp:paragraph --></section>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "anchor-menu",
+      "name": "Kotvové menu",
+      "category": "Navigation",
+      "description": "Sticky jump nav (blockstudio/anchor-menu) — odkazuje na #anchor sekce dál na stránce. Použij na delších landing pages.",
+      "sourcePages": [
+        "revenue-operations"
+      ],
+      "fields": [
+        {
+          "key": "items",
+          "label": "Seznam položek [{text, anchor}]",
+          "type": "array"
+        }
+      ],
+      "template": "<!-- wp:blockstudio/anchor-menu {\"blockstudio\":{\"name\":\"blockstudio/anchor-menu\",\"attributes\":{\"items\":[{\"text\":\"{{item_1_text}}\",\"anchor\":\"{{item_1_anchor}}\"},{\"text\":\"{{item_2_text}}\",\"anchor\":\"{{item_2_anchor}}\"}]}}} /-->\n\n<!-- \"anchor\" musi odpovidat id atributu sekce dal na strance, napr. <section id=\"{{item_1_anchor}}\" ...> -->"
+    },
+    {
+      "id": "icon-box-2",
+      "name": "Ikonový box 2 — servisní grid (celá karta odkaz)",
+      "category": "Icon box",
+      "description": "'Ikonovy Box 2' — ikona vlevo od titulku, h3, popisek, žádné viditelné CTA tlačítko — celá karta je obalená v <a> (ctaType: 'all'). Používá se uvnitř blockstudio/pipes pro grid nabízených služeb (opakuj wp:uagb/info-box blok pro každou položku, wrapper blockstudio/pipes zůstává jeden).",
+      "sourcePages": [
+        "b2b",
+        "tvorba-webu-a-online-aplikaci",
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "icon_url",
+          "label": "URL ikony (48x48 SVG)",
+          "type": "text"
+        },
+        {
+          "key": "title",
+          "label": "Název služby",
+          "type": "text"
+        },
+        {
+          "key": "description",
+          "label": "Popis (1-2 věty)",
+          "type": "text"
+        },
+        {
+          "key": "link",
+          "label": "Odkaz na detail služby",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:blockstudio/pipes {\"blockstudio\":{\"name\":\"blockstudio/pipes\"}} -->\n<!-- wp:uagb/info-box {\"tempHeadingDesc\":\"{{description}}\",\"iconimgPosition\":\"left-title\",\"source_type\":\"image\",\"sourceAlign\":\"middle\",\"ctaType\":\"all\",\"ctaLink\":\"{{link}}\",\"iconImage\":{\"url\":\"{{icon_url}}\",\"alt\":\"\"},\"imageWidth\":48,\"imgTagWidth\":48,\"imgTagHeight\":48,\"className\":\"js-animate-pipeline-1\",\"globalBlockStyleName\":\"Ikonovy Box 2\",\"globalBlockStyleId\":\"ikonovy-box-21715769571182\"} -->\n<div class=\"wp-block-uagb-info-box uagb-infobox__content-wrap  uagb-infobox_cta-type-all uagb-infobox-icon-left-title uagb-infobox-left uagb-infobox-image-valign-middle wp-block-uagb-info-box--has-margin js-animate-pipeline-1\"><div class=\"uagb-infobox-margin-wrapper\"><a href=\"{{link}}\" class=\"uagb-infobox-link-wrap uagb-infbox__link-to-all\" target=\"_self\" aria-label=\"Infobox Link\" rel=\"noopener noreferrer\" onclick=\"return true;\"></a><div class=\"uagb-ifb-content\"><div class=\"uagb-ifb-left-title-image\"><div class=\"uagb-ifb-image-content\"><img src=\"{{icon_url}}\" alt=\"\" width=\"48\" height=\"48\" loading=\"lazy\"/></div><div class=\"uagb-ifb-title-wrap\"><h3 class=\"uagb-ifb-title\">{{title}}</h3></div></div><p class=\"uagb-ifb-desc\">{{description}}</p><div class=\"uagb-ifb-button-wrapper wp-block-button\"></div></div></div></div>\n<!-- /wp:uagb/info-box -->\n<!-- pro dalsi polozky v gridu opakuj cely wp:uagb/info-box blok -->\n<!-- /wp:blockstudio/pipes -->"
+    },
+    {
+      "id": "icon-box-6",
+      "name": "Ikonový box 6 — segment publika (v rámcové kartě)",
+      "category": "Icon box",
+      "description": "'Ikonový box 6' — ikona vlevo od titulku (valign middle), h4, popisek, bez CTA. Typicky 3-4 kopie uvnitř jedné bordered karty se stylem 'Shrnutí Projektu Radek' (border+radius patří kartě, ne boxu samotnému — stejný princip jako u Ikonovy Box 5).",
+      "sourcePages": [
+        "firemni-web",
+        "tvorba-webu-a-online-aplikaci",
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "card_heading",
+          "label": "Nadpis karty (h3)",
+          "type": "text"
+        },
+        {
+          "key": "card_intro",
+          "label": "Úvodní věta karty",
+          "type": "text"
+        },
+        {
+          "key": "icon_url",
+          "label": "URL ikony (40x40 SVG)",
+          "type": "text"
+        },
+        {
+          "key": "segment_title",
+          "label": "Název segmentu (h4)",
+          "type": "text"
+        },
+        {
+          "key": "segment_description",
+          "label": "Popis segmentu",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"topPaddingDesktop\":32,\"bottomPaddingDesktop\":32,\"leftPaddingDesktop\":32,\"rightPaddingDesktop\":32,\"containerBorderTopWidth\":1,\"containerBorderLeftWidth\":1,\"containerBorderRightWidth\":1,\"containerBorderBottomWidth\":1,\"containerBorderTopLeftRadius\":12,\"containerBorderTopRightRadius\":12,\"containerBorderBottomLeftRadius\":12,\"containerBorderBottomRightRadius\":12,\"containerBorderStyle\":\"solid\",\"containerBorderColor\":\"rgba(130, 132, 130, 0.1)\",\"globalBlockStyleName\":\"Shrnutí Projektu Radek\",\"globalBlockStyleId\":\"shrnutí-projektu1721206889593\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:heading {\"level\":3,\"fontSize\":\"large\"} -->\n<h3 class=\"wp-block-heading has-large-font-size\">{{card_heading}}</h3>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"textColor\":\"digital-dust\"} -->\n<p class=\"has-digital-dust-color has-text-color\">{{card_intro}}</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:uagb/container -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/info-box {\"headingTag\":\"h4\",\"iconimgPosition\":\"left-title\",\"sourceAlign\":\"middle\",\"source_type\":\"image\",\"iconLeftMargin\":0,\"iconRightMargin\":16,\"iconImage\":{\"url\":\"{{icon_url}}\",\"alt\":\"\"},\"imageWidth\":40,\"imgTagWidth\":48,\"imgTagHeight\":40,\"globalBlockStyleName\":\"Ikonový box 6\",\"globalBlockStyleId\":\"ikonový-box-61721250973737\"} -->\n<div class=\"wp-block-uagb-info-box uagb-infobox__content-wrap  uagb-infobox-icon-left-title uagb-infobox-left uagb-infobox-image-valign-middle wp-block-uagb-info-box--has-margin\"><div class=\"uagb-infobox-margin-wrapper\"><div class=\"uagb-ifb-content\"><div class=\"uagb-ifb-left-title-image\"><div class=\"uagb-ifb-image-content\"><img src=\"{{icon_url}}\" alt=\"\" width=\"40\" height=\"40\" loading=\"lazy\"/></div><div class=\"uagb-ifb-title-wrap\"><h4 class=\"uagb-ifb-title\">{{segment_title}}</h4></div></div><p class=\"uagb-ifb-desc\">{{segment_description}}</p></div></div></div>\n<!-- /wp:uagb/info-box -->\n<!-- pro dalsi segmenty opakuj wp:uagb/info-box blok --></div>\n<!-- /wp:uagb/container --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "timeline-numbered-steps",
+      "name": "Časová osa (číslované kroky)",
+      "category": "Process",
+      "description": "'Casova Osa Sekce' → opakované 'Casova Osa Radek' (Bod = číslo, Obsah = h4 + lead popis v Digital Dust barvě). Potvrzeno identicky na 3 stránkách s 5-6 kroky.",
+      "sourcePages": [
+        "b2b",
+        "vstupni-studie",
+        "tvorba-webu-a-online-aplikaci",
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "step_number",
+          "label": "Číslo kroku (např. '01')",
+          "type": "text"
+        },
+        {
+          "key": "step_title",
+          "label": "Název kroku (h4)",
+          "type": "text"
+        },
+        {
+          "key": "step_description",
+          "label": "Popis kroku",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"className\":\"casova-osa\",\"metadata\":{\"name\":\"Časová osa\"},\"globalBlockStyleName\":\"Casova Osa Sekce\",\"globalBlockStyleId\":\"casova-osa-sekce1717670516505\"} -->\n<div class=\"wp-block-uagb-container casova-osa\"><!-- wp:uagb/container {\"metadata\":{\"name\":\"01 Řádek časové osy\"},\"globalBlockStyleName\":\"Casova Osa Radek\",\"globalBlockStyleId\":\"casova-osa-radek1717670535759\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/container {\"widthType\":\"px\",\"metadata\":{\"name\":\"Bod časové osy\"},\"globalBlockStyleName\":\"Casova Osa Bod\",\"globalBlockStyleId\":\"casova-osa-bod1717670549313\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:paragraph -->\n<p>{{step_number}}</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:uagb/container -->\n\n<!-- wp:uagb/container {\"metadata\":{\"name\":\"Obsah časové osy\"},\"globalBlockStyleName\":\"Casova Osa Obsah\",\"globalBlockStyleId\":\"casova-osa-obsah1717670556349\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:heading {\"level\":4} -->\n<h4 class=\"wp-block-heading\">{{step_title}}</h4>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"textColor\":\"digital-dust\",\"fontSize\":\"lead\"} -->\n<p class=\"has-digital-dust-color has-text-color has-lead-font-size\">{{step_description}}</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:uagb/container --></div>\n<!-- /wp:uagb/container -->\n<!-- pro dalsi kroky opakuj cely \"Řádek časové osy\" blok (Bod + Obsah), číslo kroku 01, 02, 03... --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "hero-badge",
+      "name": "Hero štítek (dynamický název stránky)",
+      "category": "Hero",
+      "description": "Malé tlačítko-štítek na začátku blockstudio/hero, obsahuje dynamický obsah (current_post|post_title) a odkazuje samo na sebe (current_post|post_permalink). Potvrzeno identicky na 4 stránkách (b2b, vstupní studie, tvorba webu, b2b marketing).",
+      "sourcePages": [
+        "b2b",
+        "vstupni-studie",
+        "tvorba-webu-a-online-aplikaci",
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "page_title",
+          "label": "Název stránky (obvykle dynamický, needit ručně)",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/buttons -->\n<div class=\"wp-block-uagb-buttons uagb-buttons__outer-wrap\"><div class=\"uagb-buttons__wrap uagb-buttons-layout-wrap\"><!-- wp:uagb/buttons-child {\"label\":\"<span data-spectra-dc-field=\\\"current_post|post_title\\\" class=\\\"uag-pro-dynamic-content\\\">{{page_title}}</span>\",\"globalBlockStyleName\":\"Hero Stitek\",\"globalBlockStyleId\":\"hero-stitek1716791333666\",\"dynamicContent\":{\"link\":{\"enable\":true,\"field\":\"current_post|post_permalink\",\"advanced\":\"full|\"}}} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" href=\"#\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><div class=\"uagb-button__link\"><span data-spectra-dc-field=\"current_post|post_title\" class=\"uag-pro-dynamic-content\">{{page_title}}</span></div></a></div></div>\n<!-- /wp:uagb/buttons-child --></div></div>\n<!-- /wp:uagb/buttons -->\n<!-- vkladat jako uplne prvni prvek uvnitr blockstudio/hero, pred H1 -->"
+    },
+    {
+      "id": "faq-jsonld",
+      "name": "FAQ schema (JSON-LD)",
+      "category": "Data",
+      "description": "Raw HTML blok se strukturovanými daty typu FAQPage pro SEO rich snippets. Vkládá se jako první blok uvnitř blockstudio/hero (před H1/štítkem). Pro víc otázek přidej další objekt do pole mainEntity.",
+      "sourcePages": [
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "question_1",
+          "label": "Otázka",
+          "type": "text"
+        },
+        {
+          "key": "answer_1",
+          "label": "Odpověď",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:html -->\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [{\n    \"@type\": \"Question\",\n    \"name\": \"{{question_1}}\",\n    \"acceptedAnswer\": {\n      \"@type\": \"Answer\",\n      \"text\": \"{{answer_1}}\"\n    }\n  }]\n}\n</script>\n<!-- /wp:html -->"
+    },
+    {
+      "id": "services-tabs",
+      "name": "Záložky služeb (tabs)",
+      "category": "Layout",
+      "description": "uagb/tabs — vodorovné záložky, každá s h3 nadpisem a odstavcem/odstavci uvnitř. Použito pro výčet dílčích služeb v rámci jedné kategorie (10 záložek na b2b marketing stránce).",
+      "sourcePages": [
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "tab_1_label",
+          "label": "Název záložky",
+          "type": "text"
+        },
+        {
+          "key": "tab_1_content",
+          "label": "Obsah záložky (1-2 odstavce)",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"widthDesktop\":900,\"widthType\":\"px\",\"widthSetByUser\":true} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/tabs {\"tabHeaders\":[\"{{tab_1_label}}\"],\"tabActive\":0,\"tabsStyleT\":\"hstyle1\",\"headerTextColor\":\"#828482\",\"bodyBgColor\":\"#fff\",\"bodyTextColor\":\"#828482\",\"activeTabTextColor\":\"#0b0d0b\",\"tabBorderTopWidth\":1,\"tabBorderLeftWidth\":1,\"tabBorderRightWidth\":1,\"tabBorderBottomWidth\":1,\"tabBorderTopLeftRadius\":12,\"tabBorderTopRightRadius\":12,\"tabBorderBottomLeftRadius\":12,\"tabBorderBottomRightRadius\":12,\"tabBorderStyle\":\"none\"} -->\n<div class=\"wp-block-uagb-tabs uagb-tabs__wrap uagb-tabs__hstyle1-desktop\" data-tab-active=\"0\"><ul class=\"uagb-tabs__panel uagb-tabs__align-center\" role=\"tablist\"><li class=\"uagb-tab uagb-tabs__active\" role=\"none\"><a href=\"#uagb-tabs__tab0\" class=\"uagb-tabs-list\" data-tab=\"0\" role=\"tab\"><div>{{tab_1_label}}</div></a></li>\n<!-- pro dalsi zalozky opakuj <li> polozku se spravnym data-tab indexem --></ul><div class=\"uagb-tabs__body-wrap\"><!-- wp:uagb/tabs-child {\"header\":\"{{tab_1_label}}\",\"tabActive\":0} -->\n<div class=\"wp-block-uagb-tabs-child uagb-tabs__body-container uagb-inner-tab-0\" aria-labelledby=\"uagb-tabs__tab0\"><!-- wp:heading {\"level\":3} -->\n<h3 class=\"wp-block-heading\">{{tab_1_label}}</h3>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph -->\n<p>{{tab_1_content}}</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:uagb/tabs-child -->\n<!-- pro dalsi zalozky opakuj wp:uagb/tabs-child s prislusnym id a tabActive --></div></div>\n<!-- /wp:uagb/tabs --></div>\n<!-- /wp:uagb/container -->"
+    },
+    {
+      "id": "vyhody-box",
+      "name": "Výhoda — ikona, popis, seznam, CTA",
+      "category": "Layout",
+      "description": "'Vyhody Box' — ikona 40px + h4 nadpis ('Výhody Nadpis s ikonou'), odstavec, šedý box se seznamem check položek přes uagb/icon-list ('Vyhody Seznam'), CTA tlačítko. Použito ve vícesloupcové sekci výhod (2+ boxy vedle sebe).",
+      "sourcePages": [
+        "b2b (marketing)"
+      ],
+      "fields": [
+        {
+          "key": "icon_url",
+          "label": "URL ikony (40x40)",
+          "type": "text"
+        },
+        {
+          "key": "title",
+          "label": "Nadpis (h4)",
+          "type": "text"
+        },
+        {
+          "key": "description",
+          "label": "Popis (2-3 věty)",
+          "type": "text"
+        },
+        {
+          "key": "list_item_1",
+          "label": "Položka seznamu (opakovatelná)",
+          "type": "text"
+        },
+        {
+          "key": "cta_label",
+          "label": "Text tlačítka",
+          "type": "text"
+        },
+        {
+          "key": "cta_link",
+          "label": "Odkaz tlačítka",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:uagb/container {\"equalHeight\":true,\"metadata\":{\"name\":\"Sloupec boxu výhod\"},\"globalBlockStyleName\":\"Vyhody Box\",\"globalBlockStyleId\":\"vyhody-box1716550247997\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/container {\"metadata\":{\"name\":\"Nadpis boxu s ikonou\"},\"globalBlockStyleName\":\"Výhody Nadpis s ikonou\",\"globalBlockStyleId\":\"výhody-nadpis-s-ikonou1716550257797\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:image {\"width\":\"40px\",\"height\":\"40px\",\"scale\":\"cover\",\"sizeSlug\":\"large\",\"linkDestination\":\"none\"} -->\n<figure class=\"wp-block-image size-large is-resized\"><img src=\"{{icon_url}}\" alt=\"\" style=\"object-fit:cover;width:40px;height:40px\"/></figure>\n<!-- /wp:image -->\n\n<!-- wp:heading {\"level\":4} -->\n<h4 class=\"wp-block-heading\">{{title}}</h4>\n<!-- /wp:heading --></div>\n<!-- /wp:uagb/container -->\n\n<!-- wp:paragraph {\"textColor\":\"digital-dust\",\"style\":{\"spacing\":{\"margin\":{\"top\":\"16px\",\"bottom\":\"16px\"}}}} -->\n<p class=\"has-digital-dust-color has-text-color\" style=\"margin-top:16px;margin-bottom:16px\">{{description}}</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:uagb/container {\"metadata\":{\"name\":\"Šedé pozadí seznamu\"},\"globalBlockStyleName\":\"Vyhody Seznam\",\"globalBlockStyleId\":\"vyhody-seznam1716550285464\"} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/icon-list {\"parentIcon\":\"check\",\"iconPosition\":\"top\",\"size\":12,\"bgSize\":4,\"border\":1,\"borderRadius\":6,\"fontSize\":14,\"iconColor\":\"#fff\",\"labelColor\":\"#0b0d0b\",\"iconBgColor\":\"#828482\",\"iconBorderColor\":\"#828482\"} -->\n<div class=\"wp-block-uagb-icon-list\"><div class=\"uagb-icon-list__wrap\"><!-- wp:uagb/icon-list-child {\"label\":\"{{list_item_1}}\",\"fromParentIcon\":\"check\"} -->\n<div class=\"wp-block-uagb-icon-list-child\"><span class=\"uagb-icon-list__source-wrap\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><path d=\"M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z\"></path></svg></span><span class=\"uagb-icon-list__label\">{{list_item_1}}</span></div>\n<!-- /wp:uagb/icon-list-child -->\n<!-- pro dalsi polozky opakuj wp:uagb/icon-list-child --></div></div>\n<!-- /wp:uagb/icon-list --></div>\n<!-- /wp:uagb/container -->\n\n<!-- wp:uagb/buttons {\"align\":\"full\"} -->\n<div class=\"wp-block-uagb-buttons uagb-buttons__outer-wrap\"><div class=\"uagb-buttons__wrap uagb-buttons-layout-wrap\"><!-- wp:uagb/buttons-child {\"label\":\"{{cta_label}}\",\"link\":\"{{cta_link}}\",\"btnBorderTopWidth\":1,\"btnBorderLeftWidth\":1,\"btnBorderRightWidth\":1,\"btnBorderBottomWidth\":1,\"btnBorderStyle\":\"solid\",\"btnBorderColor\":\"#333\",\"btnBorderHColor\":\"#333\"} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" href=\"{{cta_link}}\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><div class=\"uagb-button__link\">{{cta_label}}</div></a></div></div>\n<!-- /wp:uagb/buttons-child --></div></div>\n<!-- /wp:uagb/buttons --></div>\n<!-- /wp:uagb/container -->"
+    }
+  ]
+}
