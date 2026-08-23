@@ -323,12 +323,12 @@
       <p class="meta">Zdroj: case-study</p>
       <details>
         <summary>Editovatelná pole</summary>
-        <ul class="fields"><li><code>title</code> — Krátký titulek / výsledek</li><li><code>icon_svg_path</code> — SVG path ikony (volitelné, jinak výchozí) (volitelné)</li></ul>
+        <ul class="fields"><li><code>title</code> — Krátký titulek / výsledek</li><li><code>icon_svg_path</code> — SVG path ikony, viewBox 0 0 32 32 — POVINNÉ reálná data, žádný vestavěný default neexistuje. Vymyšlený/neplatný path se ve WP nevykreslí (černý čtverec bez tvaru) — potvrzeno živým testem.</li></ul>
       </details>
       <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
       <div class="preview-render "><!-- wp:uagb/container {"widthDesktop":33,"widthSetByUser":true,"metadata":{"name":"Sloupec ikon. boxu"}} -->
 <div class="wp-block-uagb-container"><!-- wp:uagb/info-box {"headingTag":"p","icon":"message-chat","showDesc":false,"iconView":"Stacked","iconShape":"Square","globalBlockStyleName":"Ikonovy Box 5","globalBlockStyleId":"ikonovy-box-51716795532744"} -->
-<div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-icon-wrap"><div class="uagb-iconbox-icon-wrap uagb-infobox-shape-squre"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM227.31 387.31l-101.66-101.65c-4.69-4.69-4.69-12.28 0-16.97l16.97-16.97c4.69-4.69 12.28-4.69 16.97 0L236 328.11l153.41-153.41c4.69-4.69 12.28-4.69 16.97 0l16.97 16.97c4.69 4.69 4.69 12.28 0 16.97L244.28 387.31c-4.69 4.69-12.28 4.69-16.97 0z"></path></svg></div></div><div class="uagb-ifb-title-wrap"><p class="uagb-ifb-title">Rychlá dodávka</p></div></div></div></div>
+<div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-icon-wrap"><div class="uagb-iconbox-icon-wrap uagb-infobox-shape-squre"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.333 16c0 6.811-5.521 12.333-12.333 12.333S3.667 22.811 3.667 16C3.667 9.188 9.188 3.667 16 3.667a1.001 1.001 0 0 0 0-2C8.084 1.667 1.667 8.084 1.667 16S8.084 30.333 16 30.333 30.333 23.916 30.333 16a1 1 0 0 0-2 0Zm-6.666 0A5.667 5.667 0 1 1 16 10.333a1 1 0 0 0 0-2A7.667 7.667 0 1 0 23.667 16a1 1 0 0 0-2 0Zm-1.334-5.748-5.04 5.041a1 1 0 0 0 1.414 1.414l5.04-5.041h3.586a.996.996 0 0 0 .707-.292l4-4a.998.998 0 0 0-.26-1.602l-2.368-1.184-1.184-2.369a1.003 1.003 0 0 0-1.602-.26l-4 4a1.003 1.003 0 0 0-.293.707v3.586Zm2-.585V7.081l2.726-2.726.713 1.425c.097.194.254.351.447.448l1.426.712-2.726 2.727h-2.586Z"></path></svg></div></div><div class="uagb-ifb-title-wrap"><p class="uagb-ifb-title">Rychlá dodávka</p></div></div></div></div>
 <!-- /wp:uagb/info-box --></div>
 <!-- /wp:uagb/container --></div>
       <details>
@@ -798,10 +798,10 @@
     
     <article class="card" id="button-default" data-category="Buttons">
       <div class="card-head">
-        <h3>Tlačítko — výchozí CTA (tmavé, vyplněné)</h3>
+        <h3>Tlačítko — výchozí CTA (barva závisí na kontextu bloku)</h3>
         <span class="badge">Buttons</span>
       </div>
-      <p class="desc">Nejčastěji používaný CTA styl na webu. V JSON atributech je nastavené jen 1px orámování (#333) a žádný explicitní background — ALE reálně (potvrzeno screenshotem cta-block od uživatele) se renderuje jako PLNĚ VYPLNĚNÉ tmavé (deep-void) tlačítko s bílým textem, ne jako průhledné s obrysem. Vytaženo jako samostatná komponenta z opakovaného výskytu v hero sekcích, 'Vyhody Box' a 'cta-block'. Zelené vyplněné 'primary' tlačítko (dle styleguide.json design specu) zatím v žádné zkopírované stránce reálně nebylo.</p>
+      <p class="desc">Nejčastěji používaný CTA styl na webu. V JSON atributech je nastavené jen 1px orámování (#333) a žádný explicitní background. DŮLEŽITÉ ZJIŠTĚNÍ Z ŽIVÉHO TESTU (vložení do reálné stránky): stejné atributy se renderují RŮZNĚ podle obalového bloku — uvnitř blockstudio/cta plně vyplněné TMAVÉ (deep-void) s bílým textem (potvrzeno screenshotem), ale uvnitř blockstudio/hero plně vyplněné ZELENÉ (potvrzeno screenshotem reálně vložené stránky). Barvu tedy zjevně určuje CSS obalového blockstudio bloku, ne samotné JSON atributy — nespoléhat na to, že stejný markup bude v jiném kontextu vypadat stejně, ověřit vizuálně po vložení. Druhé tlačítko se stejným vzorem (jiné border/background atributy) uvnitř blockstudio/hero NEZMĚNÍ barvu (obě vyjdou stejně) — pro vizuálně odlišnou druhou akci uvnitř hero použij radši prostý textový odkaz, ne druhé tlačítko.</p>
       <p class="meta">Zdroj: /, b2b, b2b (marketing)</p>
       <details>
         <summary>Editovatelná pole</summary>

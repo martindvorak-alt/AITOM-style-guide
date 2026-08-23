@@ -36,6 +36,10 @@ Gutenberg stránku, drž se v tomto pořadí:
 4. **Nově navrženou komponentu vždy pojmenuj a označ jako improvizovanou** ("tohle jsem musel/a
    navrhnout, v registru nebylo") — ať je jasné, co případně stojí za to přidat do `components.json`
    natrvalo, místo aby se to řešilo pokaždé znovu od nuly.
+5. **Výstupem je vždy textový soubor** s poskládanými bloky ve formátu reálného Gutenberg/Spectra
+   (UAGB) markupu — tedy přesně to, co jde zkopírovat a vložit do WP editoru přes Code editor
+   (Ctrl/Cmd+Shift+Alt+M) a rovnou to naimportuje/vyrenderuje jako hotovou stránku. Nikdy nevracet
+   jen popis nebo náhled bez tohoto souboru — cílem je rovnou použitelný import, ne jen návrh.
 
 ## Jak to funguje (kontext webu)
 
@@ -95,11 +99,26 @@ JSON (nechceme si markup vymýšlet): **icon-box-1** (Ikonovy Box 1 — ikona na
 s šipkou), **case-study-grid** (Cerny Box Pripadovky + uagb/post-masonry). Dál zbývá: tabulka srovnání
 (blockstudio/benefit-table), testimonial+video blok, identifikace obsahu Synced Patterns 586/587.
 
-**Tlačítka** — `button-default` (v JSON jen border atributy, ale reálně se renderuje jako PLNĚ
-VYPLNĚNÉ tmavé tlačítko s bílým textem — potvrzeno screenshotem `cta-block` od uživatele, oprava
-dřívějšího chybného odhadu "jen orámování") a `checkmark-pill-row` (bílá pilulka s fajfkou) jsou
-v registru reálně potvrzené. **Zelené vyplněné "primary" tlačítko** (dle vizuálního
+**Tlačítka** — `button-default` (v JSON jen border atributy) a `checkmark-pill-row` (bílá pilulka
+s fajfkou) jsou v registru reálně potvrzené. **Zelené vyplněné "primary" tlačítko** (dle vizuálního
 `styleguide.json`/design specu) v žádné dosud zkopírované stránce reálně nebylo — pokud ho web na
 nějaké stránce používá, doplní se, jakmile přijde reálný kód z editoru.
 
 Doplní se, jakmile bude k dispozici reálně zkopírovaný blok z editoru.
+
+## Ověřeno živým testem (vložení do reálné stránky)
+
+Tohle jsou zjištění, která nešla poznat jen z JSON kódu — vyžadovala reálné vložení komponent do
+WordPress a vizuální kontrolu:
+
+- **`button-default` barva závisí na obalovém blockstudio bloku, ne jen na JSON atributech.**
+  Stejný `wp:uagb/buttons-child` markup (jen 1px border, žádný explicitní background) se renderuje
+  TMAVĚ (deep-void) uvnitř `blockstudio/cta`, ale ZELENĚ uvnitř `blockstudio/hero`. Při skládání
+  stránky proto vždy ověř barvu tlačítka vizuálně po vložení, ne jen podle JSON atributů.
+- **Druhé tlačítko se stejným vzorem uvnitř `blockstudio/hero` nezmění barvu ani s jinými
+  border/background atributy** (obě vyjdou stejně zeleně) — pro vizuálně odlišnou druhou akci
+  v hero použij prostý textový odkaz, ne druhé `wp:uagb/buttons-child`.
+- **`icon_svg_path` (u Ikonovy Box 5 / `icon-box-checkmark-list`) nemá žádný vestavěný default.**
+  Vymyšlený/neplatný SVG path se ve WordPressu nevykreslí vůbec — zobrazí se jen prázdný černý
+  čtverec bez tvaru ikony. Vždy nutné použít reálně zachycená SVG data (viewBox 0 0 32 32), ne
+  vlastní odhad.

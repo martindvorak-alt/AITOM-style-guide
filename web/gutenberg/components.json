@@ -119,9 +119,8 @@
         },
         {
           "key": "icon_svg_path",
-          "label": "SVG path ikony (volitelné, jinak výchozí)",
-          "type": "text",
-          "optional": true
+          "label": "SVG path ikony, viewBox 0 0 32 32 — POVINNÉ reálná data, žádný vestavěný default neexistuje. Vymyšlený/neplatný path se ve WP nevykreslí (černý čtverec bez tvaru) — potvrzeno živým testem.",
+          "type": "text"
         }
       ],
       "template": "<!-- wp:uagb/container {\"widthDesktop\":33,\"widthSetByUser\":true,\"metadata\":{\"name\":\"Sloupec ikon. boxu\"}} -->\n<div class=\"wp-block-uagb-container\"><!-- wp:uagb/info-box {\"headingTag\":\"p\",\"icon\":\"message-chat\",\"showDesc\":false,\"iconView\":\"Stacked\",\"iconShape\":\"Square\",\"globalBlockStyleName\":\"Ikonovy Box 5\",\"globalBlockStyleId\":\"ikonovy-box-51716795532744\"} -->\n<div class=\"wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin\"><div class=\"uagb-infobox-margin-wrapper\"><div class=\"uagb-ifb-content\"><div class=\"uagb-ifb-icon-wrap\"><div class=\"uagb-iconbox-icon-wrap uagb-infobox-shape-squre\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><path d=\"{{icon_svg_path}}\"></path></svg></div></div><div class=\"uagb-ifb-title-wrap\"><p class=\"uagb-ifb-title\">{{title}}</p></div></div></div></div>\n<!-- /wp:uagb/info-box --></div>\n<!-- /wp:uagb/container -->"
@@ -454,9 +453,9 @@
     },
     {
       "id": "button-default",
-      "name": "Tlačítko — výchozí CTA (tmavé, vyplněné)",
+      "name": "Tlačítko — výchozí CTA (barva závisí na kontextu bloku)",
       "category": "Buttons",
-      "description": "Nejčastěji používaný CTA styl na webu. V JSON atributech je nastavené jen 1px orámování (#333) a žádný explicitní background — ALE reálně (potvrzeno screenshotem cta-block od uživatele) se renderuje jako PLNĚ VYPLNĚNÉ tmavé (deep-void) tlačítko s bílým textem, ne jako průhledné s obrysem. Vytaženo jako samostatná komponenta z opakovaného výskytu v hero sekcích, 'Vyhody Box' a 'cta-block'. Zelené vyplněné 'primary' tlačítko (dle styleguide.json design specu) zatím v žádné zkopírované stránce reálně nebylo.",
+      "description": "Nejčastěji používaný CTA styl na webu. V JSON atributech je nastavené jen 1px orámování (#333) a žádný explicitní background. DŮLEŽITÉ ZJIŠTĚNÍ Z ŽIVÉHO TESTU (vložení do reálné stránky): stejné atributy se renderují RŮZNĚ podle obalového bloku — uvnitř blockstudio/cta plně vyplněné TMAVÉ (deep-void) s bílým textem (potvrzeno screenshotem), ale uvnitř blockstudio/hero plně vyplněné ZELENÉ (potvrzeno screenshotem reálně vložené stránky). Barvu tedy zjevně určuje CSS obalového blockstudio bloku, ne samotné JSON atributy — nespoléhat na to, že stejný markup bude v jiném kontextu vypadat stejně, ověřit vizuálně po vložení. Druhé tlačítko se stejným vzorem (jiné border/background atributy) uvnitř blockstudio/hero NEZMĚNÍ barvu (obě vyjdou stejně) — pro vizuálně odlišnou druhou akci uvnitř hero použij radši prostý textový odkaz, ne druhé tlačítko.",
       "sourcePages": [
         "/",
         "b2b",

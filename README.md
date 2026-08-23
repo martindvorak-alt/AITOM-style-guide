@@ -29,7 +29,9 @@ vytvořit, jsou zbytečně velké a pomalé na zpracování. K samotné tvorbě 
    smíš navrhnout novou — ale jen podle přesného postupu a pravidel v
    [`web/gutenberg/README.md`](web/gutenberg/README.md) (sekce "Postup skládání stránky"): musí to
    pořád být validní Gutenberg markup, jen barvy/rádius/spacing z `styleguide.json`, a musí to být
-   jasně označené jako improvizace, ne tichý výmysl.
+   jasně označené jako improvizace, ne tichý výmysl. **Výstup pro web je vždy textový soubor**
+   s hotově poskládanými bloky (viz `web/gutenberg/README.md`) — přesně to, co jde zkopírovat do WP
+   Code editoru a rovnou naimportovat/vyrenderovat jako stránku, ne jen popis nebo náhled.
 4. Pro dokumenty načti CELÝ řetězec style guidů, ne jen jeden soubor: `styleguide.json` →
    `docs/styleguide-docs.json` → (pokud existuje) `docs/templates/<typ>/styleguide-<typ>.json`.
    Pozdější soubor v řetězci rozšiřuje/přebíjí ten předchozí (typicky typografie — dokumenty mají jiná
