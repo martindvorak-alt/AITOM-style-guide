@@ -1,4 +1,4 @@
-# Vzor — Případová studie (print)
+# Vzor — Případová studie (print/PDF)
 
 Sem přijde reálný vzor tiskové/PDF verze případové studie a popis, které části jsou fixní (brand
 prvky, layout) a které se mění (klient, výsledky, čísla, citace). Webová verze případové studie je

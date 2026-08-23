@@ -1,4 +1,4 @@
-# Print dokumenty — AITOM
+# Docs (dokumenty) — AITOM
 
 Tato složka je obdoba `web/` pro tiskové/dokumentové výstupy (PDF, Word) — nabídky, objednávky,
 případové studie apod. Na rozdíl od `web/gutenberg/` (kde je jeden JSON registr Gutenberg bloků)
@@ -8,11 +8,11 @@ dokumentů se liší strukturou i formátem víc než webové sekce.
 ## Struktura
 
 ```
-print/
+docs/
   templates/
     nabidka/            — vzor obchodní nabídky
     objednavka/         — vzor objednávky
-    pripadova-studie/   — vzor případové studie (print verze)
+    pripadova-studie/   — vzor případové studie (print/PDF verze)
 ```
 
 Každá podsložka bude obsahovat:
