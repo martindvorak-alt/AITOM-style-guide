@@ -33,6 +33,9 @@ Gutenberg stránku, drž se v tomto pořadí:
    - radius, spacing a další vizuální detaily (rohy, pozadí, odstupy) podle tokenů ve `styleguide.json`
      (`radius_small`/`radius_large`, `spacing.base_unit_px` atd.), ne podle odhadu,
    - dodrž pravidlo "zelená jen jako jeden akcent na stránku" — viz `styleguide.json` → `rules`.
+   - KAŽDÝ UAGB blok (container/buttons/buttons-child/info-box/counter/icon-list.../tabs.../
+     image-gallery) musí mít vlastní čerstvý, na stránce unikátní `"block_id":"xxxxxxxx"` —
+     viz sekce "Ověřeno živým testem" níže, jinak hrozí neplatný obsah a rozhozený layout.
 4. **Nově navrženou komponentu vždy pojmenuj a označ jako improvizovanou** ("tohle jsem musel/a
    navrhnout, v registru nebylo") — ať je jasné, co případně stojí za to přidat do `components.json`
    natrvalo, místo aby se to řešilo pokaždé znovu od nuly.
@@ -122,3 +125,19 @@ WordPress a vizuální kontrolu:
   Vymyšlený/neplatný SVG path se ve WordPressu nevykreslí vůbec — zobrazí se jen prázdný černý
   čtverec bez tvaru ikony. Vždy nutné použít reálně zachycená SVG data (viewBox 0 0 32 32), ne
   vlastní odhad.
+- **KAŽDÝ `uagb/container`, `uagb/buttons`, `uagb/buttons-child`, `uagb/info-box`, `uagb/counter`,
+  `uagb/icon-list(-child)`, `uagb/tabs(-child)` a `uagb/image-gallery` blok MUSÍ mít vlastní
+  unikátní `"block_id":"xxxxxxxx"` atribut** (8 hex znaků). UAGB přes něj páruje a generuje CSS
+  (šířka sloupce, gap, flex/grid tok) pro konkrétní instanci bloku. Bez něj, nebo když se stejné
+  `block_id` použije na stránce dvakrát (typicky při opakovaném použití jedné šablony pro víc
+  položek — sloupce, kroky procesu, karty), WP v editoru hlásí "Tento blok obsahuje neočekávaný
+  nebo neplatný obsah" A NAVÍC se na frontendu container nemusí vůbec vykreslit se správnou
+  šířkou/flow (vypadá to jako rozhozený/zmáčknutý layout, prvky přes sebe). Šablony v
+  `components.json` `block_id` typicky nemají (byly vyčištěné) — při skládání stránky ho ke
+  KAŽDÉMU výskytu KAŽDÉHO takového bloku vždy dogeneruj čerstvý a unikátní, i když je stejná
+  šablona použita víckrát na jedné stránce.
+- **Nevkládej "sekcovou" komponentu (`dark-rounded-box` a cokoliv s `htmlTag:"section"` /
+  `isBlockRootParent:true` / velkým paddingem navrženým pro plnou šířku) dovnitř úzkého sloupce**
+  (např. jako "cenovou kartu" v 3sloupcovém řádku). Způsobuje to zmáčknutý/přetékající vzhled.
+  Pro menší kartu uvnitř sloupce použij `uagb/container` bez `htmlTag`/`isBlockRootParent`,
+  s menším paddingem (řádově 24-32px, ne 64px) — barvy a radius z `styleguide.json` zůstávají.
