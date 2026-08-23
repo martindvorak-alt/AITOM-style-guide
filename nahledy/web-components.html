@@ -453,6 +453,24 @@
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
     </article>
     
+    <article class="card" id="button-outline" data-category="Buttons">
+      <div class="card-head">
+        <h3>Tlačítko — obrys (výchozí CTA)</h3>
+        <span class="badge">Buttons</span>
+      </div>
+      <p class="desc">Nejčastěji používaný CTA styl na webu — bez vyplněného pozadí, jen 1px orámování (#333). Vytaženo jako samostatná komponenta z opakovaného výskytu v hero sekcích a 'Vyhody Box'. Zelené vyplněné 'primary' tlačítko (dle styleguide.json) zatím v žádné zkopírované stránce reálně nebylo — nekopírovat markup dokud se nenajde na živé stránce.</p>
+      <p class="meta">Zdroj: /, b2b, b2b (marketing)</p>
+      <details>
+        <summary>Editovatelná pole</summary>
+        <ul class="fields"><li><code>label</code> — Text tlačítka</li><li><code>link</code> — Odkaz (URL nebo page ID)</li></ul>
+      </details>
+      <pre><code>&lt;!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true,"inheritGap":true,"topMargin":0,"rightMargin":0,"bottomMargin":0,"leftMargin":0} --&gt;
+&lt;div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"&gt;&lt;div class="uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex"&gt;&lt;!-- wp:uagb/buttons-child {"label":"{{label}}","link":"{{link}}","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} --&gt;
+&lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" href="{{link}}" rel="follow noopener" target="_self" role="button"&gt;&lt;div class="uagb-button__link"&gt;{{label}}&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- /wp:uagb/buttons --&gt;</code></pre>
+    </article>
+    
 </main>
 <script>
   document.querySelectorAll('.cat-filter').forEach(function(link) {

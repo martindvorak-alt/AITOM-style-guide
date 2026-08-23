@@ -54,8 +54,8 @@ názvu, nekopíruj kód:
 
 hero-primary, section-header, icon-box-checkmark-list (Box 5), stats-counters, numbered-process-steps
 (Box 4), checkmark-pill-row, dark-rounded-box, anchor-menu, icon-box-2, icon-box-6, timeline-numbered-steps,
-hero-badge, faq-jsonld, services-tabs, vyhody-box — viz `../../nahledy/web-components.html` pro detail
-každé z nich (vizuálně).
+hero-badge, faq-jsonld, services-tabs, vyhody-box, button-outline — viz `../../nahledy/web-components.html`
+pro detail každé z nich (vizuálně).
 
 ## Zdrojové stránky
 
@@ -72,7 +72,12 @@ každé z nich (vizuálně).
 
 Komponenty potvrzené vizuálně/strukturálně, ale u kterých ještě chybí přesně zkopírovaný reálný kód pro
 JSON (nechceme si markup vymýšlet): **icon-box-1** (Ikonovy Box 1 — ikona nahoře, h4, text CTA link
-s šipkou), **case-study-grid** (Cerny Box Pripadovky + uagb/post-masonry). Dál zbývá: primary/secondary
-tlačítka mimo checkmark/check-tlačítko styl, tabulka srovnání (blockstudio/benefit-table),
-testimonial+video blok, identifikace obsahu Synced Patterns 586/587. Doplní se, jakmile bude k dispozici
-reálně zkopírovaný blok z editoru.
+s šipkou), **case-study-grid** (Cerny Box Pripadovky + uagb/post-masonry). Dál zbývá: tabulka srovnání
+(blockstudio/benefit-table), testimonial+video blok, identifikace obsahu Synced Patterns 586/587.
+
+**Tlačítka** — `button-outline` (bez výplně, jen orámování) a `checkmark-pill-row` (bílá pilulka
+s fajfkou) jsou v registru reálně potvrzené. **Zelené vyplněné "primary" tlačítko** (dle vizuálního
+`styleguide.json`/design specu) v žádné dosud zkopírované stránce reálně nebylo — pokud ho web na
+nějaké stránce používá, doplní se, jakmile přijde reálný kód z editoru.
+
+Doplní se, jakmile bude k dispozici reálně zkopírovaný blok z editoru.
