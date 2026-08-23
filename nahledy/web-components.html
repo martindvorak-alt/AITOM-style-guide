@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Nadpisy na webu reálně používají licencovaný font "widescreen" (nastavený přímo v tématu
+     aitom.cz, tady k dispozici není). CSS níže ho uvádí jako první v řetězci, Space Grotesk je
+     jen VIZUÁLNÍ FALLBACK (nejbližší dostupná náhrada), ne primární volba — poslední záchrana je
+     obecné sans-serif. -->
 <style>
   :root {
     --color-deep-void: #0B0D0B;
@@ -78,7 +82,7 @@
   .preview-render h1, .preview-render h2, .preview-render h3, .preview-render h4,
   .preview-render .uagb-ifb-title, .preview-render .uagb-tabs-list, .preview-render .uagb-button__link,
   .preview-render .step-num, .preview-render .step-label {
-    font-family: "Space Grotesk", sans-serif; font-weight: 600; color: var(--color-deep-void); margin: 0 0 8px;
+    font-family: "widescreen", "Space Grotesk", sans-serif; font-weight: 600; color: var(--color-deep-void); margin: 0 0 8px;
   }
   .preview-render h1 { font-size: 32px; }
   .preview-render h2 { font-size: 24px; }
@@ -120,7 +124,7 @@
      tlačítko s bílým textem, ne průhledné s obrysem, i když JSON obsahuje jen border atributy */
   .preview-render .wp-block-uagb-buttons-child a, .preview-render .uagb-buttons-repeater {
     display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid #333;
-    border-radius: 6px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px;
+    border-radius: 6px; font-family: "widescreen", "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px;
     background: var(--color-deep-void); color: var(--color-cloud-whisper) !important; }
   .preview-render .wp-block-uagb-buttons-child .uagb-button__link { color: var(--color-cloud-whisper) !important; margin: 0; }
   .preview-render .uagb-buttons__wrap { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -128,14 +132,14 @@
   /* statistiky */
   .preview-render .wp-block-uagb-counter { text-align: left; }
   .preview-render .uagb-counter-block-number, .preview-render .uagb-counter-block-suffix {
-    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 32px; color: var(--color-cyber-green); }
+    font-family: "widescreen", "Space Grotesk", sans-serif; font-weight: 700; font-size: 32px; color: var(--color-cyber-green); }
   .preview-render .uagb-counter-block-number::after { content: attr(data-to-value); }
   .preview-render .wp-block-uagb-counter__title { font-size: 13px; color: var(--color-digital-dust); margin-top: 4px; }
 
   /* časová osa */
   .preview-render .casova-osa .wp-block-uagb-container { display: flex; align-items: flex-start; gap: 16px;
     margin-bottom: 16px; }
-  .preview-render .casova-osa p { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px;
+  .preview-render .casova-osa p { font-family: "widescreen", "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px;
     color: var(--color-digital-dust); margin: 0; }
 
   /* tabs */

@@ -2,7 +2,8 @@
   "notes": [
     "Toto je lehký, strojově čitelný zdroj brand pravidel — používej TENTO soubor pro tvorbu dokumentů/webu, ne 'nahledy/styleguide.html' (ten je jen vizuální náhled pro člověka, čtení celého HTML je pomalé a zbytečné).",
     "Stav: návrh k revizi. Barvy jsou z Figmy (soubor „Aitom brand 2024“, stránka „Brand assets“) a ověřené proti aitom.cz.",
-    "Font na webu je licencovaný „widescreen / widescreen-ex“ — nahrazen univerzální dvojicí Space Grotesk (nadpisy) + Inter (text), protože originál nejde bezpečně sdílet/distribuovat."
+    "Font na webu je licencovaný „widescreen / widescreen-ex“ a je už nahraný a nastavený přímo v tématu na aitom.cz — při generování REÁLNÉHO obsahu pro web (Gutenberg markup do web/gutenberg/) se font NEPŘEPISUJE, dědí se z tématu. V CSS/náhledech piš řetězec font-family: \"widescreen\", \"Space Grotesk\", sans-serif — widescreen primárně, Space Grotesk jen jako VIZUÁLNÍ FALLBACK (nejbližší dostupná náhrada, když widescreen není nainstalovaný), obecné sans-serif úplně naposled.",
+    "Space Grotesk (nadpisy) + Inter (text) je PRIMÁRNÍ font pro print/dokumenty/style-guide materiály (viz typography.docs_substitute_fonts) — tam se fallback řetězec nepoužívá, protože widescreen tam vůbec nepatří."
   ],
   "colors": {
     "deep-void": { "hex": "#0B0D0B", "role": "primární tmavá barva / text" },
@@ -24,9 +25,14 @@
     "Číslované nadpisy v dokumentech/reportech (kapitoly, podkapitoly): číslo má vždy stejnou barvu, řez i velikost jako zbytek nadpisu — žádné barevné odlišení. To je jiné pravidlo než u marketingových web komponent (např. číslovaný proces), kde barevný akcent u čísla patří."
   ],
   "typography": {
-    "font_heading": "Space Grotesk (weights 400/500/600/700)",
-    "font_body": "Inter (weights 400/500/600)",
-    "font_files_path": "Assets/Fonts/ (.ttf, licence SIL OFL)",
+    "font_heading_web": "\"widescreen\", \"Space Grotesk\", sans-serif — REÁLNÝ font webu aitom.cz je widescreen (licencovaný, už nastavený v tématu). Space Grotesk v řetězci je jen vizuální fallback pro náhledy mimo živý web, ne náhrada v uloženém obsahu.",
+    "font_body_web": "\"widescreen-ex\", \"Inter\", sans-serif — pravděpodobně reálný font těla textu na webu (stejná licencovaná rodina); Inter opět jen jako vizuální fallback.",
+    "docs_substitute_fonts": {
+      "note": "PRIMÁRNÍ font (ne fallback) pro print/dokumenty/prezentace/style-guide materiály (docs/, nahledy/styleguide.html) — widescreen do tohoto kontextu vůbec nepatří.",
+      "font_heading": "Space Grotesk (weights 400/500/600/700)",
+      "font_body": "Inter (weights 400/500/600)"
+    },
+    "font_files_path": "Assets/Fonts/ (.ttf, licence SIL OFL — jde o Space Grotesk/Inter substituty, ne o widescreen)",
     "line_height_rules": {
       "body_lead_card_text": "160%",
       "small_labels_and_subheadlines_14_20px": "140%",
@@ -47,7 +53,7 @@
   "buttons": {
     "radius_px": 6,
     "padding": "16px 32px",
-    "font": "Space Grotesk, weight 600, 15px",
+    "font": "weight 600, 15px — na webu \"widescreen\", \"Space Grotesk\" (fallback), sans-serif; v print/docs primárně Space Grotesk (viz typography.docs_substitute_fonts)",
     "variants": {
       "primary": { "background": "cyber-green", "text": "deep-void" },
       "secondary": { "background": "deep-void", "text": "cloud-whisper" },
