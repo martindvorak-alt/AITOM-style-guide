@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>Gutenberg komponenty — AITOM</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --color-deep-void: #0B0D0B;
@@ -60,6 +63,97 @@
   .copy-btn { font-size: 12px; border: 1px solid rgba(130,132,130,0.3); background: var(--color-white);
     border-radius: 6px; padding: 4px 10px; cursor: pointer; margin-bottom: 8px; }
   .copy-btn:hover { border-color: var(--color-cyber-green); }
+
+  /* ---- Živý náhled: přibližná rekonstrukce UAGB/Blockstudio frontend stylů ----
+     Skutečné CSS webu tady k dispozici není (theme, ne v repu) — tohle jsou barvy/rádiusy/
+     spacing z Figma style guide, aplikované na reálné WP/UAGB class names z template kódu.
+     Layout je zjednodušený (sloupce vedle sebe na webu se tu často zobrazí pod sebou). */
+  .preview-label { font-size: 11px; color: var(--color-digital-dust); text-transform: uppercase;
+    letter-spacing: .04em; margin: 4px 0 8px; }
+  .no-render { font-size: 13px; color: var(--color-digital-dust); font-style: italic;
+    background: rgba(130,132,130,0.08); border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; }
+  .preview-render { border: 1px dashed rgba(130,132,130,0.35); border-radius: 10px; padding: 24px;
+    margin-bottom: 12px; background: var(--color-cloud-whisper); overflow: hidden; }
+  .preview-render * { box-sizing: border-box; }
+  .preview-render h1, .preview-render h2, .preview-render h3, .preview-render h4,
+  .preview-render .uagb-ifb-title, .preview-render .uagb-tabs-list, .preview-render .uagb-button__link,
+  .preview-render .step-num, .preview-render .step-label {
+    font-family: "Space Grotesk", sans-serif; font-weight: 600; color: var(--color-deep-void); margin: 0 0 8px;
+  }
+  .preview-render h1 { font-size: 32px; }
+  .preview-render h2 { font-size: 24px; }
+  .preview-render h3 { font-size: 19px; }
+  .preview-render h4 { font-size: 16px; }
+  .preview-render p, .preview-render span, .preview-render div, .preview-render li {
+    font-family: "Inter", sans-serif; font-size: 15px; line-height: 1.6; color: var(--color-deep-void);
+  }
+  .preview-render p { margin: 0 0 8px; }
+  .preview-render a { color: inherit; text-decoration: none; }
+  .preview-render .has-digital-dust-color { color: var(--color-digital-dust) !important; }
+  .preview-render .has-base-color, .preview-render .has-white-color { color: var(--color-cloud-whisper) !important; }
+
+  /* container = generický blok, sekce se prostě řadí pod sebe */
+  .preview-render .wp-block-uagb-container { display: block; }
+  .preview-render .wp-block-uagb-container:empty,
+  .preview-render .uagb-container-inner-blocks-wrap:empty { display: none; }
+  .preview-render .bg-glow {
+    background: var(--color-deep-void); color: var(--color-cloud-whisper); border-radius: 12px; padding: 32px;
+  }
+
+  /* info-box / ikonové boxy */
+  .preview-render .wp-block-uagb-info-box { position: relative; padding: 20px; border: 1px solid rgba(130,132,130,0.15);
+    border-radius: 8px; margin-bottom: 8px; background: var(--color-white); }
+  .preview-render .uagb-infobox-icon-above-title .uagb-ifb-content { display: flex; flex-direction: column;
+    align-items: center; text-align: center; gap: 16px; }
+  .preview-render .uagb-infobox-icon-left-title .uagb-ifb-left-title-image { display: flex; align-items: center; gap: 14px; }
+  .preview-render .uagb-ifb-icon-wrap, .preview-render .uagb-iconbox-icon-wrap {
+    width: 48px; height: 48px; flex-shrink: 0; border-radius: 8px;
+    background: linear-gradient(310deg, var(--color-electric-lime) -0.12%, var(--color-cyber-green) 99.88%);
+    display: flex; align-items: center; justify-content: center; }
+  .preview-render .uagb-iconbox-icon-wrap svg { width: 24px; height: 24px; fill: #fff; }
+  .preview-render .uagb-ifb-image-content img { display: block; border-radius: 6px; }
+  .preview-render .uagb-ifb-title { margin: 0; }
+  .preview-render .uagb-ifb-desc { color: var(--color-digital-dust); font-size: 14px; margin-top: 6px; }
+  .preview-render .uagb-infobox-link-wrap { position: absolute; inset: 0; pointer-events: none; }
+
+  /* tlačítka */
+  .preview-render .wp-block-uagb-buttons-child a, .preview-render .uagb-buttons-repeater {
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid #333;
+    border-radius: 6px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px;
+    background: transparent; }
+  .preview-render .uagb-buttons__wrap { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* statistiky */
+  .preview-render .wp-block-uagb-counter { text-align: left; }
+  .preview-render .uagb-counter-block-number, .preview-render .uagb-counter-block-suffix {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 32px; color: var(--color-cyber-green); }
+  .preview-render .uagb-counter-block-number::after { content: attr(data-to-value); }
+  .preview-render .wp-block-uagb-counter__title { font-size: 13px; color: var(--color-digital-dust); margin-top: 4px; }
+
+  /* časová osa */
+  .preview-render .casova-osa .wp-block-uagb-container { display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 16px; }
+  .preview-render .casova-osa p { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px;
+    color: var(--color-digital-dust); margin: 0; }
+
+  /* tabs */
+  .preview-render .uagb-tabs__panel { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; padding: 0;
+    margin: 0 0 16px; }
+  .preview-render .uagb-tab a { display: block; padding: 10px 16px; border: 1px solid rgba(130,132,130,0.3);
+    border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 500; }
+  .preview-render .uagb-tabs__active a { border-color: var(--color-deep-void); font-weight: 600; }
+  .preview-render .uagb-tabs__body-container { border: 1px solid rgba(130,132,130,0.3); border-radius: 0 8px 8px 8px;
+    padding: 20px; }
+
+  /* icon list (checkmarky) */
+  .preview-render .uagb-icon-list__wrap { display: flex; flex-direction: column; gap: 10px; }
+  .preview-render .uagb-icon-list-child { display: flex; align-items: flex-start; gap: 10px; }
+  .preview-render .uagb-icon-list__source-wrap { width: 20px; height: 20px; flex-shrink: 0; border-radius: 999px;
+    background: var(--color-digital-dust); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .preview-render .uagb-icon-list__source-wrap svg { width: 10px; height: 10px; fill: #fff; }
+
+  /* obrázky */
+  .preview-render .wp-block-image img { border-radius: 6px; display: block; }
 </style>
 </head>
 <body>
@@ -97,7 +191,34 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>heading</code> — Nadpis H1</li><li><code>perex</code> — Perex (1-2 věty)</li><li><code>cta_label</code> — Text tlačítka</li><li><code>cta_link</code> — Odkaz tlačítka (URL nebo page ID)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:blockstudio/hero --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:blockstudio/hero -->
+<!-- wp:heading {"textAlign":"center","level":1,"className":"mw-1200","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} -->
+<h1 class="wp-block-heading has-text-align-center mw-1200 has-base-color has-text-color has-link-color">Digital driven business consultancy</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Zanalyzujeme váš byznys a navrhneme řešení, které přinese měřitelné výsledky.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:spacer {"height":"8px"} -->
+<div style="height:8px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true,"inheritGap":true,"topMargin":0,"rightMargin":0,"bottomMargin":0,"leftMargin":0} -->
+<div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"><div class="uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex"><!-- wp:uagb/buttons-child {"label":"Domluvit konzultaci","link":"#","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"><div class="uagb-button__link">Domluvit konzultaci</div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div></div>
+<!-- /wp:uagb/buttons -->
+<!-- /wp:blockstudio/hero -->
+
+<!-- Volitelne: radek log klientu jako Synced Pattern (ref 361), vkladat pres editor -->
+<!-- wp:uagb/container {"htmlTag":"section","topPaddingDesktop":32,"isBlockRootParent":true,"overflow":"hidden","metadata":{"name":"Řádek log"}} -->
+<section class="wp-block-uagb-container alignfull uagb-is-root-container"><div class="uagb-container-inner-blocks-wrap"><!-- wp:block {"ref":361} /--></div></section>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:blockstudio/hero --&gt;
 &lt;!-- wp:heading {"textAlign":"center","level":1,"className":"mw-1200","style":{"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"textColor":"base"} --&gt;
 &lt;h1 class="wp-block-heading has-text-align-center mw-1200 has-base-color has-text-color has-link-color"&gt;{{heading}}&lt;/h1&gt;
 &lt;!-- /wp:heading --&gt;
@@ -121,6 +242,7 @@
 &lt;!-- wp:uagb/container {"htmlTag":"section","topPaddingDesktop":32,"isBlockRootParent":true,"overflow":"hidden","metadata":{"name":"Řádek log"}} --&gt;
 &lt;section class="wp-block-uagb-container alignfull uagb-is-root-container"&gt;&lt;div class="uagb-container-inner-blocks-wrap"&gt;&lt;!-- wp:block {"ref":361} /--&gt;&lt;/div&gt;&lt;/section&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="section-header" data-category="Layout">
@@ -134,7 +256,19 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>heading</code> — Nadpis H2</li><li><code>subheading</code> — Popisný text (volitelný) (volitelné)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"metadata":{"name":"Záhlaví sekce"},"globalBlockStyleName":"Zahlavi sekce","globalBlockStyleId":"zahlavi-sekce1715680243220"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"metadata":{"name":"Záhlaví sekce"},"globalBlockStyleName":"Zahlavi sekce","globalBlockStyleId":"zahlavi-sekce1715680243220"} -->
+<div class="wp-block-uagb-container"><!-- wp:heading {"textAlign":"center"} -->
+<h2 class="wp-block-heading has-text-align-center">S čím vám pomůžeme</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Krátký popisný text pod nadpisem sekce.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"metadata":{"name":"Záhlaví sekce"},"globalBlockStyleName":"Zahlavi sekce","globalBlockStyleId":"zahlavi-sekce1715680243220"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:heading {"textAlign":"center"} --&gt;
 &lt;h2 class="wp-block-heading has-text-align-center"&gt;{{heading}}&lt;/h2&gt;
 &lt;!-- /wp:heading --&gt;
@@ -143,6 +277,7 @@
 &lt;p class="has-text-align-center"&gt;{{subheading}}&lt;/p&gt;
 &lt;!-- /wp:paragraph --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="icon-box-checkmark-list" data-category="Icon box">
@@ -156,11 +291,20 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>title</code> — Krátký titulek / výsledek</li><li><code>icon_svg_path</code> — SVG path ikony (volitelné, jinak výchozí) (volitelné)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":33,"widthSetByUser":true,"metadata":{"name":"Sloupec ikon. boxu"}} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"widthDesktop":33,"widthSetByUser":true,"metadata":{"name":"Sloupec ikon. boxu"}} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/info-box {"headingTag":"p","icon":"message-chat","showDesc":false,"iconView":"Stacked","iconShape":"Square","globalBlockStyleName":"Ikonovy Box 5","globalBlockStyleId":"ikonovy-box-51716795532744"} -->
+<div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-icon-wrap"><div class="uagb-iconbox-icon-wrap uagb-infobox-shape-squre"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM227.31 387.31l-101.66-101.65c-4.69-4.69-4.69-12.28 0-16.97l16.97-16.97c4.69-4.69 12.28-4.69 16.97 0L236 328.11l153.41-153.41c4.69-4.69 12.28-4.69 16.97 0l16.97 16.97c4.69 4.69 4.69 12.28 0 16.97L244.28 387.31c-4.69 4.69-12.28 4.69-16.97 0z"></path></svg></div></div><div class="uagb-ifb-title-wrap"><p class="uagb-ifb-title">Rychlá dodávka</p></div></div></div></div>
+<!-- /wp:uagb/info-box --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":33,"widthSetByUser":true,"metadata":{"name":"Sloupec ikon. boxu"}} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/info-box {"headingTag":"p","icon":"message-chat","showDesc":false,"iconView":"Stacked","iconShape":"Square","globalBlockStyleName":"Ikonovy Box 5","globalBlockStyleId":"ikonovy-box-51716795532744"} --&gt;
 &lt;div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"&gt;&lt;div class="uagb-infobox-margin-wrapper"&gt;&lt;div class="uagb-ifb-content"&gt;&lt;div class="uagb-ifb-icon-wrap"&gt;&lt;div class="uagb-iconbox-icon-wrap uagb-infobox-shape-squre"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"&gt;&lt;path d="{{icon_svg_path}}"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="uagb-ifb-title-wrap"&gt;&lt;p class="uagb-ifb-title"&gt;{{title}}&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/info-box --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="stats-counters" data-category="Data">
@@ -174,11 +318,20 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>number</code> — Číslo</li><li><code>suffix</code> — Jednotka/přípona (např. ' mil.', ' trhů')</li><li><code>label</code> — Popisek pod číslem</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":25,"widthTablet":50,"alignItemsDesktop":"stretch","topPaddingDesktop":24,"bottomPaddingDesktop":24,"leftPaddingDesktop":24,"rightPaddingDesktop":24,"rowGapDesktop":16,"columnGapDesktop":16,"widthSetByUser":true,"equalHeight":true,"containerBorderTopWidth":0,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":0,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","metadata":{"name":"Sloupec statistiky"}} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"widthDesktop":25,"widthTablet":50,"alignItemsDesktop":"stretch","topPaddingDesktop":24,"bottomPaddingDesktop":24,"leftPaddingDesktop":24,"rightPaddingDesktop":24,"rowGapDesktop":16,"columnGapDesktop":16,"widthSetByUser":true,"equalHeight":true,"containerBorderTopWidth":0,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":0,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","metadata":{"name":"Sloupec statistiky"}} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/counter {"animationDuration":300,"heading":"dokončených projektů","headingColor":"#0b0d0b","endNumber":500,"numberSuffix":"+","showIcon":false,"icon":""} -->
+<div class="wp-block-uagb-counter wp-block-uagb-counter--number"><div class="wp-block-uagb-counter__number"><span class="uagb-counter-block-number" data-duration="0.3" data-to-value="500" data-from-value="0" data-delimiter=","></span><span class="uagb-counter-block-suffix">+</span></div><div class="wp-block-uagb-counter__title">dokončených projektů</div></div>
+<!-- /wp:uagb/counter --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":25,"widthTablet":50,"alignItemsDesktop":"stretch","topPaddingDesktop":24,"bottomPaddingDesktop":24,"leftPaddingDesktop":24,"rightPaddingDesktop":24,"rowGapDesktop":16,"columnGapDesktop":16,"widthSetByUser":true,"equalHeight":true,"containerBorderTopWidth":0,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":0,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","metadata":{"name":"Sloupec statistiky"}} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/counter {"animationDuration":300,"heading":"{{label}}","headingColor":"#0b0d0b","endNumber":{{number}},"numberSuffix":"{{suffix}}","showIcon":false,"icon":""} --&gt;
 &lt;div class="wp-block-uagb-counter wp-block-uagb-counter--number"&gt;&lt;div class="wp-block-uagb-counter__number"&gt;&lt;span class="uagb-counter-block-number" data-duration="0.3" data-to-value="{{number}}" data-from-value="0" data-delimiter=","&gt;&lt;/span&gt;&lt;span class="uagb-counter-block-suffix"&gt;{{suffix}}&lt;/span&gt;&lt;/div&gt;&lt;div class="wp-block-uagb-counter__title"&gt;{{label}}&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/counter --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="numbered-process-steps" data-category="Process">
@@ -192,11 +345,20 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>icon_url</code> — URL ikony (48x48 SVG, gradient na barevném podkladu)</li><li><code>step_number</code> — Číslo kroku (např. '01')</li><li><code>step_title</code> — Název kroku</li><li><code>step_description</code> — Popis kroku (1-3 věty)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"metadata":{"name":"Sloupec procesu"},"globalBlockStyleName":"Procesy Sloupec","globalBlockStyleId":"procesy-sloupec1716471051823"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"metadata":{"name":"Sloupec procesu"},"globalBlockStyleName":"Procesy Sloupec","globalBlockStyleId":"procesy-sloupec1716471051823"} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/info-box {"headingTag":"h4","source_type":"image","iconImage":{"url":"https://www.aitom.cz/app/uploads/2024/07/rocket-icon.svg","alt":""},"imageWidth":48,"imgTagWidth":48,"imgTagHeight":48,"globalBlockStyleName":"Ikonovy Box 4","globalBlockStyleId":"ikonovy-box-41716469760361"} -->
+<div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-image-content"><img src="https://www.aitom.cz/app/uploads/2024/07/rocket-icon.svg" alt="" width="48" height="48" loading="lazy"/></div><div class="uagb-ifb-title-wrap"><h4 class="uagb-ifb-title"><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-digital-dust-color">01</mark> Úvodní workshop</h4></div><p class="uagb-ifb-desc">Zanalyzujeme váš obchodní proces a najdeme příležitosti.</p></div></div></div>
+<!-- /wp:uagb/info-box --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"metadata":{"name":"Sloupec procesu"},"globalBlockStyleName":"Procesy Sloupec","globalBlockStyleId":"procesy-sloupec1716471051823"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/info-box {"headingTag":"h4","source_type":"image","iconImage":{"url":"{{icon_url}}","alt":""},"imageWidth":48,"imgTagWidth":48,"imgTagHeight":48,"globalBlockStyleName":"Ikonovy Box 4","globalBlockStyleId":"ikonovy-box-41716469760361"} --&gt;
 &lt;div class="wp-block-uagb-info-box uagb-infobox__content-wrap uagb-infobox-icon-above-title uagb-infobox-image-valign-top wp-block-uagb-info-box--has-margin"&gt;&lt;div class="uagb-infobox-margin-wrapper"&gt;&lt;div class="uagb-ifb-content"&gt;&lt;div class="uagb-ifb-image-content"&gt;&lt;img src="{{icon_url}}" alt="" width="48" height="48" loading="lazy"/&gt;&lt;/div&gt;&lt;div class="uagb-ifb-title-wrap"&gt;&lt;h4 class="uagb-ifb-title"&gt;&lt;mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-digital-dust-color"&gt;{{step_number}}&lt;/mark&gt; {{step_title}}&lt;/h4&gt;&lt;/div&gt;&lt;p class="uagb-ifb-desc"&gt;{{step_description}}&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/info-box --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="checkmark-pill-row" data-category="Buttons">
@@ -210,9 +372,16 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>label</code> — Text pilulky</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/buttons-child {"fontWeight":"500","label":"{{label}}","topPadding":16,"rightPadding":24,"bottomPadding":16,"leftPadding":24,"background":"#fff","icon":"check-circle-broken","iconPosition":"before","iconSpace":16,"iconSize":24,"btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderTopLeftRadius":8,"btnBorderTopRightRadius":8,"btnBorderBottomLeftRadius":8,"btnBorderBottomRightRadius":8,"btnBorderStyle":"solid","btnBorderColor":"rgba(130, 132, 130, 0.1)","btnBorderHColor":"#333","showIcon":true,"globalBlockStyleName":"Check Tlacitko","globalBlockStyleId":"check-tlacitko1717610395894"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/buttons-child {"fontWeight":"500","label":"Bez dlouhodobého závazku","topPadding":16,"rightPadding":24,"bottomPadding":16,"leftPadding":24,"background":"#fff","icon":"check-circle-broken","iconPosition":"before","iconSpace":16,"iconSize":24,"btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderTopLeftRadius":8,"btnBorderTopRightRadius":8,"btnBorderBottomLeftRadius":8,"btnBorderBottomRightRadius":8,"btnBorderStyle":"solid","btnBorderColor":"rgba(130, 132, 130, 0.1)","btnBorderHColor":"#333","showIcon":true,"globalBlockStyleName":"Check Tlacitko","globalBlockStyleId":"check-tlacitko1717610395894"} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"><span class="uagb-button__icon uagb-button__icon-position-before"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.835 3.541a8.5 8.5 0 1 0 7.664 8.463v-.736a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v.736a7.498 7.498 0 1 1-14.982-.498A7.497 7.497 0 0 1 15.052 5.15a.5.5 0 0 0 .66-.254.5.5 0 0 0-.252-.66 8.504 8.504 0 0 0-2.625-.694ZM20 5.1a.5.5 0 0 0-.353.147L11.999 12.9l-2.044-2.047a.5.5 0 0 0-.707 0 .5.5 0 0 0 0 .707l2.398 2.4a.5.5 0 0 0 .707 0l8-8.007a.5.5 0 0 0 0-.707.5.5 0 0 0-.354-.147z"></path></svg></span><div class="uagb-button__link">Bez dlouhodobého závazku</div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/buttons-child {"fontWeight":"500","label":"{{label}}","topPadding":16,"rightPadding":24,"bottomPadding":16,"leftPadding":24,"background":"#fff","icon":"check-circle-broken","iconPosition":"before","iconSpace":16,"iconSize":24,"btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderTopLeftRadius":8,"btnBorderTopRightRadius":8,"btnBorderBottomLeftRadius":8,"btnBorderBottomRightRadius":8,"btnBorderStyle":"solid","btnBorderColor":"rgba(130, 132, 130, 0.1)","btnBorderHColor":"#333","showIcon":true,"globalBlockStyleName":"Check Tlacitko","globalBlockStyleId":"check-tlacitko1717610395894"} --&gt;
 &lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"&gt;&lt;span class="uagb-button__icon uagb-button__icon-position-before"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="M12.835 3.541a8.5 8.5 0 1 0 7.664 8.463v-.736a.5.5 0 0 0-.5-.5.5.5 0 0 0-.5.5v.736a7.498 7.498 0 1 1-14.982-.498A7.497 7.497 0 0 1 15.052 5.15a.5.5 0 0 0 .66-.254.5.5 0 0 0-.252-.66 8.504 8.504 0 0 0-2.625-.694ZM20 5.1a.5.5 0 0 0-.353.147L11.999 12.9l-2.044-2.047a.5.5 0 0 0-.707 0 .5.5 0 0 0 0 .707l2.398 2.4a.5.5 0 0 0 .707 0l8-8.007a.5.5 0 0 0 0-.707.5.5 0 0 0-.354-.147z"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div class="uagb-button__link"&gt;{{label}}&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons-child --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="dark-rounded-box" data-category="Layout">
@@ -226,7 +395,19 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>heading</code> — Nadpis v boxu</li><li><code>subheading</code> — Podnadpis / perex (volitelný) (volitelné)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"htmlTag":"section","backgroundType":"color","backgroundColor":"#0b0d0b","topPaddingDesktop":64,"bottomPaddingDesktop":40,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"topMarginDesktop":80,"bottomMarginDesktop":80,"rowGapDesktop":48,"isBlockRootParent":true,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"className":"bg-glow","metadata":{"name":"Tmavý box"}} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"htmlTag":"section","backgroundType":"color","backgroundColor":"#0b0d0b","topPaddingDesktop":64,"bottomPaddingDesktop":40,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"topMarginDesktop":80,"bottomMarginDesktop":80,"rowGapDesktop":48,"isBlockRootParent":true,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"className":"bg-glow","metadata":{"name":"Tmavý box"}} -->
+<section class="wp-block-uagb-container bg-glow alignwide uagb-is-root-container"><!-- wp:heading {"textAlign":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color">Připraveni posunout váš byznys dál?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"large"} -->
+<p class="has-text-align-center has-white-color has-text-color has-link-color has-large-font-size">Domluvme si nezávaznou konzultaci.</p>
+<!-- /wp:paragraph --></section>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"htmlTag":"section","backgroundType":"color","backgroundColor":"#0b0d0b","topPaddingDesktop":64,"bottomPaddingDesktop":40,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"topMarginDesktop":80,"bottomMarginDesktop":80,"rowGapDesktop":48,"isBlockRootParent":true,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"className":"bg-glow","metadata":{"name":"Tmavý box"}} --&gt;
 &lt;section class="wp-block-uagb-container bg-glow alignwide uagb-is-root-container"&gt;&lt;!-- wp:heading {"textAlign":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} --&gt;
 &lt;h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color"&gt;{{heading}}&lt;/h2&gt;
 &lt;!-- /wp:heading --&gt;
@@ -235,6 +416,7 @@
 &lt;p class="has-text-align-center has-white-color has-text-color has-link-color has-large-font-size"&gt;{{subheading}}&lt;/p&gt;
 &lt;!-- /wp:paragraph --&gt;&lt;/section&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="anchor-menu" data-category="Navigation">
@@ -248,9 +430,14 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>items</code> — Seznam položek [{text, anchor}]</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:blockstudio/anchor-menu {"blockstudio":{"name":"blockstudio/anchor-menu","attributes":{"items":[{"text":"{{item_1_text}}","anchor":"{{item_1_anchor}}"},{"text":"{{item_2_text}}","anchor":"{{item_2_anchor}}"}]}}} /--&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="no-render">Bez statického vizuálního výstupu — server-side blockstudio blok (PHP), náhled zajišťuje jen WordPress.</div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:blockstudio/anchor-menu {"blockstudio":{"name":"blockstudio/anchor-menu","attributes":{"items":[{"text":"{{item_1_text}}","anchor":"{{item_1_anchor}}"},{"text":"{{item_2_text}}","anchor":"{{item_2_anchor}}"}]}}} /--&gt;
 
 &lt;!-- "anchor" musi odpovidat id atributu sekce dal na strance, napr. &lt;section id="{{item_1_anchor}}" ...&gt; --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="icon-box-2" data-category="Icon box">
@@ -264,12 +451,22 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>icon_url</code> — URL ikony (48x48 SVG)</li><li><code>title</code> — Název služby</li><li><code>description</code> — Popis (1-2 věty)</li><li><code>link</code> — Odkaz na detail služby</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:blockstudio/pipes {"blockstudio":{"name":"blockstudio/pipes"}} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:blockstudio/pipes {"blockstudio":{"name":"blockstudio/pipes"}} -->
+<!-- wp:uagb/info-box {"tempHeadingDesc":"Najdeme slova, která mají potenciál přivést cílené návštěvníky.","iconimgPosition":"left-title","source_type":"image","sourceAlign":"middle","ctaType":"all","ctaLink":"#","iconImage":{"url":"https://www.aitom.cz/app/uploads/2024/07/coins_hand-icon.svg","alt":""},"imageWidth":48,"imgTagWidth":48,"imgTagHeight":48,"className":"js-animate-pipeline-1","globalBlockStyleName":"Ikonovy Box 2","globalBlockStyleId":"ikonovy-box-21715769571182"} -->
+<div class="wp-block-uagb-info-box uagb-infobox__content-wrap  uagb-infobox_cta-type-all uagb-infobox-icon-left-title uagb-infobox-left uagb-infobox-image-valign-middle wp-block-uagb-info-box--has-margin js-animate-pipeline-1"><div class="uagb-infobox-margin-wrapper"><a href="#" class="uagb-infobox-link-wrap uagb-infbox__link-to-all" target="_self" aria-label="Infobox Link" rel="noopener noreferrer" onclick="return true;"></a><div class="uagb-ifb-content"><div class="uagb-ifb-left-title-image"><div class="uagb-ifb-image-content"><img src="https://www.aitom.cz/app/uploads/2024/07/coins_hand-icon.svg" alt="" width="48" height="48" loading="lazy"/></div><div class="uagb-ifb-title-wrap"><h3 class="uagb-ifb-title">Analýza klíčových slov</h3></div></div><p class="uagb-ifb-desc">Najdeme slova, která mají potenciál přivést cílené návštěvníky.</p><div class="uagb-ifb-button-wrapper wp-block-button"></div></div></div></div>
+<!-- /wp:uagb/info-box -->
+<!-- pro dalsi polozky v gridu opakuj cely wp:uagb/info-box blok -->
+<!-- /wp:blockstudio/pipes --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:blockstudio/pipes {"blockstudio":{"name":"blockstudio/pipes"}} --&gt;
 &lt;!-- wp:uagb/info-box {"tempHeadingDesc":"{{description}}","iconimgPosition":"left-title","source_type":"image","sourceAlign":"middle","ctaType":"all","ctaLink":"{{link}}","iconImage":{"url":"{{icon_url}}","alt":""},"imageWidth":48,"imgTagWidth":48,"imgTagHeight":48,"className":"js-animate-pipeline-1","globalBlockStyleName":"Ikonovy Box 2","globalBlockStyleId":"ikonovy-box-21715769571182"} --&gt;
 &lt;div class="wp-block-uagb-info-box uagb-infobox__content-wrap  uagb-infobox_cta-type-all uagb-infobox-icon-left-title uagb-infobox-left uagb-infobox-image-valign-middle wp-block-uagb-info-box--has-margin js-animate-pipeline-1"&gt;&lt;div class="uagb-infobox-margin-wrapper"&gt;&lt;a href="{{link}}" class="uagb-infobox-link-wrap uagb-infbox__link-to-all" target="_self" aria-label="Infobox Link" rel="noopener noreferrer" onclick="return true;"&gt;&lt;/a&gt;&lt;div class="uagb-ifb-content"&gt;&lt;div class="uagb-ifb-left-title-image"&gt;&lt;div class="uagb-ifb-image-content"&gt;&lt;img src="{{icon_url}}" alt="" width="48" height="48" loading="lazy"/&gt;&lt;/div&gt;&lt;div class="uagb-ifb-title-wrap"&gt;&lt;h3 class="uagb-ifb-title"&gt;{{title}}&lt;/h3&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class="uagb-ifb-desc"&gt;{{description}}&lt;/p&gt;&lt;div class="uagb-ifb-button-wrapper wp-block-button"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/info-box --&gt;
 &lt;!-- pro dalsi polozky v gridu opakuj cely wp:uagb/info-box blok --&gt;
 &lt;!-- /wp:blockstudio/pipes --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="icon-box-6" data-category="Icon box">
@@ -283,7 +480,26 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>card_heading</code> — Nadpis karty (h3)</li><li><code>card_intro</code> — Úvodní věta karty</li><li><code>icon_url</code> — URL ikony (40x40 SVG)</li><li><code>segment_title</code> — Název segmentu (h4)</li><li><code>segment_description</code> — Popis segmentu</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"topPaddingDesktop":32,"bottomPaddingDesktop":32,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"containerBorderTopWidth":1,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":1,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","globalBlockStyleName":"Shrnutí Projektu Radek","globalBlockStyleId":"shrnutí-projektu1721206889593"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"topPaddingDesktop":32,"bottomPaddingDesktop":32,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"containerBorderTopWidth":1,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":1,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","globalBlockStyleName":"Shrnutí Projektu Radek","globalBlockStyleId":"shrnutí-projektu1721206889593"} -->
+<div class="wp-block-uagb-container"><!-- wp:heading {"level":3,"fontSize":"large"} -->
+<h3 class="wp-block-heading has-large-font-size">Pro jaké firmy je web důležitý?</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"digital-dust"} -->
+<p class="has-digital-dust-color has-text-color">Některé firmy si myslí, že pro ně nemá web význam. Opak je pravdou.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:uagb/container -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/info-box {"headingTag":"h4","iconimgPosition":"left-title","sourceAlign":"middle","source_type":"image","iconLeftMargin":0,"iconRightMargin":16,"iconImage":{"url":"https://www.aitom.cz/app/uploads/2024/07/rocket-icon.svg","alt":""},"imageWidth":40,"imgTagWidth":48,"imgTagHeight":40,"globalBlockStyleName":"Ikonový box 6","globalBlockStyleId":"ikonový-box-61721250973737"} -->
+<div class="wp-block-uagb-info-box uagb-infobox__content-wrap  uagb-infobox-icon-left-title uagb-infobox-left uagb-infobox-image-valign-middle wp-block-uagb-info-box--has-margin"><div class="uagb-infobox-margin-wrapper"><div class="uagb-ifb-content"><div class="uagb-ifb-left-title-image"><div class="uagb-ifb-image-content"><img src="https://www.aitom.cz/app/uploads/2024/07/rocket-icon.svg" alt="" width="40" height="40" loading="lazy"/></div><div class="uagb-ifb-title-wrap"><h4 class="uagb-ifb-title">B2B firmy</h4></div></div><p class="uagb-ifb-desc">Máte vyřešenou brandovou komunikaci? Máte marketingovou strategii?</p></div></div></div>
+<!-- /wp:uagb/info-box -->
+<!-- pro dalsi segmenty opakuj wp:uagb/info-box blok --></div>
+<!-- /wp:uagb/container --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"topPaddingDesktop":32,"bottomPaddingDesktop":32,"leftPaddingDesktop":32,"rightPaddingDesktop":32,"containerBorderTopWidth":1,"containerBorderLeftWidth":1,"containerBorderRightWidth":1,"containerBorderBottomWidth":1,"containerBorderTopLeftRadius":12,"containerBorderTopRightRadius":12,"containerBorderBottomLeftRadius":12,"containerBorderBottomRightRadius":12,"containerBorderStyle":"solid","containerBorderColor":"rgba(130, 132, 130, 0.1)","globalBlockStyleName":"Shrnutí Projektu Radek","globalBlockStyleId":"shrnutí-projektu1721206889593"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:heading {"level":3,"fontSize":"large"} --&gt;
 &lt;h3 class="wp-block-heading has-large-font-size"&gt;{{card_heading}}&lt;/h3&gt;
 &lt;!-- /wp:heading --&gt;
@@ -299,6 +515,7 @@
 &lt;!-- pro dalsi segmenty opakuj wp:uagb/info-box blok --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="timeline-numbered-steps" data-category="Process">
@@ -312,7 +529,30 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>step_number</code> — Číslo kroku (např. '01')</li><li><code>step_title</code> — Název kroku (h4)</li><li><code>step_description</code> — Popis kroku</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"className":"casova-osa","metadata":{"name":"Časová osa"},"globalBlockStyleName":"Casova Osa Sekce","globalBlockStyleId":"casova-osa-sekce1717670516505"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"className":"casova-osa","metadata":{"name":"Časová osa"},"globalBlockStyleName":"Casova Osa Sekce","globalBlockStyleId":"casova-osa-sekce1717670516505"} -->
+<div class="wp-block-uagb-container casova-osa"><!-- wp:uagb/container {"metadata":{"name":"01 Řádek časové osy"},"globalBlockStyleName":"Casova Osa Radek","globalBlockStyleId":"casova-osa-radek1717670535759"} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/container {"widthType":"px","metadata":{"name":"Bod časové osy"},"globalBlockStyleName":"Casova Osa Bod","globalBlockStyleId":"casova-osa-bod1717670549313"} -->
+<div class="wp-block-uagb-container"><!-- wp:paragraph -->
+<p>01</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:uagb/container -->
+
+<!-- wp:uagb/container {"metadata":{"name":"Obsah časové osy"},"globalBlockStyleName":"Casova Osa Obsah","globalBlockStyleId":"casova-osa-obsah1717670556349"} -->
+<div class="wp-block-uagb-container"><!-- wp:heading {"level":4} -->
+<h4 class="wp-block-heading">Úvodní workshop</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"digital-dust","fontSize":"lead"} -->
+<p class="has-digital-dust-color has-text-color has-lead-font-size">Společně zanalyzujeme váš obchodní proces a odhalíme příležitosti.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:uagb/container --></div>
+<!-- /wp:uagb/container -->
+<!-- pro dalsi kroky opakuj cely "Řádek časové osy" blok (Bod + Obsah), číslo kroku 01, 02, 03... --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"className":"casova-osa","metadata":{"name":"Časová osa"},"globalBlockStyleName":"Casova Osa Sekce","globalBlockStyleId":"casova-osa-sekce1717670516505"} --&gt;
 &lt;div class="wp-block-uagb-container casova-osa"&gt;&lt;!-- wp:uagb/container {"metadata":{"name":"01 Řádek časové osy"},"globalBlockStyleName":"Casova Osa Radek","globalBlockStyleId":"casova-osa-radek1717670535759"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/container {"widthType":"px","metadata":{"name":"Bod časové osy"},"globalBlockStyleName":"Casova Osa Bod","globalBlockStyleId":"casova-osa-bod1717670549313"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:paragraph --&gt;
@@ -332,6 +572,7 @@
 &lt;!-- /wp:uagb/container --&gt;
 &lt;!-- pro dalsi kroky opakuj cely "Řádek časové osy" blok (Bod + Obsah), číslo kroku 01, 02, 03... --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="hero-badge" data-category="Hero">
@@ -345,12 +586,22 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>page_title</code> — Název stránky (obvykle dynamický, needit ručně)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/buttons --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/buttons -->
+<div class="wp-block-uagb-buttons uagb-buttons__outer-wrap"><div class="uagb-buttons__wrap uagb-buttons-layout-wrap"><!-- wp:uagb/buttons-child {"label":"<span data-spectra-dc-field=\"current_post|post_title\" class=\"uag-pro-dynamic-content\">Vstupní studie</span>","globalBlockStyleName":"Hero Stitek","globalBlockStyleId":"hero-stitek1716791333666","dynamicContent":{"link":{"enable":true,"field":"current_post|post_permalink","advanced":"full|"}}} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"><div class="uagb-button__link"><span data-spectra-dc-field="current_post|post_title" class="uag-pro-dynamic-content">Vstupní studie</span></div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div></div>
+<!-- /wp:uagb/buttons -->
+<!-- vkladat jako uplne prvni prvek uvnitr blockstudio/hero, pred H1 --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/buttons --&gt;
 &lt;div class="wp-block-uagb-buttons uagb-buttons__outer-wrap"&gt;&lt;div class="uagb-buttons__wrap uagb-buttons-layout-wrap"&gt;&lt;!-- wp:uagb/buttons-child {"label":"&lt;span data-spectra-dc-field=\"current_post|post_title\" class=\"uag-pro-dynamic-content\"&gt;{{page_title}}&lt;/span&gt;","globalBlockStyleName":"Hero Stitek","globalBlockStyleId":"hero-stitek1716791333666","dynamicContent":{"link":{"enable":true,"field":"current_post|post_permalink","advanced":"full|"}}} --&gt;
 &lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"&gt;&lt;div class="uagb-button__link"&gt;&lt;span data-spectra-dc-field="current_post|post_title" class="uag-pro-dynamic-content"&gt;{{page_title}}&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons --&gt;
 &lt;!-- vkladat jako uplne prvni prvek uvnitr blockstudio/hero, pred H1 --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="faq-jsonld" data-category="Data">
@@ -364,7 +615,11 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>question_1</code> — Otázka</li><li><code>answer_1</code> — Odpověď</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:html --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="no-render">Bez statického vizuálního výstupu — SEO structured data (&lt;script type="application/ld+json"&gt;), nevykresluje se.</div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:html --&gt;
 &lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
@@ -380,6 +635,7 @@
 }
 &lt;/script&gt;
 &lt;!-- /wp:html --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="services-tabs" data-category="Layout">
@@ -393,7 +649,25 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>tab_1_label</code> — Název záložky</li><li><code>tab_1_content</code> — Obsah záložky (1-2 odstavce)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":900,"widthType":"px","widthSetByUser":true} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"widthDesktop":900,"widthType":"px","widthSetByUser":true} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/tabs {"tabHeaders":["Strategie"],"tabActive":0,"tabsStyleT":"hstyle1","headerTextColor":"#828482","bodyBgColor":"#fff","bodyTextColor":"#828482","activeTabTextColor":"#0b0d0b","tabBorderTopWidth":1,"tabBorderLeftWidth":1,"tabBorderRightWidth":1,"tabBorderBottomWidth":1,"tabBorderTopLeftRadius":12,"tabBorderTopRightRadius":12,"tabBorderBottomLeftRadius":12,"tabBorderBottomRightRadius":12,"tabBorderStyle":"none"} -->
+<div class="wp-block-uagb-tabs uagb-tabs__wrap uagb-tabs__hstyle1-desktop" data-tab-active="0"><ul class="uagb-tabs__panel uagb-tabs__align-center" role="tablist"><li class="uagb-tab uagb-tabs__active" role="none"><a href="#uagb-tabs__tab0" class="uagb-tabs-list" data-tab="0" role="tab"><div>Strategie</div></a></li>
+<!-- pro dalsi zalozky opakuj <li> polozku se spravnym data-tab indexem --></ul><div class="uagb-tabs__body-wrap"><!-- wp:uagb/tabs-child {"header":"Strategie","tabActive":0} -->
+<div class="wp-block-uagb-tabs-child uagb-tabs__body-container uagb-inner-tab-0" aria-labelledby="uagb-tabs__tab0"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Strategie</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Provedeme výzkum trhu, analýzu produktu a navrhneme marketingovou strategii k dosažení business cíle.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:uagb/tabs-child -->
+<!-- pro dalsi zalozky opakuj wp:uagb/tabs-child s prislusnym id a tabActive --></div></div>
+<!-- /wp:uagb/tabs --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"widthDesktop":900,"widthType":"px","widthSetByUser":true} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/tabs {"tabHeaders":["{{tab_1_label}}"],"tabActive":0,"tabsStyleT":"hstyle1","headerTextColor":"#828482","bodyBgColor":"#fff","bodyTextColor":"#828482","activeTabTextColor":"#0b0d0b","tabBorderTopWidth":1,"tabBorderLeftWidth":1,"tabBorderRightWidth":1,"tabBorderBottomWidth":1,"tabBorderTopLeftRadius":12,"tabBorderTopRightRadius":12,"tabBorderBottomLeftRadius":12,"tabBorderBottomRightRadius":12,"tabBorderStyle":"none"} --&gt;
 &lt;div class="wp-block-uagb-tabs uagb-tabs__wrap uagb-tabs__hstyle1-desktop" data-tab-active="0"&gt;&lt;ul class="uagb-tabs__panel uagb-tabs__align-center" role="tablist"&gt;&lt;li class="uagb-tab uagb-tabs__active" role="none"&gt;&lt;a href="#uagb-tabs__tab0" class="uagb-tabs-list" data-tab="0" role="tab"&gt;&lt;div&gt;{{tab_1_label}}&lt;/div&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;!-- pro dalsi zalozky opakuj &lt;li&gt; polozku se spravnym data-tab indexem --&gt;&lt;/ul&gt;&lt;div class="uagb-tabs__body-wrap"&gt;&lt;!-- wp:uagb/tabs-child {"header":"{{tab_1_label}}","tabActive":0} --&gt;
@@ -408,6 +682,7 @@
 &lt;!-- pro dalsi zalozky opakuj wp:uagb/tabs-child s prislusnym id a tabActive --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/tabs --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="vyhody-box" data-category="Layout">
@@ -421,7 +696,40 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>icon_url</code> — URL ikony (40x40)</li><li><code>title</code> — Nadpis (h4)</li><li><code>description</code> — Popis (2-3 věty)</li><li><code>list_item_1</code> — Položka seznamu (opakovatelná)</li><li><code>cta_label</code> — Text tlačítka</li><li><code>cta_link</code> — Odkaz tlačítka</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/container {"equalHeight":true,"metadata":{"name":"Sloupec boxu výhod"},"globalBlockStyleName":"Vyhody Box","globalBlockStyleId":"vyhody-box1716550247997"} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/container {"equalHeight":true,"metadata":{"name":"Sloupec boxu výhod"},"globalBlockStyleName":"Vyhody Box","globalBlockStyleId":"vyhody-box1716550247997"} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/container {"metadata":{"name":"Nadpis boxu s ikonou"},"globalBlockStyleName":"Výhody Nadpis s ikonou","globalBlockStyleId":"výhody-nadpis-s-ikonou1716550257797"} -->
+<div class="wp-block-uagb-container"><!-- wp:image {"width":"40px","height":"40px","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://www.aitom.cz/app/uploads/2024/07/coins_hand-icon.svg" alt="" style="object-fit:cover;width:40px;height:40px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":4} -->
+<h4 class="wp-block-heading">Online marketing</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:uagb/container -->
+
+<!-- wp:paragraph {"textColor":"digital-dust","style":{"spacing":{"margin":{"top":"16px","bottom":"16px"}}}} -->
+<p class="has-digital-dust-color has-text-color" style="margin-top:16px;margin-bottom:16px">Stop domněnkám. Správná příprava přináší predikovatelné výsledky v realizaci.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:uagb/container {"metadata":{"name":"Šedé pozadí seznamu"},"globalBlockStyleName":"Vyhody Seznam","globalBlockStyleId":"vyhody-seznam1716550285464"} -->
+<div class="wp-block-uagb-container"><!-- wp:uagb/icon-list {"parentIcon":"check","iconPosition":"top","size":12,"bgSize":4,"border":1,"borderRadius":6,"fontSize":14,"iconColor":"#fff","labelColor":"#0b0d0b","iconBgColor":"#828482","iconBorderColor":"#828482"} -->
+<div class="wp-block-uagb-icon-list"><div class="uagb-icon-list__wrap"><!-- wp:uagb/icon-list-child {"label":"Definování vašich cílů a obchodního procesu","fromParentIcon":"check"} -->
+<div class="wp-block-uagb-icon-list-child"><span class="uagb-icon-list__source-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg></span><span class="uagb-icon-list__label">Definování vašich cílů a obchodního procesu</span></div>
+<!-- /wp:uagb/icon-list-child -->
+<!-- pro dalsi polozky opakuj wp:uagb/icon-list-child --></div></div>
+<!-- /wp:uagb/icon-list --></div>
+<!-- /wp:uagb/container -->
+
+<!-- wp:uagb/buttons {"align":"full"} -->
+<div class="wp-block-uagb-buttons uagb-buttons__outer-wrap"><div class="uagb-buttons__wrap uagb-buttons-layout-wrap"><!-- wp:uagb/buttons-child {"label":"Domluvit konzultaci","link":"#","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"><div class="uagb-button__link">Domluvit konzultaci</div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div></div>
+<!-- /wp:uagb/buttons --></div>
+<!-- /wp:uagb/container --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/container {"equalHeight":true,"metadata":{"name":"Sloupec boxu výhod"},"globalBlockStyleName":"Vyhody Box","globalBlockStyleId":"vyhody-box1716550247997"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:uagb/container {"metadata":{"name":"Nadpis boxu s ikonou"},"globalBlockStyleName":"Výhody Nadpis s ikonou","globalBlockStyleId":"výhody-nadpis-s-ikonou1716550257797"} --&gt;
 &lt;div class="wp-block-uagb-container"&gt;&lt;!-- wp:image {"width":"40px","height":"40px","scale":"cover","sizeSlug":"large","linkDestination":"none"} --&gt;
 &lt;figure class="wp-block-image size-large is-resized"&gt;&lt;img src="{{icon_url}}" alt="" style="object-fit:cover;width:40px;height:40px"/&gt;&lt;/figure&gt;
@@ -451,6 +759,7 @@
 &lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons --&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/container --&gt;</code></pre>
+      </details>
     </article>
     
     <article class="card" id="button-outline" data-category="Buttons">
@@ -464,11 +773,20 @@
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>label</code> — Text tlačítka</li><li><code>link</code> — Odkaz (URL nebo page ID)</li></ul>
       </details>
-      <pre><code>&lt;!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true,"inheritGap":true,"topMargin":0,"rightMargin":0,"bottomMargin":0,"leftMargin":0} --&gt;
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render"><!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true,"inheritGap":true,"topMargin":0,"rightMargin":0,"bottomMargin":0,"leftMargin":0} -->
+<div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"><div class="uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex"><!-- wp:uagb/buttons-child {"label":"Domluvit konzultaci","link":"#","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" href="#" rel="follow noopener" target="_self" role="button"><div class="uagb-button__link">Domluvit konzultaci</div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div></div>
+<!-- /wp:uagb/buttons --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true,"inheritGap":true,"topMargin":0,"rightMargin":0,"bottomMargin":0,"leftMargin":0} --&gt;
 &lt;div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"&gt;&lt;div class="uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex"&gt;&lt;!-- wp:uagb/buttons-child {"label":"{{label}}","link":"{{link}}","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} --&gt;
 &lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" href="{{link}}" rel="follow noopener" target="_self" role="button"&gt;&lt;div class="uagb-button__link"&gt;{{label}}&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons --&gt;</code></pre>
+      </details>
     </article>
     
 </main>
