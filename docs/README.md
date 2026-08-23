@@ -18,8 +18,8 @@ docs/
 Každá podsložka bude obsahovat:
 - zdrojový vzor dokumentu (Word/PDF nebo šablona z Figmy),
 - stručný popis, jaká pole/sekce se v dokumentu mění a jaká zůstávají fixní,
-- odkaz na `../../styleguide.html` pro barvy/typografii/logo pravidla, která platí napříč všemi
-  tiskovými dokumenty.
+- odkaz na `../../styleguide.json` (lehký, strojově čitelný — používej tento, ne `nahledy/styleguide.html`)
+  pro barvy/typografii/logo pravidla, která platí napříč všemi tiskovými dokumenty.
 
 ## Stav
 

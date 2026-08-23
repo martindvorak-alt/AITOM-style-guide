@@ -1,0 +1,99 @@
+{
+  "notes": [
+    "Toto je lehký, strojově čitelný zdroj brand pravidel — používej TENTO soubor pro tvorbu dokumentů/webu, ne 'nahledy/styleguide.html' (ten je jen vizuální náhled pro člověka, čtení celého HTML je pomalé a zbytečné).",
+    "Stav: návrh k revizi. Barvy jsou z Figmy (soubor „Aitom brand 2024“, stránka „Brand assets“) a ověřené proti aitom.cz.",
+    "Font na webu je licencovaný „widescreen / widescreen-ex“ — nahrazen univerzální dvojicí Space Grotesk (nadpisy) + Inter (text), protože originál nejde bezpečně sdílet/distribuovat."
+  ],
+  "colors": {
+    "deep-void": { "hex": "#0B0D0B", "role": "primární tmavá barva / text" },
+    "digital-dust": { "hex": "#828482", "role": "sekundární text / muted" },
+    "light-gray": { "hex": "#C9CBC9", "role": "jemné rámečky, text na tmavém pozadí" },
+    "cloud-whisper": { "hex": "#F8FAF8", "role": "světlé pozadí" },
+    "white": { "hex": "#FFFFFF", "role": "" },
+    "cyber-green": { "hex": "#4CE500", "role": "primární akcent / CTA — POUZE akcent, ne strukturální barva" },
+    "electric-lime": { "hex": "#BDE500", "role": "sekundární akcent" }
+  },
+  "gradient": {
+    "name": "CODE HORIZON",
+    "css": "linear-gradient(310deg, #BDE500 -0.12%, #4CE500 99.88%)",
+    "usage": "claim/hero zvýraznění, gradientové badge ikon"
+  },
+  "rules": [
+    "Zelená (Cyber Green / Electric Lime) je minimalistický akcent, NE strukturální barva. Používat max. jeden akcent na obrazovku/stránku — CTA tlačítko, logo, ikonový badge, nebo jedno zvýrazněné slovo v nadpisu.",
+    "Oddělovací čáry (dělítka mezi sekcemi) a odrážky v odrážkových seznamech jsou VŽDY Deep Void (černá), nikdy zelené. Zelená v dělítku nebo bullet listu působí jako chyba, ne jako brandový prvek.",
+    "Číslované nadpisy v dokumentech/reportech (kapitoly, podkapitoly): číslo má vždy stejnou barvu, řez i velikost jako zbytek nadpisu — žádné barevné odlišení. To je jiné pravidlo než u marketingových web komponent (např. číslovaný proces), kde barevný akcent u čísla patří."
+  ],
+  "typography": {
+    "font_heading": "Space Grotesk (weights 400/500/600/700)",
+    "font_body": "Inter (weights 400/500/600)",
+    "font_files_path": "Assets/Fonts/ (.ttf, licence SIL OFL)",
+    "line_height_rules": {
+      "body_lead_card_text": "160%",
+      "small_labels_and_subheadlines_14_20px": "140%",
+      "large_headings_h1_h2_28px_plus": "120%",
+      "compact_single_line_card_headings_e.g._icon_box": "100% (bez extra prostoru)"
+    },
+    "heading_spacing_rule": "Odstup NAD nadpisem je vždy VĚTŠÍ než odstup POD ním, aby nadpis vizuálně patřil k textu, který následuje (8px rytmus).",
+    "scale": {
+      "h1": { "size_px": 42, "weight": 700, "line_height": 1.2, "margin_top_px": 48, "margin_bottom_px": 24 },
+      "h2": { "size_px": 28, "weight": 600, "line_height": 1.2, "margin_top_px": 40, "margin_bottom_px": 20 },
+      "h3": { "size_px": 22, "weight": 600, "line_height": 1.4, "margin_top_px": 32, "margin_bottom_px": 16 },
+      "h4": { "size_px": 17, "weight": 600, "line_height": 1.4, "margin_top_px": 24, "margin_bottom_px": 12 },
+      "paragraph": { "size_px": 16, "weight": 400, "line_height": 1.6, "margin_bottom_px": 16, "color": "deep-void" },
+      "lead": { "size_px": 20, "weight": 400, "line_height": 1.6, "color": "digital-dust" },
+      "caption": { "size_px": 13, "weight": 500, "line_height": 1.4, "color": "digital-dust" }
+    }
+  },
+  "buttons": {
+    "radius_px": 6,
+    "padding": "16px 32px",
+    "font": "Space Grotesk, weight 600, 15px",
+    "variants": {
+      "primary": { "background": "cyber-green", "text": "deep-void" },
+      "secondary": { "background": "deep-void", "text": "cloud-whisper" },
+      "outline": { "background": "transparent", "text": "deep-void", "border": "1px solid light-gray" },
+      "ghost": { "background": "digital-dust @ 10% opacity", "text": "deep-void" }
+    }
+  },
+  "spacing": {
+    "base_unit_px": 8,
+    "radius_small_px": 6,
+    "radius_large_px": 12
+  },
+  "logo": {
+    "source_of_truth": "Assets/Logo/svg/ — SVG je zdroj pravdy, PNG a EPS jsou k dispozici pro tisk / nástroje bez SVG podpory",
+    "paths": {
+      "svg": "Assets/Logo/svg/{black,white,gradient}/",
+      "png": "Assets/Logo/png/{black,white,gradient}/",
+      "eps": "Assets/Logo/eps/{black,white,gradient}/"
+    },
+    "variants": [
+      "Aitom Logo Primary Black — na světlém pozadí",
+      "Aitom Logo Secondary Black",
+      "Aitom Logo primary White — na tmavém pozadí",
+      "Aitom Logo Secondary White",
+      "Aitom Logo Primary Dark / Primary Light — gradient verze",
+      "Aitom Logo Secondary Dark / Secondary Light — gradient verze",
+      "Aitom Logomark {Black,White,gradient} — samotná značka bez textu",
+      "Aitom Logotype {Black,White} — samotný text bez značky"
+    ],
+    "note": "Přesná pravidla ochranné zóny (clear space) a minimální velikosti nebyla ve Figmě definována jako samostatný token — pokud existují jinde, doplnit ručně."
+  },
+  "icons": {
+    "path": "Assets/Icons/",
+    "count": 32,
+    "style": "jednotný styl — zaoblený gradientový badge, bílá linka, stroke 2px",
+    "names": [
+      "Building", "Calendar", "Certified", "Chat 1", "Chat 2", "Chat 3", "Coins hand", "Coins swap",
+      "Connection", "Cube 2", "Cube1", "Globe", "Grid", "Layers", "Line Chart", "List",
+      "Online marketing", "Path", "Pie Chart", "Podcast", "Presentation", "Report", "Research",
+      "RevOps", "Rocket", "Settings", "Switch", "Target 1", "Target 2", "Trophy", "Upload cloud",
+      "Web development"
+    ]
+  },
+  "background_texture": {
+    "path": "Assets/bg.png",
+    "usage": "tečkovaný rastr s tmavým přechodem — web hero sekce a tmavé plochy (např. tmavá karta)",
+    "note": "soubor je 7680×4320 (~9,6 MB), nekomprimovaný — pro web/dokumenty doporučeno zmenšit na ~1920-2560px šířky a převést do WebP, ať nezpomaluje generování/stránky."
+  }
+}

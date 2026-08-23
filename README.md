@@ -4,35 +4,48 @@ Tento repozitář je zdroj pravdy pro vizuální styl a strukturu výstupů zna�
 libovolný AI nástroj (Claude, ChatGPT, Gemini, ...) — stačí přečíst tento soubor a řídit se odkazy
 podle toho, co má vzniknout.
 
-## Co číst podle cíle
+## ⚠️ Pro tvorbu používej JEN "light" soubory, ne `nahledy/`
 
-| Chci vytvořit / přestylovat | Kde najdu podklady |
-|---|---|
-| **Cokoliv** — barvy, typografie, logo, ikony (obecná brand pravidla) | [`styleguide.html`](styleguide.html) |
-| **Webovou stránku** (import do WordPress/Gutenberg na aitom.cz) | [`web/gutenberg/`](web/gutenberg/) — viz `README.md` tam |
-| **Tiskový/PDF/Word dokument** (nabídka, objednávka, případová studie...) | [`docs/`](docs/) — viz `README.md` tam a příslušná podsložka v `docs/templates/` |
+`nahledy/` obsahuje velké HTML soubory (`styleguide.html`, `web-components.html`) — jsou to jen
+**vizuální náhledy pro člověka** (otevři v prohlížeči a koukni se). Pro AI nástroj, který má něco
+vytvořit, jsou zbytečně velké a pomalé na zpracování. K samotné tvorbě používej vždy odpovídající
+**lehký JSON/strukturovaný soubor**:
+
+| Chci vytvořit / přestylovat | Lehký soubor pro tvorbu | Náhled (jen ke kontrole očima) |
+|---|---|---|
+| **Cokoliv** — barvy, typografie, logo, ikony (obecná brand pravidla) | [`styleguide.json`](styleguide.json) | [`nahledy/styleguide.html`](nahledy/styleguide.html) |
+| **Webovou stránku** (import do WordPress/Gutenberg na aitom.cz) | [`web/gutenberg/components.json`](web/gutenberg/components.json) | [`nahledy/web-components.html`](nahledy/web-components.html) |
+| **Tiskový/PDF/Word dokument** (nabídka, objednávka, případová studie...) | [`docs/templates/<typ>/`](docs/) | — |
 
 ## Postup pro AI nástroj
 
-1. Nejdřív si přečti `styleguide.html` — barvy, typografii, logo pravidla, která platí napříč vším.
-2. Podle cílového formátu (web vs. tiskový dokument) otevři buď `web/gutenberg/README.md`, nebo
-   `docs/README.md` a postupuj podle instrukcí tam.
+1. Nejdřív načti `styleguide.json` — barvy, typografii, spacing pravidla, logo/ikony cesty. Platí
+   napříč vším, co se tvoří.
+2. Podle cílového formátu (web vs. tiskový dokument) načti buď `web/gutenberg/components.json`,
+   nebo příslušnou podsložku v `docs/templates/<typ>/` a postupuj podle jejich README.
 3. `web/gutenberg/components.json` obsahuje reálné, ze živého webu zkopírované Gutenberg bloky
    s `{{placeholder}}` místy — pro webovou stránku z nich skládej výstup, nevymýšlej si vlastní
    Gutenberg markup.
 4. `docs/templates/<typ>/` bude obsahovat reálné vzory dokumentů (zatím se doplňují) — drž se
-   stejného principu, vycházej z reálného vzoru, ne z domněnky, jak dokument vypadá.
+   stejného principu: vycházej z reálného vzoru, ne z domněnky, jak dokument vypadá.
+5. Soubory v `nahledy/` NEČTI kvůli obsahu pro tvorbu — otvírej je jen když se přímo chceš/má se
+   podívat, jak něco vypadá vizuálně.
 
 ## Struktura repa
 
 ```
-styleguide.html       — obecný brand style guide (barvy, typografie, logo, ikony)
-Assets/               — loga, ikony, fonty
+styleguide.json        — LIGHT: brand pravidla (barvy, typografie, logo, ikony) — čti tohle
+Assets/                — loga, ikony, fonty (reálné zdrojové soubory)
 web/
-  gutenberg/           — registr Gutenberg/UAGB komponent pro web (components.json + components.html)
+  gutenberg/
+    components.json     — LIGHT: registr Gutenberg/UAGB komponent pro web — čti tohle
+    README.md
 docs/
   templates/
-    nabidka/            — vzor obchodní nabídky
-    objednavka/         — vzor objednávky
-    pripadova-studie/   — vzor případové studie (print/PDF)
+    nabidka/             — vzor obchodní nabídky
+    objednavka/          — vzor objednávky
+    pripadova-studie/    — vzor případové studie (print/PDF)
+nahledy/                — POUZE vizuální náhled pro člověka, nečíst kvůli tvorbě
+  styleguide.html
+  web-components.html
 ```

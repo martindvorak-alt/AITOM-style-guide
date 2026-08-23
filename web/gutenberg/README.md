@@ -2,17 +2,20 @@
 
 Dva soubory, jeden zdroj pravdy:
 
-- **`components.json`** — strojově čitelný registr komponent. Pro každou komponentu: `id`, `name`,
-  `category`, `description`, `sourcePages`, `fields` (editovatelná místa) a `template` (reálná
-  Gutenberg block markup z živého webu, s `{{placeholder}}` na místech, která se mají při generování
-  nahradit). Z tohoto souboru se má reálně generovat obsah/stránky.
-- **`components.html`** — vizuální přehled pro kontrolu (otevři v prohlížeči). Zobrazuje stejná data
-  jako `components.json`, jen čitelně — název, popis, editovatelná pole, zdrojová stránka a samotný
-  kód komponenty. Filtrovatelné podle kategorie.
+- **`components.json`** ← **tento soubor čti/používej pro tvorbu.** Strojově čitelný registr
+  komponent. Pro každou komponentu: `id`, `name`, `category`, `description`, `sourcePages`, `fields`
+  (editovatelná místa) a `template` (reálná Gutenberg block markup z živého webu, s `{{placeholder}}`
+  na místech, která se mají při generování nahradit). Z tohoto souboru se má reálně generovat
+  obsah/stránky.
+- **[`../../nahledy/web-components.html`](../../nahledy/web-components.html)** — vizuální přehled
+  POUZE pro kontrolu očima (otevři v prohlížeči). Zobrazuje stejná data jako `components.json`, jen
+  čitelně — název, popis, editovatelná pole, zdrojová stránka a samotný kód komponenty. Filtrovatelné
+  podle kategorie. Nečti ho kvůli tvorbě — je zbytečně velký a pomalý na zpracování, `components.json`
+  má úplně stejný obsah v lehčí strojově čitelné formě.
 
 Oba soubory generuje `build_components.py` skript (v scratchpadu, ne v repu) — při přidávání dalších
 komponent se dá znovu spustit stejným způsobem, případně stačí ručně upravit `components.json` a
-`components.html` přegenerovat.
+`nahledy/web-components.html` přegenerovat.
 
 ## Jak to funguje (kontext webu)
 
@@ -51,7 +54,8 @@ názvu, nekopíruj kód:
 
 hero-primary, section-header, icon-box-checkmark-list (Box 5), stats-counters, numbered-process-steps
 (Box 4), checkmark-pill-row, dark-rounded-box, anchor-menu, icon-box-2, icon-box-6, timeline-numbered-steps,
-hero-badge, faq-jsonld, services-tabs, vyhody-box — viz `components.html` pro detail každé z nich.
+hero-badge, faq-jsonld, services-tabs, vyhody-box — viz `../../nahledy/web-components.html` pro detail
+každé z nich (vizuálně).
 
 ## Zdrojové stránky
 
