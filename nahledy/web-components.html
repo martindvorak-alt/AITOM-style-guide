@@ -116,11 +116,13 @@
   .preview-render .uagb-ifb-desc { color: var(--color-digital-dust); font-size: 14px; margin-top: 6px; }
   .preview-render .uagb-infobox-link-wrap { position: absolute; inset: 0; pointer-events: none; }
 
-  /* tlačítka */
+  /* tlačítka — reálný výchozí styl (potvrzeno screenshotem cta-block): PLNĚ VYPLNĚNÉ tmavé
+     tlačítko s bílým textem, ne průhledné s obrysem, i když JSON obsahuje jen border atributy */
   .preview-render .wp-block-uagb-buttons-child a, .preview-render .uagb-buttons-repeater {
     display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid #333;
     border-radius: 6px; font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 14px;
-    background: transparent; }
+    background: var(--color-deep-void); color: var(--color-cloud-whisper) !important; }
+  .preview-render .wp-block-uagb-buttons-child .uagb-button__link { color: var(--color-cloud-whisper) !important; margin: 0; }
   .preview-render .uagb-buttons__wrap { display: flex; gap: 12px; flex-wrap: wrap; }
 
   /* statistiky */
@@ -165,8 +167,23 @@
   .preview-render.preview-hero-dark .uagb-buttons__wrap { justify-content: center; }
   .preview-render.preview-hero-dark .wp-block-uagb-buttons-child a,
   .preview-render.preview-hero-dark .wp-block-uagb-buttons-child .uagb-button__link {
-    border-color: var(--color-cloud-whisper) !important; color: var(--color-cloud-whisper) !important;
+    background: var(--color-cloud-whisper) !important; border-color: var(--color-cloud-whisper) !important;
+    color: var(--color-deep-void) !important;
   }
+
+  /* blockstudio/cta — potvrzeno screenshotem: zelený CODE HORIZON gradient, výrazný radius,
+     centrovaný tmavý text. Wrapper v JSON atributech není — přidává ho server-side blok. */
+  .preview-render.preview-cta-gradient {
+    background: linear-gradient(310deg, var(--color-electric-lime) -0.12%, var(--color-cyber-green) 99.88%);
+    border-radius: 24px; text-align: center; padding: 40px;
+  }
+  .preview-render.preview-cta-gradient p, .preview-render.preview-cta-gradient h2 { color: var(--color-deep-void); }
+  .preview-render.preview-cta-gradient .uagb-buttons__wrap { justify-content: center; }
+
+  /* partner logos strip — přibližná statická náhrada za reálný carousel (server-rendered,
+     žádný statický HTML výstup); reálné URL loga jsou z živého webu */
+  .logo-strip { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; padding: 8px 0; }
+  .logo-strip img { height: 40px; width: auto; max-width: 140px; object-fit: contain; filter: grayscale(1); opacity: .75; }
 </style>
 </head>
 <body>
@@ -775,12 +792,12 @@
       </details>
     </article>
     
-    <article class="card" id="button-outline" data-category="Buttons">
+    <article class="card" id="button-default" data-category="Buttons">
       <div class="card-head">
-        <h3>Tlačítko — obrys (výchozí CTA)</h3>
+        <h3>Tlačítko — výchozí CTA (tmavé, vyplněné)</h3>
         <span class="badge">Buttons</span>
       </div>
-      <p class="desc">Nejčastěji používaný CTA styl na webu — bez vyplněného pozadí, jen 1px orámování (#333). Vytaženo jako samostatná komponenta z opakovaného výskytu v hero sekcích a 'Vyhody Box'. Zelené vyplněné 'primary' tlačítko (dle styleguide.json) zatím v žádné zkopírované stránce reálně nebylo — nekopírovat markup dokud se nenajde na živé stránce.</p>
+      <p class="desc">Nejčastěji používaný CTA styl na webu. V JSON atributech je nastavené jen 1px orámování (#333) a žádný explicitní background — ALE reálně (potvrzeno screenshotem cta-block od uživatele) se renderuje jako PLNĚ VYPLNĚNÉ tmavé (deep-void) tlačítko s bílým textem, ne jako průhledné s obrysem. Vytaženo jako samostatná komponenta z opakovaného výskytu v hero sekcích, 'Vyhody Box' a 'cta-block'. Zelené vyplněné 'primary' tlačítko (dle styleguide.json design specu) zatím v žádné zkopírované stránce reálně nebylo.</p>
       <p class="meta">Zdroj: /, b2b, b2b (marketing)</p>
       <details>
         <summary>Editovatelná pole</summary>
@@ -807,14 +824,14 @@
         <h3>CTA blok — eyebrow, nadpis, tlačítko</h3>
         <span class="badge">CTA</span>
       </div>
-      <p class="desc">blockstudio/cta obaluje krátký úvodní řádek (eyebrow paragraf), H2 nadpis a jedno button-outline tlačítko. Bez explicitní barvy textu v atributech — na rozdíl od hero-primary tedy pravděpodobně NENÍ na tmavém pozadí (jinak by text nebyl čitelný). Odkaz tlačítka typicky směřuje na Kontakt (page ID 505). Samotný wrapper (padding/pozadí kolem obsahu) zajišťuje server-side blok, v repu není.</p>
+      <p class="desc">blockstudio/cta obaluje krátký úvodní řádek (eyebrow paragraf), H2 nadpis a jedno button-default tlačítko. POTVRZENO SCREENSHOTEM od uživatele: server-side wrapper má zelený gradientový background (CODE HORIZON), výrazně zaoblené rohy, centrovaný text v Deep Void barvě (černá na zelené), tlačítko tmavé vyplněné s bílým textem. Tenhle vizuální wrapper (gradient/radius/padding) v JSON atributech není — přidává ho server-side blok, který v repu není, ale je zdokumentovaný jako fakt, ne odhad. Odkaz tlačítka typicky směřuje na Kontakt (page ID 505).</p>
       <p class="meta">Zdroj: b2b</p>
       <details>
         <summary>Editovatelná pole</summary>
         <ul class="fields"><li><code>eyebrow</code> — Krátký úvodní řádek nad nadpisem</li><li><code>heading</code> — Nadpis H2</li><li><code>cta_label</code> — Text tlačítka</li><li><code>cta_link</code> — Odkaz tlačítka (typicky Kontakt, page ID 505)</li></ul>
       </details>
       <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
-      <div class="preview-render "><!-- wp:blockstudio/cta {"blockstudio":{"name":"blockstudio/cta","attributes":{"anchorId":""}}} -->
+      <div class="preview-render preview-cta-gradient"><!-- wp:blockstudio/cta {"blockstudio":{"name":"blockstudio/cta","attributes":{"anchorId":""}}} -->
 <!-- wp:paragraph -->
 <p>Pojďme posunout vaše podnikání</p>
 <!-- /wp:paragraph -->
@@ -846,6 +863,25 @@
 &lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons --&gt;
 &lt;!-- /wp:blockstudio/cta --&gt;</code></pre>
+      </details>
+    </article>
+    
+    <article class="card" id="partner-logos-gallery" data-category="Data">
+      <div class="card-head">
+        <h3>Galerie log partnerů (carousel)</h3>
+        <span class="badge">Data</span>
+      </div>
+      <p class="desc">uagb/image-gallery — karusel log partnerů/klientů (feedLayout: 'carousel'). Self-closing blok bez statického HTML výstupu v uloženém obsahu (WP ho renderuje server-side při načtení stránky, podobně jako blockstudio bloky) — v editoru se needituje přes HTML, ale přes UAGB Image Gallery UI (přidání/odebrání obrázků z WP Médií). mediaGallery/mediaIDs musí odkazovat na SKUTEČNĚ nahrané obrázky ve WP Média knihovně — ID a URL si nelze vymyslet.</p>
+      <p class="meta">Zdroj: b2b</p>
+      <details>
+        <summary>Editovatelná pole</summary>
+        <ul class="fields"><li><code>mediaGallery</code> — Pole obrázků (id, url, sizes) — z WP Médií</li><li><code>mediaIDs</code> — Pole WP attachment ID ve stejném pořadí jako mediaGallery</li><li><code>columnsDesk</code> — Počet sloupců desktop (reálně 6)</li><li><code>columnsTab</code> — Počet sloupců tablet (reálně 4)</li><li><code>columnsMob</code> — Počet sloupců mobil (reálně 3)</li></ul>
+      </details>
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="no-render">Bez statického vizuálního výstupu — self-closing UAGB blok (server-rendered carousel) — níže přibližný statický náhled ze skutečných obrázků.</div><div class="logo-strip"><img src="https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg" alt="Česká zbrojovka"><img src="https://www.aitom.cz/app/uploads/2024/07/layer_1.svg" alt="Layer 1"><img src="https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg" alt="Hospodářská komora"><img src="https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg" alt="Mattoni"><img src="https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg" alt="Jägermeister"><img src="https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg" alt="Drivalia"></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:uagb/image-gallery {"classMigrate":true,"readyToRender":true,"mediaGallery":[{"sizes":{"thumbnail":{"height":59,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","orientation":"landscape"},"medium":{"height":117,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","orientation":"landscape"},"large":{"height":400,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","height":48,"width":123,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2142,"url":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/ceska-zbrojovka-logo-1.svg","caption":""},{"sizes":{"thumbnail":{"height":38,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","orientation":"landscape"},"medium":{"height":77,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","orientation":"landscape"},"large":{"height":263,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","height":48,"width":187,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2146,"url":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/layer_1.svg","caption":""},{"sizes":{"thumbnail":{"height":43,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","orientation":"landscape"},"medium":{"height":85,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","orientation":"landscape"},"large":{"height":291,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","height":60,"width":211,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2144,"url":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/hospodarska-komora-logo-1.svg","caption":""},{"sizes":{"thumbnail":{"height":43,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","orientation":"landscape"},"medium":{"height":86,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","orientation":"landscape"},"large":{"height":293,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","height":48,"width":168,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2147,"url":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/mattoni-logo-1.svg","caption":""},{"sizes":{"thumbnail":{"height":127,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","orientation":"landscape"},"medium":{"height":254,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","orientation":"landscape"},"large":{"height":868,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","height":90,"width":106,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2145,"url":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/jagermeister-logo-1.svg","caption":""},{"sizes":{"thumbnail":{"height":19,"width":150,"url":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","orientation":"landscape"},"medium":{"height":37,"width":300,"url":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","orientation":"landscape"},"large":{"height":127,"width":1024,"url":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","orientation":"landscape"},"full":{"url":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","height":24,"width":193,"orientation":"landscape"}},"mime":"image/svg+xml","type":"image","subtype":"svg+xml","id":2143,"url":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","alt":"","link":"https://www.aitom.cz/app/uploads/2024/07/drivalia-logo-1.svg","caption":""}],"mediaIDs":[2142,2146,2144,2147,2145,2143],"feedLayout":"carousel","imageDisplayCaption":false,"galleryImageSize":"full","galleryImageSizeTablet":"full","galleryImageSizeMobile":"full","columnsDesk":6,"columnsTab":4,"columnsMob":3,"gridImageGap":100,"gridImageGapTab":60,"gridImageGapMob":40,"carouselAutoplaySpeed":800,"paginateUseArrows":false,"paginateUseDots":false,"imageEnableZoom":false} /--&gt;</code></pre>
       </details>
     </article>
     
