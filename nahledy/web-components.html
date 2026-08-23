@@ -189,7 +189,7 @@
 </header>
 <nav class="filters">
   <a href="#" class="cat-filter" data-category="all">Vše</a>
-  <a href="#" class="cat-filter" data-category="Hero">Hero</a><a href="#" class="cat-filter" data-category="Layout">Layout</a><a href="#" class="cat-filter" data-category="Icon box">Icon box</a><a href="#" class="cat-filter" data-category="Data">Data</a><a href="#" class="cat-filter" data-category="Process">Process</a><a href="#" class="cat-filter" data-category="Buttons">Buttons</a><a href="#" class="cat-filter" data-category="Navigation">Navigation</a>
+  <a href="#" class="cat-filter" data-category="Hero">Hero</a><a href="#" class="cat-filter" data-category="Layout">Layout</a><a href="#" class="cat-filter" data-category="Icon box">Icon box</a><a href="#" class="cat-filter" data-category="Data">Data</a><a href="#" class="cat-filter" data-category="Process">Process</a><a href="#" class="cat-filter" data-category="Buttons">Buttons</a><a href="#" class="cat-filter" data-category="Navigation">Navigation</a><a href="#" class="cat-filter" data-category="CTA">CTA</a>
 </nav>
 <main>
 
@@ -799,6 +799,53 @@
 &lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" href="{{link}}" rel="follow noopener" target="_self" role="button"&gt;&lt;div class="uagb-button__link"&gt;{{label}}&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;!-- /wp:uagb/buttons --&gt;</code></pre>
+      </details>
+    </article>
+    
+    <article class="card" id="cta-block" data-category="CTA">
+      <div class="card-head">
+        <h3>CTA blok — eyebrow, nadpis, tlačítko</h3>
+        <span class="badge">CTA</span>
+      </div>
+      <p class="desc">blockstudio/cta obaluje krátký úvodní řádek (eyebrow paragraf), H2 nadpis a jedno button-outline tlačítko. Bez explicitní barvy textu v atributech — na rozdíl od hero-primary tedy pravděpodobně NENÍ na tmavém pozadí (jinak by text nebyl čitelný). Odkaz tlačítka typicky směřuje na Kontakt (page ID 505). Samotný wrapper (padding/pozadí kolem obsahu) zajišťuje server-side blok, v repu není.</p>
+      <p class="meta">Zdroj: b2b</p>
+      <details>
+        <summary>Editovatelná pole</summary>
+        <ul class="fields"><li><code>eyebrow</code> — Krátký úvodní řádek nad nadpisem</li><li><code>heading</code> — Nadpis H2</li><li><code>cta_label</code> — Text tlačítka</li><li><code>cta_link</code> — Odkaz tlačítka (typicky Kontakt, page ID 505)</li></ul>
+      </details>
+      <p class="preview-label">Živý náhled (přibližný — vlastní CSS, ne reálné WP styly)</p>
+      <div class="preview-render "><!-- wp:blockstudio/cta {"blockstudio":{"name":"blockstudio/cta","attributes":{"anchorId":""}}} -->
+<!-- wp:paragraph -->
+<p>Pojďme posunout vaše podnikání</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Začínáme bezplatnou konzultací</h2>
+<!-- /wp:heading -->
+
+<!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true} -->
+<div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"><div class="uagb-buttons__wrap uagb-buttons-layout-wrap "><!-- wp:uagb/buttons-child {"label":"Spojte se s námi","link":"#","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} -->
+<div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"><div class="uagb-button__wrapper"><a class="uagb-buttons-repeater wp-block-button__link" aria-label="" href="#" rel="follow noopener" target="_self" role="button"><div class="uagb-button__link">Spojte se s námi</div></a></div></div>
+<!-- /wp:uagb/buttons-child --></div></div>
+<!-- /wp:uagb/buttons -->
+<!-- /wp:blockstudio/cta --></div>
+      <details>
+        <summary>Gutenberg kód</summary>
+        <pre><code>&lt;!-- wp:blockstudio/cta {"blockstudio":{"name":"blockstudio/cta","attributes":{"anchorId":""}}} --&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;{{eyebrow}}&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:heading --&gt;
+&lt;h2 class="wp-block-heading"&gt;{{heading}}&lt;/h2&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:uagb/buttons {"classMigrate":true,"childMigrate":true} --&gt;
+&lt;div class="wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn"&gt;&lt;div class="uagb-buttons__wrap uagb-buttons-layout-wrap "&gt;&lt;!-- wp:uagb/buttons-child {"label":"{{cta_label}}","link":"{{cta_link}}","btnBorderTopWidth":1,"btnBorderLeftWidth":1,"btnBorderRightWidth":1,"btnBorderBottomWidth":1,"btnBorderStyle":"solid","btnBorderColor":"#333","btnBorderHColor":"#333"} --&gt;
+&lt;div class="wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button"&gt;&lt;div class="uagb-button__wrapper"&gt;&lt;a class="uagb-buttons-repeater wp-block-button__link" aria-label="" href="{{cta_link}}" rel="follow noopener" target="_self" role="button"&gt;&lt;div class="uagb-button__link"&gt;{{cta_label}}&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- /wp:uagb/buttons-child --&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- /wp:uagb/buttons --&gt;
+&lt;!-- /wp:blockstudio/cta --&gt;</code></pre>
       </details>
     </article>
     

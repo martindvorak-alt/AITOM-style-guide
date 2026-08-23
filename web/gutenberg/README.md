@@ -74,8 +74,8 @@ názvu, nekopíruj kód:
 
 hero-primary, section-header, icon-box-checkmark-list (Box 5), stats-counters, numbered-process-steps
 (Box 4), checkmark-pill-row, dark-rounded-box, anchor-menu, icon-box-2, icon-box-6, timeline-numbered-steps,
-hero-badge, faq-jsonld, services-tabs, vyhody-box, button-outline — viz `../../nahledy/web-components.html`
-pro detail každé z nich (vizuálně).
+hero-badge, faq-jsonld, services-tabs, vyhody-box, button-outline, cta-block — viz
+`../../nahledy/web-components.html` pro detail každé z nich (vizuálně).
 
 ## Zdrojové stránky
 

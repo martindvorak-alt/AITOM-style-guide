@@ -475,6 +475,38 @@
         }
       ],
       "template": "<!-- wp:uagb/buttons {\"classMigrate\":true,\"childMigrate\":true,\"inheritGap\":true,\"topMargin\":0,\"rightMargin\":0,\"bottomMargin\":0,\"leftMargin\":0} -->\n<div class=\"wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn\"><div class=\"uagb-buttons__wrap uagb-buttons-layout-wrap is-layout-flex\"><!-- wp:uagb/buttons-child {\"label\":\"{{label}}\",\"link\":\"{{link}}\",\"btnBorderTopWidth\":1,\"btnBorderLeftWidth\":1,\"btnBorderRightWidth\":1,\"btnBorderBottomWidth\":1,\"btnBorderStyle\":\"solid\",\"btnBorderColor\":\"#333\",\"btnBorderHColor\":\"#333\"} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" href=\"{{link}}\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><div class=\"uagb-button__link\">{{label}}</div></a></div></div>\n<!-- /wp:uagb/buttons-child --></div></div>\n<!-- /wp:uagb/buttons -->"
+    },
+    {
+      "id": "cta-block",
+      "name": "CTA blok — eyebrow, nadpis, tlačítko",
+      "category": "CTA",
+      "description": "blockstudio/cta obaluje krátký úvodní řádek (eyebrow paragraf), H2 nadpis a jedno button-outline tlačítko. Bez explicitní barvy textu v atributech — na rozdíl od hero-primary tedy pravděpodobně NENÍ na tmavém pozadí (jinak by text nebyl čitelný). Odkaz tlačítka typicky směřuje na Kontakt (page ID 505). Samotný wrapper (padding/pozadí kolem obsahu) zajišťuje server-side blok, v repu není.",
+      "sourcePages": [
+        "b2b"
+      ],
+      "fields": [
+        {
+          "key": "eyebrow",
+          "label": "Krátký úvodní řádek nad nadpisem",
+          "type": "text"
+        },
+        {
+          "key": "heading",
+          "label": "Nadpis H2",
+          "type": "text"
+        },
+        {
+          "key": "cta_label",
+          "label": "Text tlačítka",
+          "type": "text"
+        },
+        {
+          "key": "cta_link",
+          "label": "Odkaz tlačítka (typicky Kontakt, page ID 505)",
+          "type": "text"
+        }
+      ],
+      "template": "<!-- wp:blockstudio/cta {\"blockstudio\":{\"name\":\"blockstudio/cta\",\"attributes\":{\"anchorId\":\"\"}}} -->\n<!-- wp:paragraph -->\n<p>{{eyebrow}}</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">{{heading}}</h2>\n<!-- /wp:heading -->\n\n<!-- wp:uagb/buttons {\"classMigrate\":true,\"childMigrate\":true} -->\n<div class=\"wp-block-uagb-buttons uagb-buttons__outer-wrap uagb-btn__default-btn uagb-btn-tablet__default-btn uagb-btn-mobile__default-btn\"><div class=\"uagb-buttons__wrap uagb-buttons-layout-wrap \"><!-- wp:uagb/buttons-child {\"label\":\"{{cta_label}}\",\"link\":\"{{cta_link}}\",\"btnBorderTopWidth\":1,\"btnBorderLeftWidth\":1,\"btnBorderRightWidth\":1,\"btnBorderBottomWidth\":1,\"btnBorderStyle\":\"solid\",\"btnBorderColor\":\"#333\",\"btnBorderHColor\":\"#333\"} -->\n<div class=\"wp-block-uagb-buttons-child uagb-buttons__outer-wrap wp-block-button\"><div class=\"uagb-button__wrapper\"><a class=\"uagb-buttons-repeater wp-block-button__link\" aria-label=\"\" href=\"{{cta_link}}\" rel=\"follow noopener\" target=\"_self\" role=\"button\"><div class=\"uagb-button__link\">{{cta_label}}</div></a></div></div>\n<!-- /wp:uagb/buttons-child --></div></div>\n<!-- /wp:uagb/buttons -->\n<!-- /wp:blockstudio/cta -->"
     }
   ]
 }
