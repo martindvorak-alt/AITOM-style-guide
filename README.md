@@ -24,8 +24,12 @@ vytvořit, jsou zbytečně velké a pomalé na zpracování. K samotné tvorbě 
 2. Podle cílového formátu (web vs. tiskový dokument) načti buď `web/gutenberg/components.json`,
    nebo příslušnou podsložku v `docs/templates/<typ>/` a postupuj podle jejich README.
 3. `web/gutenberg/components.json` obsahuje reálné, ze živého webu zkopírované Gutenberg bloky
-   s `{{placeholder}}` místy — pro webovou stránku z nich skládej výstup, nevymýšlej si vlastní
-   Gutenberg markup.
+   s `{{placeholder}}` místy — pro webovou stránku z nich přednostně skládej výstup. Pokud pro danou
+   sekci komponenta chybí (např. přestylováváš hotový cizí HTML landing page do našich komponent),
+   smíš navrhnout novou — ale jen podle přesného postupu a pravidel v
+   [`web/gutenberg/README.md`](web/gutenberg/README.md) (sekce "Postup skládání stránky"): musí to
+   pořád být validní Gutenberg markup, jen barvy/rádius/spacing z `styleguide.json`, a musí to být
+   jasně označené jako improvizace, ne tichý výmysl.
 4. `docs/templates/<typ>/` bude obsahovat reálné vzory dokumentů (zatím se doplňují) — drž se
    stejného principu: vycházej z reálného vzoru, ne z domněnky, jak dokument vypadá.
 5. Soubory v `nahledy/` NEČTI kvůli obsahu pro tvorbu — otvírej je jen když se přímo chceš/má se

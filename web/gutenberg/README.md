@@ -17,6 +17,26 @@ Oba soubory generuje `build_components.py` skript (v scratchpadu, ne v repu) —
 komponent se dá znovu spustit stejným způsobem, případně stačí ručně upravit `components.json` a
 `nahledy/web-components.html` přegenerovat.
 
+## Postup skládání stránky (pro AI nástroj)
+
+Když má AI nástroj z podkladu (brief, hotový HTML/landing page k přestylování, popis stránky) sestavit
+Gutenberg stránku, drž se v tomto pořadí:
+
+1. **Nejdřív hledej přesnou shodu** v `components.json` — pokud sekce odpovídá existující komponentě
+   (podle `category`/`description`), použij ji a vyplň `{{placeholder}}` pole.
+2. **Pokud přesná shoda chybí, najdi nejbližší podobnou** a uprav ji / poskládej sekci z víc existujících
+   komponent, než abys psal/psala něco úplně od nuly.
+3. **Teprve pokud fakt nic nesedí, navrhni novou komponentu** — ale povinně platí:
+   - výstup musí být validní **UAGB/Gutenberg block markup** (ne čisté HTML) — jinak se nedá vložit
+     do WP editoru a zůstat tam editovatelná, což je celý smysl tohoto registru,
+   - barvy jen z palety v `styleguide.json` (žádné vlastní hex kódy),
+   - radius, spacing a další vizuální detaily (rohy, pozadí, odstupy) podle tokenů ve `styleguide.json`
+     (`radius_small`/`radius_large`, `spacing.base_unit_px` atd.), ne podle odhadu,
+   - dodrž pravidlo "zelená jen jako jeden akcent na stránku" — viz `styleguide.json` → `rules`.
+4. **Nově navrženou komponentu vždy pojmenuj a označ jako improvizovanou** ("tohle jsem musel/a
+   navrhnout, v registru nebylo") — ať je jasné, co případně stojí za to přidat do `components.json`
+   natrvalo, místo aby se to řešilo pokaždé znovu od nuly.
+
 ## Jak to funguje (kontext webu)
 
 Web běží na **WordPress + UAGB/Spectra** (page builder plugin) + vlastních **Blockstudio** blocích
