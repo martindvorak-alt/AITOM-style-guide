@@ -12,7 +12,10 @@ potřeby.
 
 Vychází z reálné SEO/PPC analýzy (anonymizováno a zobecněno — reálný klient, čísla i téma nahrazené
 hranatými placeholdery), formátování je uložené jako pojmenované Word styly stejným způsobem jako
-u [`../objednavka/`](../objednavka/).
+u [`../objednavka/`](../objednavka/). Strana 3 doplňuje obecné prvky inspirované reálnou případovou studií
+(viz [`../pripadova-studie/`](../pripadova-studie/)) — nadpis úrovně 3, citaci, kroky, statistiky, obrázek
+s titulkem, číslovaný seznam a neutrální poznámkový box — aby byly k dispozici i v běžných textových
+dokumentech, ne jen v prezentačních materiálech.
 
 ## Co je anonymizované / zobecněné
 
@@ -46,6 +49,16 @@ oboru/kontextu, volitelná poznámka.
 - Odrážkový seznam
 - Tabulka se sloupcem Priorita (ukazuje všechny 4 úrovně)
 
+**Strana 3 — Doplňkové prvky (obecné, použitelné v jakémkoli textovém dokumentu):**
+- Nadpis úrovně 3 (H3)
+- Citace / reference (blok s citací, jménem, pozicí a firmou)
+- Číslované kroky s velkým barevným číslem (např. popis procesu)
+- Řádek se statistikami/KPI (velké číslo + popisek, libovolný počet vedle sebe)
+- Obrázek s titulkem (šedý placeholder rámeček + popisek pod obrázkem)
+- Číslovaný seznam (nativní Word číslování, na rozdíl od odrážek)
+- Neutrální šedý poznámkový box (pro poznámky, které nejsou "klíčové zjištění" — proto bez zeleného akcentu)
+- Poznámka ke grafům — doporučení použít nativní graf Wordu (viz níže)
+
 Hlavička (logo + drobek `[Typ dokumentu] · [Název dokumentu]`) a patička (`[klient] — [Název dokumentu]`
 + číslo strany) se opakují automaticky na každé straně přes Word header/footer.
 
@@ -73,6 +86,21 @@ Veškeré formátování je uložené jako pojmenované styly — v panelu Styly
 | `AITOM - Priorita vysoká` / `střední` / `kritická` / `nízká` (znakové) | barevné popisky priority v tabulkách úkolů |
 | `AITOM - Hlavička dokumentu` / `AITOM - Patička dokumentu` | text v running header/footer |
 | `AITOM - Tabulka analýzy` (styl tabulky) | jemné šedé ohraničení `E4E6E4` pro datové tabulky |
+| `AITOM - Nadpis úrovně 3` | H3 — menší podnadpis uvnitř podkapitoly (Space Grotesk bold, bez čísla nutně) |
+| `AITOM - Citace text` | text citace/reference (kurzíva, větší velikost) |
+| `AITOM - Citace autor` / `AITOM - Citace role a firma` | jméno a pozice/firma pod citací |
+| `AITOM - Krok číslo` (znakový) | velké zelené číslo před textem číslovaného kroku procesu |
+| `AITOM - Statistika číslo` / `AITOM - Statistika popisek` | velké číslo a caps popisek ve statistickém/KPI callout bloku |
+| `AITOM - Popisek obrázku` | kurzívou psaný popisek pod vloženým obrázkem |
+| `AITOM - Číslovaný seznam` | nativní číslovaný seznam Wordu (zelené číslo, na rozdíl od odrážky `▪`) |
+| `AITOM - Šedý box popisek` | caps label neutrálního šedého poznámkového boxu (bez zeleného akcentu) |
+
+### Grafy (koláčový, sloupcový, spojnicový…)
+
+Pro grafy použij **nativní graf Wordu** (Vložení → Graf) — negeneruj je jako obrázek ani je nekresli ručně.
+Barevné schéma dokumentu (`word/theme/theme1.xml`) je přemapované na značkové barvy AITOM (zelená, černá,
+šedá, elektrická limetka), takže výchozí barvy nově vloženého grafu budou automaticky on-brand bez ručního
+přebarvování.
 
 ### Barvy použité v systému (mimo `../../../styleguide.json`)
 
