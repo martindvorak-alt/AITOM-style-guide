@@ -39,8 +39,36 @@ kterých by šly vyčíst), **musí se doptat**, ne si je vymýšlet nebo nechat
 - **Záloha** bývá 50 % z ceny díla — pokud uživatel výši zálohy sám neurčí jinak, dopočti ji jako
   50 % ze smluvní ceny bez DPH.
 
+## Harmonogram tvorby webu
+
+Sekce obsahuje tabulku s ukázkovými řádky (Práce 1–5, orientační doba trvání jako "1 týden" /
+"1–2 týdny" apod.) — při tvorbě reálné objednávky nahraď obsah tabulky skutečnými fázemi projektu
+a jejich odhadovanou dobou trvání (řádky lze přidat/ubrat, styly zůstanou zachované).
+
+## Formátovací styly (Word)
+
+Veškeré formátování ve vzoru je uložené jako pojmenované styly (ne přímé/manuální formátování) —
+v panelu Styly ve Wordu se zobrazí jako `AITOM...`. Díky tomu při úpravě textu (např. přidání dalšího
+odstavce nebo řádku v tabulce) stačí na nový text aplikovat odpovídající styl a formátování bude
+konzistentní se zbytkem dokumentu automaticky.
+
+Hlavní styly ve vzoru:
+
+| Styl (název v panelu Styly) | Použití |
+|---|---|
+| `AITOM - Nadpis sekce` | hlavní nadpisy sekcí (Předmět objednávky, Smluvní cena, Termín realizace, ...) — se zelenou spodní linkou |
+| `AITOM - Nadpis přílohy` | nadpis přílohy (Kalkulace tvorby webu) |
+| `AITOM - Nadpis podsekce` | menší podnadpisy uvnitř sekce (Kalkulace navrhovaného řešení) |
+| `AITOM - Label světlé pozadí` / `AITOM - Label tmavé pozadí` | popisky ZHOTOVITEL/OBJEDNATEL a hlavičky tabulek |
+| `AITOM - Adresní řádek` | řádky adresy v ZHOTOVITEL/OBJEDNATEL boxu |
+| `AITOM - Odrážka (seznam v tabulce)` | odrážkový seznam (subpoložky u položek kalkulace, poznámky) |
+| `AITOM - Důraz SemiBold` (znakový) | tučné zvýraznění v textu (Inter SemiBold) |
+| `AITOM - Částka zvýrazněná` (znakový) | částky se žlutým podbarvením (0 Kč placeholdery) |
+| `AITOM - Odkaz (medium)` (znakový) | odkazy v textu (Inter Medium) |
+| `AITOM - Tabulka harmonogram` / `AITOM - Harmonogram práce` / `AITOM - Harmonogram doba` | tabulka harmonogramu prací |
+
 ## Poznámka ke zdrojovému souboru
 
-Sekce "Harmonogram tvorby webu" má ve vzoru neúplnou větu ("Nyní počítáme s") následovanou prázdným
-zvýrazněným boxem — tohle je artefakt už v původním (neanonymizovaném) AITOM zdrojovém souboru, ne
-chyba anonymizace. Při použití vzoru tuhle část buď doplň reálným harmonogramem, nebo smaž.
+Text v sekci "Harmonogram tvorby webu" byl doplněn o úvodní větu před tabulkou ("Nyní orientačně
+počítáme s tímto rozvržením prací...") — původní vzor obsahoval neúplnou větu bez tabulky, což byl
+artefakt v původním (neanonymizovaném) AITOM zdrojovém souboru.
