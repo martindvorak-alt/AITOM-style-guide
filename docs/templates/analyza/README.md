@@ -1,42 +1,53 @@
-# Vzor — Analýza
+# Vzor — Analýza / obecný strukturovaný dokument
 
-**[`vzor-analyza.docx`](vzor-analyza.docx)** — styleguide-style vzor pro delší analytické/reportové dokumenty
-(např. SEO/PPC analýza, audit, strategický plán). Na rozdíl od [`../objednavka/`](../objednavka/), kde vzor
-reprodukuje celý reálný dokument, tenhle vzor je **záměrně zkrácený na 2 strany** — obsahuje černou úvodní
-stránku a po jednom ukázkovém vzoru od každého typu prvku (nadpis kapitoly, nadpis podkapitoly, textový
-odstavec, dvojice info-boxů, zelený box, tabulka se zvýrazněným řádkem, odrážkový seznam, tabulka s prioritami).
-Zbytek reálného dokumentu (další kapitoly, další řádky tabulek) se doplňuje individuálně podle rozsahu
-konkrétního zadání — kopíruj vždy ten blok/tabulku/box, který potřebuješ, a znásob podle potřeby.
+**[`vzor-analyza.docx`](vzor-analyza.docx)** — styleguide-style vzor pro **libovolný delší formátovaný a
+strukturovaný dokument** (analýza, audit, report, strategický plán, interní dokumentace apod.) — není vázaný
+na konkrétní téma jako SEO/PPC. Na rozdíl od [`../objednavka/`](../objednavka/), kde vzor reprodukuje celý
+reálný dokument, tenhle vzor je **záměrně zkrácený na 2 strany** — obsahuje černou úvodní stránku a po
+jednom ukázkovém vzoru od každého typu prvku (nadpis kapitoly, nadpis podkapitoly, textový odstavec,
+dvojice srovnávacích info-boxů, zelený box, tabulka se zvýrazněným řádkem, odrážkový seznam, tabulka
+s prioritami). Zbytek reálného dokumentu (další kapitoly, další řádky tabulek) se doplňuje individuálně
+podle rozsahu konkrétního zadání — kopíruj vždy ten blok/tabulku/box, který potřebuješ, a znásob podle
+potřeby.
 
-Vychází z reálné analýzy (anonymizováno — reálný klient i čísla nahrazené hranatými placeholdery), formátování
-je uložené jako pojmenované Word styly stejným způsobem jako u [`../objednavka/`](../objednavka/).
+Vychází z reálné SEO/PPC analýzy (anonymizováno a zobecněno — reálný klient, čísla i téma nahrazené
+hranatými placeholdery), formátování je uložené jako pojmenované Word styly stejným způsobem jako
+u [`../objednavka/`](../objednavka/).
 
-## Co je anonymizované
+## Co je anonymizované / zobecněné
 
-- Doména klienta (`schulte-group.cz`) je nahrazená `[klient].cz` — v titulní straně i v patičce.
+- Doména klienta (`schulte-group.cz`) je nahrazená `[klient]` — v titulní straně i v patičce.
+- Typ a název dokumentu (bylo `INDIKATIVNÍ ANALÝZA` / `SEO & PPC`) jsou nahrazené `[TYP DOKUMENTU]` /
+  `[Název dokumentu]` — vzor totiž neslouží jen pro analýzy, ale pro jakýkoli formátovaný dokument.
 - Obor/vertikála klienta je nahrazená `[Obor / vertikála klienta]`.
+- Nepovinná poznámka na obálce (bylo `Datové podklady: Google Search Console, ...`) je nahrazená obecným
+  `[Nepovinná poznámka na obálce — např. zdroje dat, verze, datum]` — tahle poznámka nemusí být vždy
+  relevantní, klidně ji smaž, pokud dokument žádnou takovou poznámku nepotřebuje.
+- Dvojice srovnávacích info-boxů (bylo `SEO — Doporučeno: ANO` / `PPC — Doporučeno: ANO`) je obecný
+  srovnávací vzor pro dvě možnosti vedle sebe (`[Možnost A]` / `[Možnost B]`, `Doporučeno: [ANO/NE]`) —
+  nemusí jít o srovnání kanálů, funguje pro libovolné dvě porovnávané varianty/scénáře.
 - Všechna reálná data, čísla, klíčová slova, konkurenti a doporučení jsou nahrazené hranatými placeholdery
-  typu `[Položka 1]`, `[Hodnota]`, `[Popis úkolu.]` — při tvorbě nové analýzy je nahraď reálným obsahem.
+  typu `[Položka 1]`, `[Hodnota]`, `[Popis úkolu.]` — při tvorbě nového dokumentu je nahraď reálným obsahem.
 
 ## Struktura vzoru
 
 **Strana 1 — Úvodní (černá) stránka:**
-Celostránková černá plocha (`0B0D0B`), logo AITOM, kicker (typ dokumentu), dvouřádkový titulek (bílý +
-zelený akcentní řádek s doménou klienta), přechodový pruh, podtitulek, popis oboru, poznámka o datových
-podkladech.
+Celostránková černá plocha (`0B0D0B`), logo AITOM, kicker (typ dokumentu), dvouřádkový titulek (bílý
+název dokumentu + zelený akcentní řádek s klientem/předmětem), přechodový pruh, podtitulek, popis
+oboru/kontextu, volitelná poznámka.
 
 **Strana 2 — Obsahová stránka (vzor od každého typu prvku):**
 - Nadpis kapitoly (H1) s číslem
 - Textový odstavec
-- Dvojice info-boxů (tmavý + světlý)
-- Zelený box (klíčové zjištění)
+- Dvojice srovnávacích info-boxů (tmavý + světlý) — možnost A vs. možnost B
+- Zelený box (klíčové zjištění / shrnutí / poznámka)
 - Nadpis podkapitoly (H2) s číslem
 - Tabulka s tmavou hlavičkou a zvýrazněným řádkem CELKEM
 - Odrážkový seznam
 - Tabulka se sloupcem Priorita (ukazuje všechny 4 úrovně)
 
-Hlavička (logo + drobek `Indikativní analýza · [Téma]`) a patička (`[klient].cz — [téma] analýza` + číslo
-strany) se opakují automaticky na každé straně přes Word header/footer.
+Hlavička (logo + drobek `[Typ dokumentu] · [Název dokumentu]`) a patička (`[klient] — [Název dokumentu]`
++ číslo strany) se opakují automaticky na každé straně přes Word header/footer.
 
 ## Formátovací styly (Word)
 
@@ -44,16 +55,16 @@ Veškeré formátování je uložené jako pojmenované styly — v panelu Styly
 
 | Styl | Použití |
 |---|---|
-| `AITOM - Kicker obálky` | malý zelený caps popisek nad titulkem obálky |
-| `AITOM - Titulek obálky` | bílý řádek titulku obálky (téma dokumentu) |
-| `AITOM - Titulek obálky akcent` | zelený řádek titulku obálky (doména/klient) |
+| `AITOM - Kicker obálky` | malý zelený caps popisek nad titulkem obálky (typ dokumentu) |
+| `AITOM - Titulek obálky` | bílý řádek titulku obálky (název dokumentu) |
+| `AITOM - Titulek obálky akcent` | zelený řádek titulku obálky (klient/předmět) |
 | `AITOM - Podtitulek obálky` | světle šedý podtitulek obálky |
-| `AITOM - Popisek obálky` | šedý popis oboru/vertikály na obálce |
-| `AITOM - Zdroje obálky` | drobná poznámka o datových podkladech na obálce |
+| `AITOM - Popisek obálky` | šedý popis oboru/kontextu na obálce |
+| `AITOM - Poznámka obálky` | drobná volitelná poznámka na obálce (zdroje, verze, datum apod.) |
 | `AITOM - Nadpis kapitoly` | H1 — číslo kapitoly má STEJNOU barvu jako název (černá), spodní šedá linka |
 | `AITOM - Nadpis podkapitoly` | H2 — číslo podkapitoly stejnou barvou jako název |
-| `AITOM - Box tmavý nadpis` / `AITOM - Box tmavý text` | nadpis a text v tmavém info-boxu (levý box dvojice) |
-| `AITOM - Box světlý nadpis` | nadpis ve světlém info-boxu (pravý box dvojice); text ve světlém boxu je běžný `Normal` |
+| `AITOM - Box tmavý nadpis` / `AITOM - Box tmavý text` | nadpis a text v tmavém info-boxu (levá možnost dvojice) |
+| `AITOM - Box světlý nadpis` | nadpis ve světlém info-boxu (pravá možnost dvojice); text ve světlém boxu je běžný `Normal` |
 | `AITOM - Zelený box popisek` | caps label zeleného boxu (KLÍČOVÉ ZJIŠTĚNÍ / SHRNUTÍ / DOPORUČENÍ apod.) |
 | `AITOM - Tabulka nadpis buňky` | text v tmavé hlavičce tabulky |
 | `AITOM - Tabulka text buňky` | běžný text v buňce tabulky |
@@ -65,8 +76,8 @@ Veškeré formátování je uložené jako pojmenované styly — v panelu Styly
 
 ### Barvy použité v systému (mimo `../../../styleguide.json`)
 
-Tyto odstíny se v hlavním `styleguide.json` zatím nevedou jako pojmenované tokeny, ale v analytických
-dokumentech se používají konzistentně:
+Tyto odstíny se v hlavním `styleguide.json` zatím nevedou jako pojmenované tokeny, ale v tomto vzoru
+se používají konzistentně:
 
 | Hex | Použití |
 |---|---|
@@ -77,11 +88,13 @@ dokumentech se používají konzistentně:
 | `B00020` | priorita KRITICKÁ |
 | `F8FAF8` | pozadí světlého info-boxu / téměř bílý text v tmavé hlavičce tabulky |
 
-## Jak doplnit novou analýzu
+## Jak doplnit nový dokument
 
-1. Zkopíruj `vzor-analyza.docx`, přejmenuj a nahraď `[klient].cz` a `[Obor / vertikála klienta]` na obálce
-   i v patičce.
-2. Za H1 "Executive summary" doplň reálné shrnutí, dvojici info-boxů a zelený box s klíčovým zjištěním.
+1. Zkopíruj `vzor-analyza.docx`, přejmenuj a nahraď `[TYP DOKUMENTU]`, `[Název dokumentu]`, `[klient]`
+   a `[Obor / vertikála klienta]` na obálce i v hlavičce/patičce. Nepovinnou poznámku na obálce buď
+   doplň, nebo smaž, pokud není relevantní.
+2. Za H1 doplň reálný úvodní odstavec, případně dvojici srovnávacích info-boxů a zelený box s klíčovým
+   zjištěním — obojí je nepovinné, použij jen pokud se hodí k obsahu dokumentu.
 3. Pro každou další kapitolu okopíruj blok nadpisu H1 (nebo H2 pro podkapitoly) a aplikuj příslušný styl —
    číslo kapitoly piš rovnou další v pořadí, barva se převezme ze stylu automaticky (černá, ne zelená).
 4. Pro každou tabulku dat okopíruj vzorovou tabulku (hlavička + řádky + volitelně zvýrazněný CELKEM řádek)
@@ -91,8 +104,9 @@ dokumentech se používají konzistentně:
 
 ## Povinné údaje — doptat se, pokud chybí
 
-- Doména/název klienta a obor podnikání (pro obálku a patičku)
-- Téma/typ analýzy (SEO & PPC, technický audit, konkurenční analýza apod.)
-- Datové podklady/zdroje, ze kterých analýza vychází
-- Alespoň hrubá struktura kapitol, pokud se má lišit od vzoru (Executive summary → aktuální stav →
-  detailní analýza → doporučení)
+- Typ dokumentu a jeho název (pro kicker, titulek obálky a hlavičku/patičku)
+- Klient/předmět dokumentu a obor/kontext
+- Alespoň hrubá struktura kapitol, pokud se má lišit od vzoru (úvodní shrnutí → aktuální stav/kontext →
+  detailní obsah → doporučení/závěr)
+- Zda dokument potřebuje nepovinné prvky ze vzoru (poznámka na obálce, srovnávací info-boxy, zelený box,
+  tabulka s prioritami) — nejsou povinné, doptej se, jestli se hodí k danému obsahu
