@@ -43,6 +43,18 @@ kterých by šly vyčíst), **musí se doptat**, ne si je vymýšlet nebo nechat
 - **Záloha** bývá 50 % z ceny díla — pokud uživatel výši zálohy sám neurčí jinak, dopočti ji jako
   50 % ze smluvní ceny bez DPH.
 
+## Práce s podklady od uživatele
+
+Pokud uživatel k zadání přiloží podklady (např. e-mail od klienta, poznámky ze schůzky, existující
+nabídku, brief, screenshoty), **je nutné z nich do objednávky přenést reálné texty, odkazy i obrázky**
+— ne je jen parafrázovat vlastními slovy nebo vynechat:
+- **Texty** — konkrétní formulace popisu rozsahu prací, názvy položek apod. přebírej z podkladu,
+  ne generickou parafrázi.
+- **Odkazy** — pokud podklad obsahuje URL (např. na Struktura webu, Wireframe, reference), vlož je
+  do dokumentu jako skutečné hypertextové odkazy (styl `AITOM - Odkaz (medium)`), ne jako text.
+- **Obrázky** — pokud podklad obsahuje obrázky (např. logo klienta, screenshoty, vizuály), vlož je
+  do dokumentu na odpovídající místo, nenahrazuj je popisem.
+
 ## Harmonogram tvorby webu
 
 Sekce obsahuje tabulku s ukázkovými řádky (Práce 1–5, orientační doba trvání jako "1 týden" /
