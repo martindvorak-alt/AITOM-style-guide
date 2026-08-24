@@ -20,7 +20,12 @@ při tvorbě nové objednávky, neupravuj strukturu ani styl, jen doplň skuteč
 
 ## Povinné údaje — doptat se, pokud chybí
 
-Když má AI nástroj sestavit objednávku a uživatel v zadání nedodá tyto údaje (ani podklady, ze
+Obecné pravidlo: AI nástroj musí projít **všechny sekce, které jsou ve vzoru** (Předmět objednávky,
+Smluvní cena, Termín realizace, Potvrzení objednávky a způsob fakturace, Harmonogram tvorby webu,
+Kalkulace tvorby webu, ...) a pro každou, kterou zadání ani přiložené podklady nepokrývají, **se
+doptat na chybějící obsah** — nevynechávat sekci a nevymýšlet si obsah bez podkladu.
+
+Konkrétně tyto údaje jsou vždy povinné a když je uživatel v zadání nedodá (ani podklady, ze
 kterých by šly vyčíst), **musí se doptat**, ne si je vymýšlet nebo nechat prázdné:
 
 **Ke zhotoviteli:**
