@@ -46,6 +46,9 @@ Každá podsložka v `templates/` bude obsahovat:
 ## Stav
 
 `styleguide-docs.json` je hotový a vychází z reálného obsahu `nahledy/styleguide.html` (sekce
-"Komponenty" a "Ukázka plynulého textu"). Samotné vzory dokumentů (`templates/*`) jsou zatím jen
-kostra složek — čeká se na první reálný vzor, ze kterého se struktura naplní stejným způsobem jako
-`web/gutenberg/components.json` (reálný obsah, ne vymyšlený).
+"Komponenty" a "Ukázka plynulého textu").
+
+`templates/objednavka/` má hotový reálný vzor (`vzor-objednavka.docx`) — anonymizovaný ze skutečné
+klientské objednávky (částky nahrazené `0 Kč` a podbarvené žlutě, klientské údaje jako hranaté
+placeholdery). `templates/nabidka/` a `templates/pripadova-studie/` jsou zatím jen kostra složek —
+čeká se na první reálný vzor, ze kterého se struktura naplní stejným způsobem.
