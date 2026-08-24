@@ -35,6 +35,7 @@ docs/
     nabidka/              — vzor obchodní nabídky
     objednavka/           — vzor objednávky
     pripadova-studie/     — vzor případové studie (print/PDF verze)
+    analyza/               — vzor analytického/reportového dokumentu (SEO/PPC analýza, audit apod.)
 ```
 
 Každá podsložka v `templates/` bude obsahovat:
@@ -50,5 +51,10 @@ Každá podsložka v `templates/` bude obsahovat:
 
 `templates/objednavka/` má hotový reálný vzor (`vzor-objednavka.docx`) — anonymizovaný ze skutečné
 klientské objednávky (částky nahrazené `0 Kč` a podbarvené žlutě, klientské údaje jako hranaté
-placeholdery). `templates/nabidka/` a `templates/pripadova-studie/` jsou zatím jen kostra složek —
-čeká se na první reálný vzor, ze kterého se struktura naplní stejným způsobem.
+placeholdery).
+
+`templates/analyza/` má hotový vzor (`vzor-analyza.docx`) pro delší analytické/reportové dokumenty —
+anonymizovaný ze skutečné SEO/PPC analýzy, ale na rozdíl od objednávky záměrně zkrácený na 2 strany
+(styleguide formát: černá úvodní stránka + po jednom vzoru od každého typu prvku — nadpisy, info-boxy,
+tabulky, prioritní štítky). `templates/nabidka/` a `templates/pripadova-studie/` jsou zatím jen kostra
+složek — čeká se na první reálný vzor, ze kterého se struktura naplní stejným způsobem.
