@@ -33,6 +33,10 @@ kterých by šly vyčíst), **musí se doptat**, ne si je vymýšlet nebo nechat
 - Smluvní cena bez DPH
 - Termín realizace či rozpětí doby dodání
 - Datum podpisu objednávky
+- **Harmonogram** — rozpis prací podle typu (např. Design, Frontend, Copywriting, ...) a odhadovaná
+  doba trvání každého typu práce (viz sekce [Harmonogram tvorby webu](#harmonogram-tvorby-webu) níže)
+- **Položky kalkulace** — konkrétní rozpis položek do tabulky Kalkulace tvorby webu (název položky,
+  její dílčí odrážky/rozsah práce, cena za položku)
 
 ## Odvozené údaje
 
@@ -56,7 +60,7 @@ Hlavní styly ve vzoru:
 
 | Styl (název v panelu Styly) | Použití |
 |---|---|
-| `AITOM - Nadpis sekce` | hlavní nadpisy sekcí (Předmět objednávky, Smluvní cena, Termín realizace, ...) — se zelenou spodní linkou |
+| `AITOM - Nadpis sekce` | hlavní nadpisy sekcí (Předmět objednávky, Smluvní cena, Termín realizace, ...) — se šedou spodní linkou |
 | `AITOM - Nadpis přílohy` | nadpis přílohy (Kalkulace tvorby webu) |
 | `AITOM - Nadpis podsekce` | menší podnadpisy uvnitř sekce (Kalkulace navrhovaného řešení) |
 | `AITOM - Label světlé pozadí` / `AITOM - Label tmavé pozadí` | popisky ZHOTOVITEL/OBJEDNATEL a hlavičky tabulek |
